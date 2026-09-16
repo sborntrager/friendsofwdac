@@ -1,0 +1,16 @@
+name = "friendsofwadc-logo-votes"
+main = "workers/logo-votes.js"
+compatibility_date = "2026-02-13"
+workers_dev = true
+
+# Replace with your Cloudflare account ID.
+account_id = "76aabaa129c678bccd33db90833b8232"
+
+# Replace with the KV namespace ID you want to store logo vote records in.
+kv_namespaces = [
+  { binding = "LOGO_VOTES", id = "5a4f8104972f4042aed86a1b48550a53" }
+]
+
+[vars]
+# Comma-separated list of allowed origins
+ALLOWED_ORIGIN = "https://friendsofwdac.org,https://www.friendsofwdac.org,https://friendsofwadc.org,https://www.friendsofwadc.org"

@@ -1,0 +1,7 @@
+node_modules/
+.wrangler/
+.wrangler-xdg/
+.venv/
+*.log
+.env
+.env.*

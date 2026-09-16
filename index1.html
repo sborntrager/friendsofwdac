@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friends of WDAC | Website Content Draft</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=DM+Serif+Display&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --onyx: #353935;
+      --ultra-white: #fafdff;
+      --venice-blue: #0f5c86;
+      --crazy-blue: #2c93c5;
+      --boho-yellow: #f2c14e;
+      --red-shimmer: #f45b5b;
+
+      --ink: var(--onyx);
+      --muted: #555f69;
+      --paper: #edf3fa;
+      --surface: var(--ultra-white);
+      --line: rgba(53, 57, 53, 0.16);
+      --accent: var(--venice-blue);
+      --accent-deep: #0a4465;
+      --accent-soft: rgba(44, 147, 197, 0.16);
+      --warm: rgba(242, 193, 78, 0.22);
+      --alert: var(--red-shimmer);
+      --shadow: 0 22px 56px rgba(15, 23, 42, 0.14);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-sm: 12px;
+      --max: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 5%, rgba(44, 147, 197, 0.28), rgba(44, 147, 197, 0) 36%),
+        radial-gradient(circle at 88% 12%, rgba(242, 193, 78, 0.24), rgba(242, 193, 78, 0) 35%),
+        radial-gradient(circle at 92% 80%, rgba(244, 91, 91, 0.18), rgba(244, 91, 91, 0) 34%),
+        linear-gradient(180deg, #ffffff 0%, #f3f8fd 52%, #fafdff 100%);
+      line-height: 1.6;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      border-radius: 50%;
+    }
+
+    body::before {
+      inset: 62% auto auto -130px;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle at center, rgba(15, 92, 134, 0.2), rgba(15, 92, 134, 0));
+    }
+
+    body::after {
+      inset: auto -120px -150px auto;
+      width: 360px;
+      height: 360px;
+      background: radial-gradient(circle at center, rgba(244, 91, 91, 0.2), rgba(244, 91, 91, 0));
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 2.5rem));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      padding: 2.2rem 0 1.4rem;
+    }
+
+    .hero-shell {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.7fr) minmax(220px, 0.8fr);
+      gap: 1.4rem;
+      background:
+        linear-gradient(140deg, rgba(15, 92, 134, 0.16), rgba(44, 147, 197, 0.14) 38%, rgba(242, 193, 78, 0.22) 72%, rgba(244, 91, 91, 0.14)),
+        var(--surface);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow);
+      padding: 1.4rem;
+    }
+
+    .hero-shell::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      height: 7px;
+      background: linear-gradient(90deg, var(--venice-blue) 0%, var(--crazy-blue) 34%, var(--boho-yellow) 66%, var(--red-shimmer) 100%);
+    }
+
+    .hero-shell > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .brand-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .brand-row img {
+      width: 84px;
+      height: auto;
+      border-radius: 10px;
+      background: #fff;
+      border: 1px solid rgba(15, 92, 134, 0.3);
+      padding: 0.35rem;
+      flex-shrink: 0;
+    }
+
+    .kicker {
+      margin: 0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.72rem;
+      color: var(--venice-blue);
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "DM Serif Display", serif;
+      line-height: 1.16;
+      margin: 0 0 0.7rem;
+      font-weight: 400;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 3.8vw, 3.2rem);
+      margin-top: 0.35rem;
+    }
+
+    p {
+      margin: 0 0 0.8rem;
+    }
+
+    .hero-copy {
+      color: var(--muted);
+      max-width: 68ch;
+      margin-bottom: 1.15rem;
+    }
+
+    .brand-ribbon {
+      display: grid;
+      grid-template-columns: repeat(6, minmax(0, 1fr));
+      gap: 0.38rem;
+      margin: 0 0 1rem;
+    }
+
+    .brand-ribbon span {
+      display: block;
+      border-radius: 999px;
+      padding: 0.28rem 0.45rem;
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      border: 1px solid rgba(53, 57, 53, 0.15);
+    }
+
+    .swatch-onyx {
+      background: var(--onyx);
+      color: #fff;
+    }
+
+    .swatch-white {
+      background: var(--ultra-white);
+      color: var(--onyx);
+    }
+
+    .swatch-venice {
+      background: var(--venice-blue);
+      color: #fff;
+    }
+
+    .swatch-crazy {
+      background: var(--crazy-blue);
+      color: #fff;
+    }
+
+    .swatch-boho {
+      background: var(--boho-yellow);
+      color: #4d3a11;
+    }
+
+    .swatch-red {
+      background: var(--red-shimmer);
+      color: #fff;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 0.56rem 1rem;
+      text-decoration: none;
+      font-weight: 600;
+      border: 1px solid transparent;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary {
+      background: var(--venice-blue);
+      color: #fff;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-deep);
+    }
+
+    .btn-sun {
+      background: var(--boho-yellow);
+      color: #4d3a11;
+      border-color: rgba(77, 58, 17, 0.25);
+    }
+
+    .btn-sun:hover {
+      background: #e8b43b;
+    }
+
+    .btn-coral {
+      background: var(--red-shimmer);
+      color: #fff;
+      border-color: rgba(133, 34, 34, 0.28);
+    }
+
+    .btn-coral:hover {
+      background: #df4f4f;
+    }
+
+    .hero-card {
+      background:
+        linear-gradient(170deg, rgba(44, 147, 197, 0.2), rgba(44, 147, 197, 0.03) 38%, rgba(242, 193, 78, 0.2) 74%, rgba(242, 193, 78, 0));
+      border-radius: var(--radius-md);
+      border: 1px solid rgba(15, 92, 134, 0.28);
+      padding: 1rem;
+      display: grid;
+      align-content: start;
+      gap: 0.75rem;
+    }
+
+    .hero-card strong {
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--venice-blue);
+    }
+
+    .hero-card ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--ink);
+    }
+
+    .section-nav {
+      position: sticky;
+      top: 0;
+      z-index: 4;
+      backdrop-filter: blur(8px);
+      background: rgba(250, 253, 255, 0.9);
+      border-top: 1px solid rgba(15, 92, 134, 0.18);
+      border-bottom: 1px solid rgba(44, 147, 197, 0.2);
+    }
+
+    .section-nav .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.38rem;
+      padding: 0.66rem 0;
+    }
+
+    .section-nav a {
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 999px;
+      padding: 0.36rem 0.72rem;
+      font-size: 0.84rem;
+      font-weight: 500;
+      transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+
+    .section-nav a:nth-child(1) {
+      border-color: rgba(15, 92, 134, 0.35);
+      background: rgba(15, 92, 134, 0.1);
+    }
+
+    .section-nav a:nth-child(2) {
+      border-color: rgba(242, 193, 78, 0.7);
+      background: rgba(242, 193, 78, 0.23);
+    }
+
+    .section-nav a:nth-child(3) {
+      border-color: rgba(44, 147, 197, 0.42);
+      background: rgba(44, 147, 197, 0.13);
+    }
+
+    .section-nav a:nth-child(4) {
+      border-color: rgba(244, 91, 91, 0.45);
+      background: rgba(244, 91, 91, 0.12);
+    }
+
+    .section-nav a:nth-child(5) {
+      border-color: rgba(53, 57, 53, 0.32);
+      background: rgba(53, 57, 53, 0.08);
+      color: #1f2320;
+    }
+
+    .section-nav a:nth-child(6) {
+      border-color: rgba(15, 92, 134, 0.28);
+      background: rgba(250, 253, 255, 0.95);
+    }
+
+    .section-nav a:hover {
+      border-color: rgba(15, 92, 134, 0.6);
+      color: var(--venice-blue);
+      transform: translateY(-1px);
+      box-shadow: 0 4px 10px rgba(15, 23, 42, 0.1);
+    }
+
+    main {
+      padding: 1.5rem 0 4rem;
+    }
+
+    .section {
+      --section-accent: var(--venice-blue);
+      --section-soft: rgba(15, 92, 134, 0.1);
+      --section-tag-ink: #ffffff;
+      --section-heading: var(--section-accent);
+      background: linear-gradient(180deg, var(--section-soft) 0%, rgba(250, 253, 255, 0.97) 55%);
+      border: 1px solid var(--line);
+      border-top: 6px solid var(--section-accent);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.06);
+      margin-bottom: 1rem;
+      padding: 1.2rem;
+    }
+
+    .section h2 {
+      color: var(--section-heading);
+    }
+
+    .section-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0.65rem;
+    }
+
+    .section-tag {
+      display: inline-block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      background: var(--section-accent);
+      color: var(--section-tag-ink);
+      font-weight: 700;
+      margin: 0;
+      padding: 0.22rem 0.55rem;
+      border-radius: 999px;
+    }
+
+    .section--about {
+      --section-accent: var(--venice-blue);
+      --section-soft: rgba(15, 92, 134, 0.1);
+      --section-tag-ink: #ffffff;
+    }
+
+    .section--history {
+      --section-accent: var(--boho-yellow);
+      --section-soft: rgba(242, 193, 78, 0.2);
+      --section-tag-ink: #4d3a11;
+      --section-heading: #7a5a14;
+    }
+
+    .section--membership {
+      --section-accent: var(--crazy-blue);
+      --section-soft: rgba(44, 147, 197, 0.12);
+      --section-tag-ink: #ffffff;
+    }
+
+    .section--donate {
+      --section-accent: var(--red-shimmer);
+      --section-soft: rgba(244, 91, 91, 0.14);
+      --section-tag-ink: #ffffff;
+    }
+
+    .section--news {
+      --section-accent: var(--onyx);
+      --section-soft: rgba(53, 57, 53, 0.08);
+      --section-tag-ink: #ffffff;
+    }
+
+    .section--contact {
+      --section-accent: var(--venice-blue);
+      --section-soft: rgba(242, 193, 78, 0.18);
+      --section-tag-ink: #ffffff;
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 1rem;
+    }
+
+    .info-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 253, 255, 0.98));
+      padding: 0.95rem;
+      border-left: 4px solid var(--section-accent);
+    }
+
+    .info-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 0.45rem;
+    }
+
+    .list-clean {
+      margin: 0;
+      padding-left: 1.05rem;
+    }
+
+    .list-clean li {
+      margin-bottom: 0.42rem;
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.55rem;
+      margin-top: 0.75rem;
+    }
+
+    .link-chip {
+      background: rgba(250, 253, 255, 0.98);
+      color: var(--section-accent);
+      text-decoration: none;
+      border: 1px solid var(--section-accent);
+      border-radius: 999px;
+      padding: 0.34rem 0.7rem;
+      font-size: 0.83rem;
+      font-weight: 600;
+    }
+
+    .link-chip:hover {
+      background: var(--section-soft);
+    }
+
+    .asset-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.7rem;
+    }
+
+    .asset-card {
+      border: 1px dashed var(--section-accent);
+      border-radius: var(--radius-sm);
+      background: linear-gradient(180deg, var(--section-soft), rgba(250, 253, 255, 0.94));
+      padding: 0.75rem;
+      min-height: 92px;
+    }
+
+    .asset-card strong {
+      display: block;
+      margin-bottom: 0.35rem;
+      font-size: 0.88rem;
+      color: var(--section-accent);
+    }
+
+    .timeline {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .timeline li {
+      margin-bottom: 0.6rem;
+    }
+
+    .form-shell {
+      margin-top: 0.85rem;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: linear-gradient(180deg, rgba(250, 253, 255, 0.96), var(--section-soft));
+      padding: 0.9rem;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .field {
+      display: grid;
+      gap: 0.25rem;
+    }
+
+    .field label {
+      font-size: 0.83rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 0.52rem 0.6rem;
+      font: inherit;
+      color: inherit;
+      background: #fff;
+    }
+
+    .field textarea {
+      min-height: 94px;
+      resize: vertical;
+    }
+
+    .span-2 {
+      grid-column: span 2;
+    }
+
+    .note {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-top: 0.4rem;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.7rem;
+      margin-top: 0.5rem;
+    }
+
+    .news-item {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 0.8rem;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(250, 253, 255, 0.92));
+      border-left: 5px solid var(--venice-blue);
+    }
+
+    .news-item b {
+      display: block;
+      margin-bottom: 0.22rem;
+      font-size: 0.95rem;
+      color: var(--onyx);
+    }
+
+    .news-item:nth-child(6n + 1) {
+      border-left-color: var(--venice-blue);
+    }
+
+    .news-item:nth-child(6n + 2) {
+      border-left-color: var(--crazy-blue);
+    }
+
+    .news-item:nth-child(6n + 3) {
+      border-left-color: var(--boho-yellow);
+    }
+
+    .news-item:nth-child(6n + 4) {
+      border-left-color: var(--red-shimmer);
+    }
+
+    .news-item:nth-child(6n + 5) {
+      border-left-color: var(--onyx);
+    }
+
+    .news-item:nth-child(6n + 6) {
+      border-left-color: var(--venice-blue);
+    }
+
+    .pill {
+      display: inline-block;
+      font-size: 0.71rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border-radius: 999px;
+      padding: 0.2rem 0.45rem;
+      background: var(--boho-yellow);
+      color: #4d3a11;
+      border: 1px solid rgba(77, 58, 17, 0.22);
+      margin-bottom: 0.4rem;
+    }
+
+    .legal {
+      border-left: 3px solid var(--alert);
+      padding: 0.75rem 0.9rem;
+      background: rgba(243, 91, 91, 0.08);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      margin-top: 0.75rem;
+      font-size: 0.9rem;
+    }
+
+    .contact-stack {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 1rem;
+    }
+
+    .mono {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+      font-size: 0.9rem;
+      background: var(--ultra-white);
+      border: 1px solid rgba(15, 92, 134, 0.24);
+      border-radius: 10px;
+      padding: 0.5rem;
+    }
+
+    .site-footer {
+      padding: 1.2rem 0 2rem;
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .site-footer .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 3px solid transparent;
+      border-image: linear-gradient(90deg, var(--venice-blue), var(--crazy-blue), var(--boho-yellow), var(--red-shimmer)) 1;
+      padding-top: 0.85rem;
+    }
+
+    .site-footer img {
+      width: 48px;
+      height: auto;
+    }
+
+    @media (max-width: 960px) {
+      .hero-shell {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-2,
+      .contact-stack {
+        grid-template-columns: 1fr;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .container {
+        width: min(var(--max), calc(100% - 1.2rem));
+      }
+
+      .brand-ribbon {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .span-2 {
+        grid-column: span 1;
+      }
+
+      .brand-row img {
+        width: 68px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section {
+        padding: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header" id="top">
+      <div class="container">
+        <div class="hero-shell">
+          <div>
+            <div class="brand-row">
+              <img src="../assets/logo/mainLogo.png" alt="Friends of WDAC logo" />
+              <div>
+                <p class="kicker">Friends of the Warren Daugherty Aquatic Center</p>
+                <h1>Community-backed support for WDAC programs and future stability.</h1>
+              </div>
+            </div>
+            <p class="hero-copy">
+              Friends of WDAC formed in spring 2025 as City of Cottage Grove budget planning put annual WDAC support at risk.
+              Nearly 300 WDAC patrons and supporters now work together to protect access, expand programs, and build long-term
+              financial support for the pool.
+            </p>
+            <div class="brand-ribbon" aria-label="Brand color system">
+              <span class="swatch-onyx">Onyx</span>
+              <span class="swatch-white">Ultra White</span>
+              <span class="swatch-venice">Venice Blue</span>
+              <span class="swatch-crazy">Crazy Blue</span>
+              <span class="swatch-boho">Boho Yellow</span>
+              <span class="swatch-red">Red Shimmer</span>
+            </div>
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#membership">Become a Member</a>
+              <a class="btn btn-sun" href="#donate">Donate to Priorities</a>
+              <a class="btn btn-coral" href="#contact">Contact Friends of WDAC</a>
+            </div>
+          </div>
+          <aside class="hero-card">
+            <strong>At a glance</strong>
+            <ul>
+              <li>501(c)(3) nonprofit partnership through BYB Cottage Grove.</li>
+              <li>Support for equipment, scholarships, staffing, and advocacy.</li>
+              <li>History, updates, and forms centralized in one community site.</li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </header>
+
+    <nav class="section-nav" aria-label="Page sections">
+      <div class="container">
+        <a href="#about">About</a>
+        <a href="#history">History</a>
+        <a href="#membership">Membership</a>
+        <a href="#donate">Donate</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+
+    <main>
+      <div class="container">
+        <section class="section section--about" id="about">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">About</p>
+              <h2>Who we are and why we formed</h2>
+            </div>
+          </div>
+          <div class="grid-2">
+            <div class="info-card">
+              <p>
+                Friends of WDAC represents a broad base of pool users and supporters across Cottage Grove. The group formed in
+                spring 2025 when fiscal year planning suggested city support for WDAC community programs might be cut.
+              </p>
+              <h3>Mission and objectives</h3>
+              <ul class="list-clean">
+                <li>Preserve and strengthen community access to WDAC programs.</li>
+                <li>Operate as a 501(c)(3) effort with BYB Cottage Grove as sponsor.</li>
+                <li>Support operations through advocacy, fundraising, and volunteer engagement.</li>
+              </ul>
+              <h3>Health and well-being benefits of the community pool</h3>
+              <ul class="list-clean">
+                <li>Year-round physical activity options for all ages.</li>
+                <li>Low-impact fitness and therapy opportunities.</li>
+                <li>Water safety and swim skill development.</li>
+                <li>Social connection and family recreation in a shared civic space.</li>
+              </ul>
+              <div class="links">
+                <a class="link-chip" href="#" aria-label="Add WDAC webpage link">WDAC page link placeholder</a>
+                <a class="link-chip" href="#" aria-label="Add BYB webpage link">BYB Cottage Grove link placeholder</a>
+              </div>
+            </div>
+            <aside class="info-card">
+              <h3>Leadership</h3>
+              <p class="note">Names and roles only (no personal contact details).</p>
+              <ul class="list-clean">
+                <li>President - TBD</li>
+                <li>Vice President - TBD</li>
+                <li>Treasurer - TBD</li>
+                <li>Secretary - TBD</li>
+                <li>Board Member - TBD</li>
+              </ul>
+              <div class="asset-grid">
+                <div class="asset-card">
+                  <strong>Photo needed</strong>
+                  WDAC exterior shot
+                </div>
+                <div class="asset-card">
+                  <strong>Graphic needed</strong>
+                  Community impact visual
+                </div>
+              </div>
+            </aside>
+          </div>
+        </section>
+
+        <section class="section section--history" id="history">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">History</p>
+              <h2>Timeline of community support for WDAC</h2>
+            </div>
+          </div>
+          <p>
+            This section can reuse already-developed materials and provide a concise timeline with a link to a detailed PDF.
+          </p>
+          <ul class="timeline">
+            <li>Pool development and opening milestones.</li>
+            <li>Community advocacy highlights and funding touchpoints.</li>
+            <li>Swim team and family recreation legacy moments.</li>
+          </ul>
+          <div class="links">
+            <a class="link-chip" href="#" aria-label="Add detailed history PDF link">Detailed history PDF placeholder</a>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Graphic needed</strong>
+              Timeline graphic (JPG)
+            </div>
+            <div class="asset-card">
+              <strong>Graphic needed</strong>
+              Historic city funding chart (JPG)
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Pool construction / opening archive image
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Swim team, family recreation, newspaper clipping, Warren Daugherty
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--membership" id="membership">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">Membership</p>
+              <h2>Who our members are and how to join</h2>
+            </div>
+          </div>
+          <p>
+            Members represent toddlers to seniors, including class and lesson attendees, therapy pool users, lap swimmers,
+            recreational swimmers, families, and Cottage Grove High School swim program participants and alumni.
+          </p>
+          <ul class="list-clean">
+            <li>Complete the online membership form.</li>
+            <li>Choose your membership fee option.</li>
+            <li>Optional: identify if you are CGHS swim alumni and include years.</li>
+            <li>Printable form can be mailed with check to the Friends of WDAC P.O. Box.</li>
+          </ul>
+          <div class="form-shell">
+            <h3>Membership form preview</h3>
+            <form action="#" method="post">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="member-name">Full name</label>
+                  <input id="member-name" name="member_name" type="text" placeholder="Jane Smith" />
+                </div>
+                <div class="field">
+                  <label for="member-email">Email</label>
+                  <input id="member-email" name="member_email" type="email" placeholder="name@example.com" />
+                </div>
+                <div class="field">
+                  <label for="member-tier">Membership option</label>
+                  <select id="member-tier" name="member_tier">
+                    <option value="">Choose one</option>
+                    <option>Individual</option>
+                    <option>Family</option>
+                    <option>Senior</option>
+                    <option>Supporter</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="alumni-years">CGHS alumni years (optional)</label>
+                  <input id="alumni-years" name="alumni_years" type="text" placeholder="Example: 1998-2002" />
+                </div>
+                <div class="field span-2">
+                  <label for="member-notes">Notes</label>
+                  <textarea id="member-notes" name="member_notes" placeholder="Anything we should know?"></textarea>
+                </div>
+              </div>
+              <p class="note">Final online and printable forms can be swapped in once PDFs are provided.</p>
+            </form>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Aqua exercise classes
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Lap swimmers and toddler swim
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--donate" id="donate">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">Donate</p>
+              <h2>Funding priorities and giving options</h2>
+            </div>
+          </div>
+          <ul class="list-clean">
+            <li>WDAC equipment needs outside routine SLSD maintenance and operations.</li>
+            <li>Scholarships for patrons who need fee assistance.</li>
+            <li>Scholarships that encourage and recognize student lifeguards.</li>
+            <li>New or enhanced community programs beyond current offerings.</li>
+            <li>Endowment growth for long-term WDAC fiscal support.</li>
+          </ul>
+
+          <div class="form-shell">
+            <h3>Donation form preview</h3>
+            <form action="#" method="post">
+              <div class="form-grid">
+                <div class="field">
+                  <label for="donor-name">Donor name</label>
+                  <input id="donor-name" name="donor_name" type="text" placeholder="Donor name" />
+                </div>
+                <div class="field">
+                  <label for="donor-email">Donor email</label>
+                  <input id="donor-email" name="donor_email" type="email" placeholder="name@example.com" />
+                </div>
+                <div class="field">
+                  <label for="amount">Amount</label>
+                  <input id="amount" name="amount" type="text" placeholder="$100.00" />
+                </div>
+                <div class="field">
+                  <label for="designation">Designation</label>
+                  <select id="designation" name="designation">
+                    <option value="">General support</option>
+                    <option>Equipment</option>
+                    <option>Patron scholarships</option>
+                    <option>Lifeguard scholarships</option>
+                    <option>Endowment</option>
+                  </select>
+                </div>
+                <div class="field span-2">
+                  <label for="donor-message">Message or dedication (optional)</label>
+                  <textarea id="donor-message" name="donor_message" placeholder="Optional details"></textarea>
+                </div>
+              </div>
+              <p class="note">
+                Production setup should support credit/debit payment and also display mail-in check instructions for the printable form.
+              </p>
+            </form>
+          </div>
+
+          <h3>Planned and legacy giving</h3>
+          <p>
+            Encourage giving through wills, trusts, or life insurance proceeds directed to the BYB - Friends of WDAC endowment.
+          </p>
+          <div class="links">
+            <a class="link-chip" href="#" aria-label="Add legacy giving PDF link">Legacy giving instructions PDF placeholder</a>
+          </div>
+          <div class="legal">
+            This information is not legal advice. Donors should consult their attorney or financial advisor for planned giving decisions.
+          </div>
+          <p class="note">Optional future module: T-shirt order interest form that opens once demand reaches 50 shirts.</p>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              New deck scrubber
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Wave-dampening lane lines
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              T-shirt design
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Lifeguard portrait
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--news" id="news">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">News</p>
+              <h2>Recent accomplishments</h2>
+            </div>
+          </div>
+          <p>
+            Keep each item to one short paragraph and link to external coverage, white papers, or PDF details.
+          </p>
+          <div class="news-grid">
+            <article class="news-item">
+              <span class="pill">March-May 2025</span>
+              <b>Advocacy</b>
+              Successfully campaigned for continued city funding for fiscal year 2025-26 when support was in jeopardy.
+            </article>
+            <article class="news-item">
+              <span class="pill">July 2025</span>
+              <b>Awareness</b>
+              Community visibility through participation in the Bohemian Mining Days parade.
+            </article>
+            <article class="news-item">
+              <span class="pill">Fall 2025</span>
+              <b>Organization</b>
+              Joined forces with BYB to strengthen nonprofit structure and support.
+            </article>
+            <article class="news-item">
+              <span class="pill">September 2025</span>
+              <b>Funded equipment</b>
+              Purchased a deck scrubber to support facility upkeep.
+            </article>
+            <article class="news-item">
+              <span class="pill">November 2025</span>
+              <b>Funded equipment</b>
+              Supported purchase of wave-dampening lane lines.
+            </article>
+            <article class="news-item">
+              <span class="pill">Fall/Winter 2025</span>
+              <b>Recognition and staffing</b>
+              Encouraged members to become lifeguards and advanced Bud Taylor recognition work in progress.
+            </article>
+          </div>
+          <div class="asset-grid">
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Parade photo
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Deck scrubber
+            </div>
+            <div class="asset-card">
+              <strong>Photo needed</strong>
+              Bud Taylor with swim team
+            </div>
+          </div>
+        </section>
+
+        <section class="section section--contact" id="contact">
+          <div class="section-head">
+            <div>
+              <p class="section-tag">Contact</p>
+              <h2>Reach Friends of WDAC</h2>
+            </div>
+          </div>
+          <div class="contact-stack">
+            <aside class="info-card">
+              <h3>Contact details</h3>
+              <p>Email shown as text only to reduce spam risk:</p>
+              <div class="mono">contact@friendsofwdac.org</div>
+              <p style="margin-top:0.7rem;">P.O. Box address:</p>
+              <div class="mono">Friends of WDAC P.O. Box (insert final mailing address)</div>
+            </aside>
+            <div class="form-shell">
+              <h3>Question / comment form</h3>
+              <form action="#" method="post">
+                <div class="form-grid">
+                  <div class="field">
+                    <label for="contact-name">Name</label>
+                    <input id="contact-name" name="contact_name" type="text" />
+                  </div>
+                  <div class="field">
+                    <label for="contact-reply">Reply email</label>
+                    <input id="contact-reply" name="contact_reply" type="email" />
+                  </div>
+                  <div class="field span-2">
+                    <label for="contact-msg">Message</label>
+                    <textarea id="contact-msg" name="contact_msg"></textarea>
+                  </div>
+                </div>
+                <p class="note">Connect this form to the existing Gmail workflow when backend routing is ready.</p>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div style="display:flex;align-items:center;gap:0.7rem;">
+          <img src="../assets/logo/mainLogo.png" alt="Friends of WDAC logo mark" />
+          <span>Friends of the Warren Daugherty Aquatic Center</span>
+        </div>
+        <span>Draft content page for contractor scope and build planning.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>General Donation Online Form - Friends of WDAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/site_v4.css" />
+  <link rel="stylesheet" href="../../assets/subpage-page.css" />
+<!-- Place these in your <head> -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="theme-color" content="#3A4A63">
+</head>
+<body class="v4-option subpage-page subpage-page--form">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <div class="card-shell">
+      <header class="top-bar shared-site-top-bar" data-site-header data-root="../.." data-current="donate"></header>
+
+      <main id="main">
+        <section class="subpage-hero" style="--subpage-hero-img:url('/assets/donate/Lifeguard_Buoy_Crop.jpg')" aria-labelledby="donation-form-title">
+          <div class="subpage-container subpage-hero__inner">
+            <div class="subpage-hero__copy">
+              <p class="subpage-eyebrow">Donation Form</p>
+              <h1 id="donation-form-title">Submit a Donation Online</h1>
+              <p>Complete this form for one-time or recurring general donations, or use the PDF alternative if that better fits your workflow.</p>
+            </div>
+          </div>
+          <div class="subpage-hero__graphic" aria-hidden="true">
+            <span class="subpage-hero__wordmark">Give</span>
+            <svg viewBox="0 0 240 240" focusable="false">
+              <path d="M120 196c-10-14-24-24-42-36-27-18-44-34-44-64 0-24 19-43 43-43 16 0 29 7 39 20 10-13 23-20 39-20 24 0 43 19 43 43 0 30-17 46-44 64-18 12-32 22-42 36z" />
+            </svg>
+          </div>
+        </section>
+
+        <section class="subpage-highlights" aria-label="Donation form summary">
+          <div class="subpage-container subpage-highlights__grid">
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <rect x="12" y="10" width="24" height="30" rx="3" />
+                  <path d="M18 18h12" />
+                  <path d="M18 25h12" />
+                  <path d="M18 32h8" />
+                </svg>
+              </span>
+              <div>
+                <h2>Online donation form</h2>
+                <p>Submit general donation details directly through the website.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--teal" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M16 30h16" />
+                  <path d="M24 14v22" />
+                  <path d="m16 22 8-8 8 8" />
+                </svg>
+              </span>
+              <div>
+                <h2>One-time or recurring</h2>
+                <p>Select the timing that fits your preferred giving pattern.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--gold" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M14 8h14l8 8v24H14z" />
+                  <path d="M28 8v8h8" />
+                  <path d="M20 23h10" />
+                </svg>
+              </span>
+              <div>
+                <h2>PDF fallback</h2>
+                <p>Fillable paper forms remain available for mail-in donations.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--navy" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <circle cx="24" cy="24" r="14" />
+                  <path d="M24 17v8l5 4" />
+                </svg>
+              </span>
+              <div>
+                <h2>Support available</h2>
+                <p>Need accessibility help or paper instructions? We can guide you.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="subpage-form-shell" aria-label="Donation form">
+          <div class="subpage-container subpage-grid">
+            <article class="subpage-card subpage-form-card subpage-span-8">
+              <h2>General donation</h2>
+              <p><span class="subpage-meta">Secure online form</span></p>
+              <form
+                class="form form-layout"
+                data-json-endpoint="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/forms"
+                data-form-type="general-donation"
+                data-success-message="Thank you. Your donation form was submitted successfully."
+              >
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="first_name">First name *</label>
+                    <input class="input" id="first_name" name="first_name" type="text" maxlength="120" required />
+                  </div>
+                  <div class="field">
+                    <label for="last_name">Last name *</label>
+                    <input class="input" id="last_name" name="last_name" type="text" maxlength="120" required />
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="email">Email *</label>
+                    <input class="input" id="email" name="email" type="email" maxlength="254" required />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input class="input" id="phone" name="phone" type="tel" maxlength="60" />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="street">Mailing address</label>
+                  <input class="input" id="street" name="street" type="text" maxlength="200" />
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="city">City</label>
+                    <input class="input" id="city" name="city" type="text" maxlength="120" />
+                  </div>
+                  <div class="field">
+                    <label for="state">State</label>
+                    <input class="input" id="state" name="state" type="text" maxlength="60" />
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="donation_amount">Donation amount (USD) *</label>
+                    <input class="input" id="donation_amount" name="donation_amount" type="number" min="1" step="0.01" inputmode="decimal" required />
+                  </div>
+                  <div class="field">
+                    <label for="donation_frequency">Donation frequency *</label>
+                    <select class="input select-input" id="donation_frequency" name="donation_frequency" required>
+                      <option value="">Select one</option>
+                      <option value="one-time">One-time</option>
+                      <option value="recurring-monthly">Recurring monthly</option>
+                      <option value="recurring-annually">Recurring annually</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="designation">Designation (optional)</label>
+                  <select class="input select-input" id="designation" name="designation">
+                    <option value="">Where needed most</option>
+                    <option value="general-support">General support</option>
+                    <option value="equipment">Equipment priorities</option>
+                    <option value="scholarships">Scholarship goals</option>
+                    <option value="program-support">Program support</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="tribute_name">Tribute / in honor of (optional)</label>
+                  <input class="input" id="tribute_name" name="tribute_name" type="text" maxlength="180" />
+                </div>
+
+                <div class="field">
+                  <label for="special_instructions">Special instructions</label>
+                  <textarea class="input textarea-input" id="special_instructions" name="special_instructions" maxlength="4000"></textarea>
+                </div>
+
+                <div class="field">
+                  <label for="comments">Comments</label>
+                  <textarea class="input textarea-input" id="comments" name="comments" maxlength="4000"></textarea>
+                </div>
+
+                <div class="field">
+                  <label><input type="checkbox" name="consent" value="yes" required /> I confirm this information is accurate and may be used to process my donation request. *</label>
+                </div>
+
+                <div class="subpage-actions">
+                  <button class="subpage-btn subpage-btn--primary" type="submit">Submit donation form</button>
+                  <a class="subpage-btn subpage-btn--secondary" href="https://givebutter.com/friends-of-the-wdac-general-donation" target="_blank" rel="noopener noreferrer">
+                    Step 2: Pay on GiveButter
+                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <rect x="3" y="6" width="14" height="12" rx="2" />
+                      <path d="M3 10h14" />
+                      <path d="M8 14h3" />
+                      <path d="M14 4h6v6" />
+                      <path d="m20 4-7 7" />
+                    </svg>
+                  </a>
+                  <a class="subpage-btn subpage-btn--outline" href="../../assets/docs/FRM_WDAC_Friends_General-Donation_FILLABLE.pdf">Download PDF instead</a>
+                </div>
+                <p class="form-note" data-form-note role="status" aria-live="polite" hidden></p>
+              </form>
+            </article>
+
+            <article class="subpage-card subpage-card--soft subpage-span-4">
+              <h2>Donation notes</h2>
+              <ul>
+                <li>Use this form for general donations only.</li>
+                <li>Complete this website form first, then complete payment on GiveButter.</li>
+                <li>Planned giving and T-shirt workflows remain PDF-based for now.</li>
+                <li>You can still download the fillable PDF if that works better for you.</li>
+              </ul>
+              <div class="subpage-actions">
+                <a class="subpage-btn subpage-btn--secondary" href="../../donate/index.html">Back to donate page</a>
+                <a class="subpage-btn subpage-btn--outline" href="../../docs/index.html">All forms and PDFs</a>
+                <a class="subpage-btn subpage-btn--primary" href="https://givebutter.com/friends-of-the-wdac-general-donation" target="_blank" rel="noopener noreferrer">
+                  Pay donation on GiveButter
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <rect x="3" y="6" width="14" height="12" rx="2" />
+                    <path d="M3 10h14" />
+                    <path d="M8 14h3" />
+                    <path d="M14 4h6v6" />
+                    <path d="m20 4-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div class="subpage-note">
+                <strong>Payment workflow</strong>
+                Online donation form and GiveButter general donation payment link are both live.
+              </div>
+            </article>
+
+            <article class="subpage-card subpage-card--tint subpage-span-6">
+              <h2>Paper and mail-in option</h2>
+              <p>If you prefer not to use the online form, download the fillable PDF and mail it with a check or money order.</p>
+              <p><strong>Payable to:</strong> "BYB (Friends of WDAC)"</p>
+              <p><strong>Mail to:</strong> Friends of the WDAC, P.O. Box 51, Cottage Grove, OR 97424</p>
+            </article>
+
+            <article class="subpage-card subpage-card--warm subpage-span-6">
+              <h2>Need another option?</h2>
+              <p>For planned giving, T-shirt orders, or accessibility-related support, use the Donate and Docs pages for the related workflows and alternate formats.</p>
+              <div class="subpage-actions">
+                <a class="subpage-btn subpage-btn--outline" href="../../donation-policy/index.html">Donation policy</a>
+                <a class="subpage-btn subpage-btn--outline" href="../../docs/accessibility-options.html">PDF accessibility options</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div data-subpage-footer data-root="../.." data-current="donate"></div>
+    </div>
+  </div>
+
+  <script src="../../js/site.js" defer></script>
+  <script src="../../js/forms.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends of WADC | Logo Vote Results</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f3f8ff;
+      --surface: #ffffff;
+      --ink: #0f2442;
+      --muted: #4d6487;
+      --line: #c9d9f2;
+      --accent: #0f74da;
+      --accent-soft: rgba(15, 116, 218, 0.13);
+      --good: #0b8a5a;
+      --warn: #9d2f2f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, #d5e7ff 0%, transparent 40%),
+        radial-gradient(circle at 90% 10%, #c7f2ef 0%, transparent 35%),
+        var(--bg);
+    }
+
+    .wrap {
+      width: min(1200px, 94%);
+      margin: 0 auto;
+      padding: 2rem 0 3rem;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+    }
+
+    .header p {
+      margin: 0.4rem 0 0;
+      color: var(--muted);
+    }
+
+    .meta {
+      text-align: right;
+    }
+
+    .meta .pill {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 0.45rem 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      background: linear-gradient(120deg, #0062c7, #0f83e6);
+    }
+
+    .panel {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 12px 28px rgba(15, 36, 66, 0.08);
+    }
+
+    .top-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .leaderboard {
+      padding: 1rem;
+    }
+
+    .leaderboard h2,
+    .votes h2 {
+      margin: 0 0 0.9rem;
+      font-size: 1.05rem;
+    }
+
+    .leaderboard-list {
+      display: grid;
+      gap: 0.7rem;
+    }
+
+    .leader-row {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.65rem;
+      background: #fbfdff;
+    }
+
+    .leader-head {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 0.42rem;
+    }
+
+    .bar-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #e9f1fd;
+      overflow: hidden;
+    }
+
+    .bar-fill {
+      height: 100%;
+      background: linear-gradient(120deg, #0f74da, #28a1f0);
+      border-radius: 999px;
+    }
+
+    .votes {
+      padding: 1rem;
+    }
+
+    .votes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.65rem;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 0.75rem;
+      background: #fbfdff;
+    }
+
+    .stat-label {
+      color: var(--muted);
+      font-size: 0.86rem;
+    }
+
+    .stat strong {
+      display: block;
+      margin-top: 0.25rem;
+      font-size: 1.2rem;
+    }
+
+    .table-panel {
+      padding: 1rem;
+    }
+
+    .table-wrap {
+      width: 100%;
+      overflow: auto;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid #e5effd;
+      padding: 0.62rem 0.55rem;
+      vertical-align: top;
+      text-align: left;
+    }
+
+    th {
+      font-size: 0.82rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--muted);
+      font-weight: 700;
+      background: #f8fbff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .pick-cell {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .pick-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.42rem;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      padding: 0.23rem 0.45rem 0.23rem 0.26rem;
+      background: #fff;
+      font-size: 0.84rem;
+    }
+
+    .pick-chip img {
+      width: 24px;
+      height: 24px;
+      object-fit: contain;
+      border-radius: 5px;
+      background: #f2f6fc;
+      border: 1px solid #dce6f8;
+      padding: 2px;
+    }
+
+    .rank {
+      font-weight: 800;
+      color: var(--accent);
+      margin-right: 0.12rem;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .state {
+      margin-top: 0.8rem;
+      font-weight: 700;
+    }
+
+    .state.error {
+      color: var(--warn);
+    }
+
+    .state.ok {
+      color: var(--good);
+    }
+
+    @media (max-width: 900px) {
+      .top-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .meta {
+        text-align: left;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="header">
+      <div>
+        <h1>Logo Vote Results</h1>
+        <p>Visual breakdown of who voted for what on <code>logo.html</code>.</p>
+      </div>
+      <div class="meta">
+        <span class="pill" id="totalVotesPill">0 votes</span>
+      </div>
+    </header>
+
+    <section class="top-grid">
+      <article class="panel leaderboard">
+        <h2>Leaderboard</h2>
+        <div class="leaderboard-list" id="leaderboardList"></div>
+      </article>
+
+      <article class="panel votes">
+        <h2>Vote Snapshot</h2>
+        <div class="votes-grid">
+          <div class="stat">
+            <span class="stat-label">Total voters</span>
+            <strong id="totalVoters">0</strong>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Unique logos picked</span>
+            <strong id="uniqueLogos">0</strong>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Top choice</span>
+            <strong id="topChoice">-</strong>
+          </div>
+          <div class="stat">
+            <span class="stat-label">Last updated</span>
+            <strong id="lastUpdated">-</strong>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel table-panel">
+      <h2>Who Voted for What</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Voter</th>
+              <th>Picks</th>
+              <th>Submitted</th>
+              <th>IP</th>
+              <th>Comment</th>
+            </tr>
+          </thead>
+          <tbody id="votesTableBody"></tbody>
+        </table>
+      </div>
+      <p class="state" id="state" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <script>
+    const ENDPOINT = "https://friendsofwadc-logo-votes.shannonborntrager.workers.dev";
+    const LOGOS = Array.from({ length: 20 }, (_, index) => {
+      const n = index + 1;
+      return {
+        id: `logo${n}`,
+        label: `Logo ${n}`,
+        src: `assets/logo${n}.png`
+      };
+    });
+
+    const logosById = Object.fromEntries(LOGOS.map((logo) => [logo.id, logo]));
+    const leaderboardList = document.getElementById("leaderboardList");
+    const votesTableBody = document.getElementById("votesTableBody");
+    const totalVotesPill = document.getElementById("totalVotesPill");
+    const totalVoters = document.getElementById("totalVoters");
+    const uniqueLogos = document.getElementById("uniqueLogos");
+    const topChoice = document.getElementById("topChoice");
+    const lastUpdated = document.getElementById("lastUpdated");
+    const state = document.getElementById("state");
+
+    const escapeHtml = (value) => String(value || "")
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+
+    const formatDateTime = (value) => {
+      if (!value) return "-";
+      const d = new Date(value);
+      if (Number.isNaN(d.getTime())) return "-";
+      return d.toLocaleString(undefined, {
+        year: "numeric",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "2-digit"
+      });
+    };
+
+    const logoLabel = (id) => logosById[id]?.label || id;
+    const logoSrc = (id) => logosById[id]?.src || "";
+
+    function renderLeaderboard(leaderboard, totalVotes) {
+      if (!leaderboard.length) {
+        leaderboardList.innerHTML = '<p class="muted">No votes yet.</p>';
+        return;
+      }
+
+      leaderboardList.innerHTML = leaderboard.map((item) => {
+        const percent = totalVotes > 0 ? Math.round((item.count / totalVotes) * 100) : 0;
+        return `
+          <article class="leader-row">
+            <div class="leader-head">
+              <span>${escapeHtml(logoLabel(item.logoId))}</span>
+              <span>${item.count} vote${item.count === 1 ? "" : "s"} (${percent}%)</span>
+            </div>
+            <div class="bar-track">
+              <div class="bar-fill" style="width: ${Math.max(percent, 3)}%"></div>
+            </div>
+          </article>
+        `;
+      }).join("");
+    }
+
+    function renderVotes(votes) {
+      if (!votes.length) {
+        votesTableBody.innerHTML = `
+          <tr>
+            <td colspan="5" class="muted">No vote records available.</td>
+          </tr>
+        `;
+        return;
+      }
+
+      votesTableBody.innerHTML = votes.map((vote) => {
+        const picks = Array.isArray(vote.picks) ? vote.picks : [];
+        const chips = picks.map((pick, i) => `
+          <span class="pick-chip">
+            <img src="${escapeHtml(logoSrc(pick))}" alt="${escapeHtml(logoLabel(pick))}">
+            <span class="rank">#${i + 1}</span>${escapeHtml(logoLabel(pick))}
+          </span>
+        `).join("");
+        return `
+          <tr>
+            <td>${escapeHtml(vote.voter || "Anonymous")}</td>
+            <td><div class="pick-cell">${chips}</div></td>
+            <td>${escapeHtml(formatDateTime(vote.submittedAt))}</td>
+            <td>${escapeHtml(vote.maskedIp || "Unknown")}</td>
+            <td>${vote.comment ? escapeHtml(vote.comment) : '<span class="muted">-</span>'}</td>
+          </tr>
+        `;
+      }).join("");
+    }
+
+    function applySummary(payload) {
+      const total = Number(payload.totalVotes || 0);
+      const leaders = Array.isArray(payload.leaderboard) ? payload.leaderboard : [];
+      const votes = Array.isArray(payload.votes) ? payload.votes : [];
+      const unique = new Set(leaders.map((item) => item.logoId));
+      const latest = votes[0]?.submittedAt || null;
+
+      totalVotesPill.textContent = `${total} vote${total === 1 ? "" : "s"}`;
+      totalVoters.textContent = String(votes.length);
+      uniqueLogos.textContent = String(unique.size);
+      topChoice.textContent = leaders[0] ? logoLabel(leaders[0].logoId) : "-";
+      lastUpdated.textContent = formatDateTime(latest);
+
+      renderLeaderboard(leaders, total);
+      renderVotes(votes);
+    }
+
+    async function loadResults() {
+      state.textContent = "Loading results...";
+      state.className = "state";
+
+      try {
+        const response = await fetch(`${ENDPOINT}?limit=600`, {
+          method: "GET",
+          headers: { "Accept": "application/json" }
+        });
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          throw new Error(payload.error || "Unable to load vote results.");
+        }
+        applySummary(payload);
+        state.textContent = "Results loaded.";
+        state.className = "state ok";
+      } catch (error) {
+        state.textContent = error.message || "Unable to load vote results.";
+        state.className = "state error";
+        leaderboardList.innerHTML = "";
+        votesTableBody.innerHTML = "";
+      }
+    }
+
+    loadResults();
+  </script>
+</body>
+</html>

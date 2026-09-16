@@ -1,0 +1,36 @@
+name = "friendsofwadc-subscribe"
+main = "workers/subscribe.js"
+compatibility_date = "2026-02-12"
+workers_dev = true
+
+# Replace with your Cloudflare account ID.
+account_id = "76aabaa129c678bccd33db90833b8232"
+
+# Replace with your KV namespace ID.
+kv_namespaces = [
+  { binding = "SUBSCRIBERS", id = "45958fcabdd3437fbb30845d9541d46f" }
+]
+
+[[send_email]]
+name = "CONTACT_EMAIL"
+allowed_destination_addresses = [ "contact@friendsofwdac.org", "contact@friendsofwadc.org", "contact@shannonborntrager.com" ]
+
+[[send_email]]
+name = "ADMIN_RESET_EMAIL"
+allowed_destination_addresses = [ "shannonborntrager@gmail.com", "contact@friendsofwdac.org", "contact@friendsofwadc.org" ]
+
+[vars]
+# Comma-separated list of allowed origins (e.g., https://friendsofwadc.org,https://www.friendsofwadc.org)
+ALLOWED_ORIGIN = "https://friendsofwdac.org,https://www.friendsofwdac.org,https://friendsofwadc.org,https://www.friendsofwadc.org"
+ADMIN_ALLOWED_EMAILS = "shannonborntrager@gmail.com,contact@friendsofwdac.org,contact@friendsofwadc.org"
+ADMIN_SITE_URL = "https://friendsofwdac.org"
+ADMIN_RESET_FROM_EMAIL = "contact@friendsofwdac.org"
+CONTACT_FORM_TO_EMAIL = "contact@friendsofwdac.org"
+CONTACT_FORM_FROM_EMAIL = "contact@friendsofwdac.org"
+ADMIN_SUPPORT_TO_EMAIL = "contact@shannonborntrager.com"
+ZOHO_ACCOUNTS_BASE_URL = "https://accounts.zoho.com"
+ZOHO_MAIL_BASE_URL = "https://mail.zoho.com"
+ZOHO_OAUTH_SCOPE = "ZohoMail.accounts.READ,ZohoMail.folders.READ,ZohoMail.messages.READ,ZohoMail.messages.CREATE,ZohoMail.messages.UPDATE"
+ZOHO_FROM_EMAIL = "contact@friendsofwdac.org"
+# Optional: if omitted, callback defaults to https://friendsofwdac.org/admin/mail/callback
+# ZOHO_REDIRECT_URI = "https://friendsofwdac.org/admin/mail/callback"

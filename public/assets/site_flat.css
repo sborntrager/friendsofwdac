@@ -1,0 +1,224 @@
+@import url("./site.css");
+
+.flat-option {
+  background: #ffffff;
+}
+
+.flat-option .page {
+  padding: 0;
+}
+
+.flat-option .card-shell {
+  max-width: none;
+  margin: 0;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.flat-option *,
+.flat-option *::before,
+.flat-option *::after {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+.flat-option .top-bar,
+.flat-option .footer,
+.flat-option .hero,
+.flat-option .home-page .hero.hero-story,
+.flat-option .home-page .content-wrap,
+.flat-option .card,
+.flat-option .callout,
+.flat-option .photo,
+.flat-option .tile-card,
+.flat-option .pathways-section,
+.flat-option .story-band,
+.flat-option .connect-card,
+.flat-option .impact-band,
+.flat-option .home-page .proof-card,
+.flat-option .home-page .docs-utility,
+.flat-option .impact-action,
+.flat-option .story-point,
+.flat-option .proof-point,
+.flat-option .connect-links a,
+.flat-option .quick-downloads a,
+.flat-option .download-list a {
+  background: #ffffff !important;
+  background-image: none !important;
+}
+
+.flat-option .top-bar {
+  border-bottom: 1px solid rgba(15, 92, 134, 0.16);
+}
+
+.flat-option .footer {
+  border-top: 1px solid rgba(15, 92, 134, 0.16);
+}
+
+.flat-option .hero,
+.flat-option .home-page .hero.hero-story {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  border-top: 1px solid rgba(15, 92, 134, 0.16);
+  border-bottom: 1px solid rgba(15, 92, 134, 0.16);
+}
+
+.flat-option .hero::before,
+.flat-option .hero-wave,
+.flat-option .home-page .tile-card::after,
+.flat-option .path-tile::before {
+  display: none !important;
+}
+
+.flat-option .home-page .content-wrap {
+  padding-top: 28px;
+}
+
+.flat-option .card,
+.flat-option .pathways-section,
+.flat-option .story-band,
+.flat-option .connect-card,
+.flat-option .impact-band,
+.flat-option .home-page .proof-card,
+.flat-option .home-page .docs-utility {
+  border: 1px solid rgba(15, 92, 134, 0.16) !important;
+}
+
+.flat-option .impact-band {
+  margin: 0 26px;
+  color: var(--blue-900);
+  z-index: 1;
+}
+
+.flat-option .impact-kicker,
+.flat-option .path-tile-label {
+  color: var(--blue-800);
+  opacity: 1;
+}
+
+.flat-option .impact-copy p,
+.flat-option .story-band-copy p,
+.flat-option .path-tile-copy,
+.flat-option .impact-action span,
+.flat-option .story-point span,
+.flat-option .story-band .section-eyebrow {
+  color: #355468 !important;
+}
+
+.flat-option .story-band,
+.flat-option .path-tile,
+.flat-option .impact-action {
+  color: var(--blue-900) !important;
+}
+
+.flat-option .path-tile {
+  border: 1px solid rgba(15, 92, 134, 0.2) !important;
+  min-height: 214px;
+}
+
+.flat-option .path-tile strong {
+  color: var(--blue-900);
+}
+
+.flat-option .path-tile-cta,
+.flat-option .impact-action,
+.flat-option .story-point,
+.flat-option .path-tile--donate .path-tile-cta {
+  border: 1px solid rgba(15, 92, 134, 0.2) !important;
+  background: #ffffff !important;
+  color: var(--blue-900) !important;
+}
+
+.flat-option .path-tile:hover,
+.flat-option .impact-action:hover,
+.flat-option .connect-links a:hover,
+.flat-option .quick-downloads a:hover,
+.flat-option .home-page .tile-card:hover {
+  transform: none !important;
+}
+
+.flat-option .story-band .image-mix-item:nth-child(2),
+.flat-option .hero-photo,
+.flat-option .hero-gallery .mini-photo:nth-child(2),
+.flat-option .hero-gallery .mini-photo:nth-child(3) {
+  transform: none !important;
+}
+
+.flat-option .reveal,
+.flat-option .home-page .hero-text > * {
+  opacity: 1 !important;
+  transform: none !important;
+  animation: none !important;
+  transition: none !important;
+}
+
+.flat-option .home-page .hero.hero-story {
+  padding-bottom: 38px;
+}
+
+.flat-option .hero-media {
+  max-width: 460px;
+  justify-self: end;
+}
+
+.flat-option .summary-grid {
+  gap: 14px;
+}
+
+.flat-option .summary-card {
+  display: grid;
+  gap: 10px;
+  padding: 20px 20px 22px;
+}
+
+.flat-option .summary-card h3 {
+  color: var(--blue-900);
+}
+
+.flat-option .summary-card p {
+  color: #355468;
+}
+
+.flat-option .summary-card .btn {
+  margin-top: auto;
+  justify-self: start;
+}
+
+.flat-option .simple-list {
+  margin-top: 14px;
+  padding-left: 18px;
+  display: grid;
+  gap: 6px;
+}
+
+.flat-option .simple-list li {
+  color: #355468;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.flat-option .simple-list li::marker {
+  color: rgba(15, 92, 134, 0.62);
+}
+
+@media (max-width: 980px) {
+  .flat-option .hero-media {
+    max-width: none;
+    justify-self: stretch;
+  }
+
+  .flat-option .summary-grid {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .flat-option .summary-card {
+    padding: 18px 18px 20px;
+  }
+
+  .flat-option .simple-list {
+    padding-left: 16px;
+  }
+}

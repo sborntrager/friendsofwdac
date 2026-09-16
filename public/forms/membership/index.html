@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Membership Online Form - Friends of WDAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/site_v4.css" />
+  <link rel="stylesheet" href="../../assets/subpage-page.css" />
+<!-- Place these in your <head> -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="theme-color" content="#3A4A63">
+</head>
+<body class="v4-option subpage-page subpage-page--form">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <div class="card-shell">
+      <header class="top-bar shared-site-top-bar" data-site-header data-root="../.." data-current="membership"></header>
+
+      <main id="main">
+        <section class="subpage-hero" style="--subpage-hero-img:url('/assets/membership/Lap_Swim_Hero_Crop.jpg')" aria-labelledby="membership-form-title">
+          <div class="subpage-container subpage-hero__inner">
+            <div class="subpage-hero__copy">
+              <p class="subpage-eyebrow">Membership Form</p>
+              <h1 id="membership-form-title">Become a Friend Online</h1>
+              <p>Submit your membership details here. Donation is optional, and a fillable PDF is still available if you prefer paper.</p>
+            </div>
+          </div>
+          <div class="subpage-hero__graphic" aria-hidden="true">
+            <span class="subpage-hero__wordmark">Join</span>
+            <svg viewBox="0 0 240 240" focusable="false">
+              <circle cx="92" cy="82" r="24" />
+              <circle cx="150" cy="82" r="24" />
+              <path d="M48 184c8-30 24-46 44-46s36 16 44 46" />
+              <path d="M106 184c8-30 24-46 44-46s36 16 44 46" />
+            </svg>
+          </div>
+        </section>
+
+        <section class="subpage-highlights" aria-label="Membership form summary">
+          <div class="subpage-container subpage-highlights__grid">
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <rect x="12" y="10" width="24" height="30" rx="3" />
+                  <path d="M18 18h12" />
+                  <path d="M18 25h12" />
+                  <path d="M18 32h8" />
+                </svg>
+              </span>
+              <div>
+                <h2>Online form</h2>
+                <p>Submit membership details directly through the website.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--teal" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M24 37c-2-3-5-5-8-7-5-4-8-7-8-13 0-5 4-9 9-9 3 0 5 1 7 3 2-2 4-3 7-3 5 0 9 4 9 9 0 6-3 9-8 13-3 2-6 4-8 7z" />
+                </svg>
+              </span>
+              <div>
+                <h2>Donation optional</h2>
+                <p>You can join now and decide separately whether to donate.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--gold" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <path d="M14 8h14l8 8v24H14z" />
+                  <path d="M28 8v8h8" />
+                  <path d="M20 23h10" />
+                </svg>
+              </span>
+              <div>
+                <h2>PDF alternative</h2>
+                <p>A fillable paper form is still available for print, check, or mail workflows.</p>
+              </div>
+            </article>
+
+            <article class="subpage-highlight">
+              <span class="subpage-highlight__icon subpage-highlight__icon--navy" aria-hidden="true">
+                <svg viewBox="0 0 48 48" focusable="false">
+                  <circle cx="24" cy="24" r="14" />
+                  <path d="M24 17v8l5 4" />
+                </svg>
+              </span>
+              <div>
+                <h2>Follow-up</h2>
+                <p>We can layer on payment links and additional support as the workflow evolves.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="subpage-form-shell" aria-label="Membership form">
+          <div class="subpage-container subpage-grid">
+            <article class="subpage-card subpage-form-card subpage-span-8">
+              <h2>Membership / Become a Friend</h2>
+              <p><span class="subpage-meta">Secure online form</span></p>
+              <form
+                class="form form-layout"
+                data-json-endpoint="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/forms"
+                data-form-type="membership"
+                data-success-message="Thanks. Your membership form was submitted successfully."
+              >
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="first_name">First name *</label>
+                    <input class="input" id="first_name" name="first_name" type="text" maxlength="120" required />
+                  </div>
+                  <div class="field">
+                    <label for="last_name">Last name *</label>
+                    <input class="input" id="last_name" name="last_name" type="text" maxlength="120" required />
+                  </div>
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="email">Email *</label>
+                    <input class="input" id="email" name="email" type="email" maxlength="254" required />
+                  </div>
+                  <div class="field">
+                    <label for="phone">Phone</label>
+                    <input class="input" id="phone" name="phone" type="tel" maxlength="60" />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="street">Mailing address</label>
+                  <input class="input" id="street" name="street" type="text" maxlength="200" />
+                </div>
+
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="city">City</label>
+                    <input class="input" id="city" name="city" type="text" maxlength="120" />
+                  </div>
+                  <div class="field">
+                    <label for="state">State</label>
+                    <input class="input" id="state" name="state" type="text" maxlength="60" />
+                  </div>
+                </div>
+
+                <div class="field">
+                  <label for="zip">ZIP</label>
+                  <input class="input" id="zip" name="zip" type="text" maxlength="20" />
+                </div>
+
+                <fieldset class="fieldset-reset field">
+                  <legend>How would you like to participate? (check all that apply; include details in the Comment Box)</legend>
+                  <div class="check-grid">
+                    <label><input type="checkbox" name="participation_interest" value="stay-informed" /> Stay informed on WDAC advocacy updates via email</label>
+                    <label><input type="checkbox" name="participation_interest" value="volunteer" /> Volunteer at events, meetings, or outreach (specify interests in comment box)</label>
+                    <label><input type="checkbox" name="participation_interest" value="expertise" /> Offer expertise or leadership support (note your skills and/or leadership interests in comment box)</label>
+                    <label><input type="checkbox" name="participation_interest" value="planned-gift" /> Make a planned or legacy gift (please also complete the Legacy / Planned Giving form)</label>
+                  </div>
+                </fieldset>
+
+                <fieldset class="fieldset-reset field">
+                  <legend>How do you use or relate to the WDAC?</legend>
+                  <div class="check-grid">
+                    <label><input type="checkbox" name="wdac_relation" value="exercise-classes" /> Exercise classes</label>
+                    <label><input type="checkbox" name="wdac_relation" value="swim-lessons-self" /> Swim lessons (me)</label>
+                    <label><input type="checkbox" name="wdac_relation" value="swim-lessons-family" /> Swim lessons (family)</label>
+                    <label><input type="checkbox" name="wdac_relation" value="donor" /> Donor</label>
+                    <label><input type="checkbox" name="wdac_relation" value="rec-family-swim" /> Rec/Family Swim</label>
+                    <label><input type="checkbox" name="wdac_relation" value="independent-exerciser-swimmer" /> Independent exerciser / swimmer</label>
+                    <label><input type="checkbox" name="wdac_relation" value="alumni" /> Alumni</label>
+                  </div>
+                </fieldset>
+
+                <div class="field">
+                  <label for="alumni_grad_year">Alumni graduation year (if applicable)</label>
+                  <input class="input" id="alumni_grad_year" name="alumni_grad_year" type="text" maxlength="10" />
+                </div>
+
+                <div class="field">
+                  <label for="donation_intent">Donation intent (optional)</label>
+                  <select class="input select-input" id="donation_intent" name="donation_intent">
+                    <option value="">Select one</option>
+                    <option value="no-donation-now">No donation at this time</option>
+                    <option value="donate-via-givebutter">I will donate electronically via Give Butter</option>
+                    <option value="mail-check">I will send a check in the mail.</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="donation_amount">Donation amount (optional)</label>
+                  <input class="input" id="donation_amount" name="donation_amount" type="number" min="1" step="0.01" inputmode="decimal" />
+                </div>
+
+                <div class="field">
+                  <label for="comments">Comments</label>
+                  <textarea class="input textarea-input" id="comments" name="comments" maxlength="4000"></textarea>
+                </div>
+
+                <div class="field">
+                  <label><input type="checkbox" name="consent" value="yes" required /> I confirm this information is accurate and may be used for Friends of WDAC membership communication. *</label>
+                </div>
+
+                <div class="subpage-actions">
+                  <button class="subpage-btn subpage-btn--primary" type="submit">Submit membership form</button>
+                  <a class="subpage-btn subpage-btn--secondary" href="https://givebutter.com/become-a-friend-membership" target="_blank" rel="noopener noreferrer">
+                    Step 2: Pay on GiveButter
+                    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                      <rect x="3" y="6" width="14" height="12" rx="2" />
+                      <path d="M3 10h14" />
+                      <path d="M8 14h3" />
+                      <path d="M14 4h6v6" />
+                      <path d="m20 4-7 7" />
+                    </svg>
+                  </a>
+                  <a class="subpage-btn subpage-btn--outline" href="../../assets/docs/FRM_WDAC_Friends_Membership_FILLABLE.pdf">Download PDF instead</a>
+                </div>
+                <p class="form-note" data-form-note role="status" aria-live="polite" hidden></p>
+              </form>
+            </article>
+
+            <article class="subpage-card subpage-card--soft subpage-span-4">
+              <h2>Before you submit</h2>
+              <ul>
+                <li>Donation is optional for membership.</li>
+                <li>Complete this website form first, then complete payment on GiveButter.</li>
+                <li>If you prefer paper, use the fillable PDF form instead.</li>
+              </ul>
+              <div class="subpage-actions">
+                <a class="subpage-btn subpage-btn--secondary" href="../../membership/index.html">Back to membership page</a>
+                <a class="subpage-btn subpage-btn--outline" href="../../docs/index.html">All forms and PDFs</a>
+                <a class="subpage-btn subpage-btn--primary" href="https://givebutter.com/become-a-friend-membership" target="_blank" rel="noopener noreferrer">
+                  Pay membership on GiveButter
+                  <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                    <rect x="3" y="6" width="14" height="12" rx="2" />
+                    <path d="M3 10h14" />
+                    <path d="M8 14h3" />
+                    <path d="M14 4h6v6" />
+                    <path d="m20 4-7 7" />
+                  </svg>
+                </a>
+              </div>
+              <div class="subpage-note">
+                <strong>Current status</strong>
+                Online membership form and GiveButter membership payment link are both live.
+              </div>
+            </article>
+
+            <article class="subpage-card subpage-card--tint subpage-span-6">
+              <h2>Paper option</h2>
+              <p>If you prefer printed forms, download the fillable PDF, save your completed copy, and print and mail it with a check or money order if donating.</p>
+              <p><strong>Checks / Money Orders:</strong> payable to "BYB (Friends of WDAC)"</p>
+              <p><strong>Mail to:</strong> Friends of the WDAC, P.O. Box 51, Cottage Grove, OR 97424</p>
+            </article>
+
+            <article class="subpage-card subpage-card--teal subpage-span-6">
+              <h2>Help, privacy, and accessibility</h2>
+              <p>If you need help completing the form or need an alternate format, use the accessibility and contact resources below.</p>
+              <div class="subpage-actions">
+                <a class="subpage-btn subpage-btn--outline" href="../../accessibility/index.html">Accessibility statement</a>
+                <a class="subpage-btn subpage-btn--outline" href="../../docs/accessibility-options.html">PDF accessibility options</a>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div data-subpage-footer data-root="../.." data-current="membership"></div>
+    </div>
+  </div>
+
+  <script src="../../js/site.js" defer></script>
+  <script src="../../js/forms.js" defer></script>
+</body>
+</html>

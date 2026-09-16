@@ -1,0 +1,726 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friends of WDAC - Mockup</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --blue-900: #0b3d5b;
+      --blue-800: #0f5c86;
+      --blue-700: #1a7db0;
+      --blue-600: #2c93c5;
+      --blue-500: #41a9d9;
+      --blue-200: #cfeaf7;
+      --blue-100: #eaf6fb;
+      --coral-500: #f45b5b;
+      --coral-600: #ea4b4b;
+      --gold-500: #f2c14e;
+      --ink: #0c1b2a;
+      --muted: #4c677a;
+      --surface: #ffffff;
+      --shadow: 0 20px 50px rgba(11, 61, 91, 0.15);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --wave-h: 62px;
+      --wave-overhang: 0.3;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Outfit", "Space Grotesk", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #f7fbff 0%, #e7f4fb 45%, #f0f7fb 100%);
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      min-height: 100vh;
+      padding: 32px 20px 60px;
+    }
+
+    .card-shell {
+      max-width: 1180px;
+      margin: 0 auto;
+      background: var(--surface);
+      border-radius: 36px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      border: 1px solid rgba(15, 92, 134, 0.08);
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 22px 32px;
+      gap: 18px;
+      background: linear-gradient(90deg, #ffffff 0%, #f8fcff 65%, #f1f8fc 100%);
+    }
+
+    .logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-group img {
+      width: 90px;
+      height: 90px;
+    }
+
+    .logo-group .name {
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--blue-800);
+      line-height: 1.1;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: inherit;
+      font-weight: 600;
+    }
+
+    .nav .dot {
+      width: 6px;
+      height: 6px;
+      background: var(--coral-500);
+      border-radius: 999px;
+    }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .btn {
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 13px;
+    }
+
+    .btn.primary {
+      background: var(--coral-500);
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(244, 91, 91, 0.25);
+    }
+
+    .btn.secondary {
+      background: #0f5c86;
+      color: #fff;
+    }
+
+    .hero-wrap {
+      position: relative;
+    }
+
+    .hero {
+      position: relative;
+      display: block;
+      min-height: 260px;
+      padding: 32px 32px 48px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 50%, rgba(255, 255, 255, 0.15) 100%), url("assets/hero-pool.png") center/cover no-repeat;
+      overflow: visible;
+    }
+
+    .hero-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 14px;
+      max-width: 380px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .hero-wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: calc(var(--wave-h) * var(--wave-overhang) * -1);
+      height: var(--wave-h);
+      width: 100%;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-text h1 {
+      color: var(--blue-800);
+      font-size: clamp(28px, 3vw, 38px);
+      line-height: 1.1;
+    }
+
+    .hero-text p {
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.5;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 6px;
+      margin-bottom: 22px;
+    }
+
+
+    .section-grid {
+      margin-top: calc(var(--wave-h) * var(--wave-overhang) + 20px);
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-auto-rows: minmax(0, auto);
+      gap: 18px;
+      padding: 10px 28px 28px;
+      background: #f7fbfe;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 20px 22px 24px;
+      box-shadow: 0 12px 30px rgba(11, 61, 91, 0.08);
+      border: 1px solid rgba(15, 92, 134, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card h3 {
+      color: var(--blue-800);
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .card .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(44, 147, 197, 0.12);
+      color: var(--blue-800);
+      font-size: 12px;
+      font-weight: 600;
+      margin-top: 12px;
+    }
+
+    .card .btn {
+      margin-top: 12px;
+      font-size: 12px;
+      padding: 8px 14px;
+    }
+
+    .card .art {
+      position: absolute;
+      right: 16px;
+      bottom: 12px;
+      width: 120px;
+      max-height: 90px;
+      opacity: 0.95;
+      pointer-events: none;
+      object-fit: contain;
+    }
+
+    .card.has-art {
+      padding-right: 150px;
+      min-height: 150px;
+    }
+
+    .card.art-bg {
+      padding-right: 22px;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(255, 255, 255, 0.2) 100%), var(--art-img) center/cover no-repeat;
+    }
+
+    .card.art-bg h3,
+    .card.art-bg p,
+    .card.art-bg .btn {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card.art-bg .card-shape {
+      float: right;
+      width: 45%;
+      height: 55%;
+      margin-top: 20%;
+      margin-right: 20px;
+      shape-outside: circle(60% at 100% 0%);
+      shape-margin: 12px;
+    }
+
+    .card.history-card {
+      --art-img: url("assets/history-illustration.png");
+    }
+
+    .card.membership-card {
+      --art-img: url("assets/membership-illustration.png");
+    }
+
+    .card.donate-card {
+      --art-img: url("assets/donate-illustration.png");
+    }
+
+    .card.wide {
+      grid-column: span 2;
+    }
+
+    .card.tall {
+      grid-row: span 1;
+    }
+
+    .card.wave {
+      background: linear-gradient(180deg, #ffffff 0%, #e8f6fd 100%);
+    }
+
+    .card.wave.art-bg {
+      background: linear-gradient(90deg, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.92) 55%, rgba(255, 255, 255, 0.2) 100%), var(--art-img) center/cover no-repeat;
+    }
+
+    .about-card {
+      --about-wave-h: 40px;
+      display: flex;
+      flex-direction: column;
+      padding: 18px 20px calc(var(--about-wave-h) + 10px);
+      background: linear-gradient(180deg, #fffaf0 0%, #ffffff 45%, #e8f6fd 100%);
+      grid-row: span 2;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      overflow: hidden;
+    }
+
+    .about-card h3 {
+      font-size: 20px;
+      margin-bottom: 6px;
+    }
+
+    .about-card .about-main {
+      position: relative;
+      min-height: 150px;
+      margin: -18px -20px 5px;
+      padding: 18px 20px 20px;
+      padding-right: 0;
+      background: url("assets/about-illustration.png") center/cover no-repeat;
+      overflow: hidden;
+      border-radius: var(--radius-md) var(--radius-md) 0 0;
+      flex: 1;
+    }
+
+    .about-card .about-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(90deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.85) 45%, rgba(255, 255, 255, 0.2) 100%);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .about-card .about-shape {
+      float: right;
+      width: 45%;
+      height: 45%;
+      margin-top: 20%;
+      margin-right: 20px;
+      shape-outside: circle(60% at 100% 0%);
+      shape-margin: 12px;
+    }
+
+
+    .about-card .about-body {
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--muted);
+      max-width: none;
+    }
+
+    .about-card .about-art {
+      display: none;
+    }
+
+    .about-card .about-divider {
+      height: 1px;
+      background: rgba(15, 92, 134, 0.1);
+      margin: 0 0 10px;
+    }
+
+    .about-card .about-links {
+      display: grid;
+      gap: 8px;
+      font-size: 12px;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-card .about-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-card .about-link img {
+      width: 22px;
+      height: 22px;
+      object-fit: contain;
+    }
+
+    .about-card .about-waves {
+      position: absolute;
+      inset: auto 0 0 0;
+      height: var(--about-wave-h);
+      background: url("assets/waveBar.png") center/cover no-repeat;
+      opacity: 0.9;
+      pointer-events: none;
+    }
+
+
+    .about-card h3,
+    .about-card .about-body,
+    .about-card .about-divider {
+      position: relative;
+      z-index: 1;
+    }
+
+    .lower-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 0 28px 24px;
+      background: #f7fbfe;
+    }
+
+    .news-item {
+      border-top: 1px solid rgba(15, 92, 134, 0.1);
+      padding: 12px 0;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .news-item:first-of-type {
+      border-top: none;
+    }
+
+    .news-item h4 {
+      color: var(--blue-800);
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .news-item span {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .subscribe {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr 1fr;
+      gap: 16px;
+      padding: 24px 28px 30px;
+      background: #f7fbfe;
+    }
+
+    .subscribe h3 {
+      color: var(--blue-800);
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .subscribe p,
+    .subscribe li,
+    .subscribe a {
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+      text-decoration: none;
+    }
+
+    .subscribe form {
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    .subscribe input {
+      flex: 1;
+      border-radius: 999px;
+      border: 1px solid rgba(15, 92, 134, 0.18);
+      padding: 10px 14px;
+      font-family: inherit;
+      font-size: 13px;
+    }
+
+    .subscribe .btn {
+      padding: 10px 16px;
+      font-size: 12px;
+    }
+
+    .footer {
+      position: relative;
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 0 0 34px;
+      background: transparent;
+      overflow: visible;
+    }
+
+    .footer::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -6px;
+      height: 52px;
+      background: url("assets/waveBar.png") center/cover no-repeat;
+      opacity: 0.9;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .footer .footer-text {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      transform: translateY(28px);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        min-height: 240px;
+      }
+
+      .section-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .card.wide {
+        grid-column: span 1;
+      }
+
+      .lower-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .subscribe {
+        grid-template-columns: 1fr;
+      }
+
+      .nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .cta-row {
+        width: 100%;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+      }
+
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card.tall {
+        grid-row: span 1;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .hero {
+        padding: 28px 20px 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="card-shell">
+      <header class="top-bar">
+        <div class="logo-group">
+          <img src="assets/logo1.svg" alt="Friends of WDAC logo" />
+        </div>
+        <nav class="nav">
+          <a href="#">About</a>
+          <div class="dot"></div>
+          <a href="#">History</a>
+          <div class="dot"></div>
+          <a href="#">Membership</a>
+          <div class="dot"></div>
+          <a href="#">Donate</a>
+        </nav>
+        <div class="cta-row">
+          <button class="btn primary">Donate</button>
+          <button class="btn secondary">Join Us</button>
+        </div>
+      </header>
+
+      <div class="hero-wrap">
+        <section class="hero">
+          <div class="hero-text">
+            <h1>Supporting Our Community Pool</h1>
+            <p>
+              Dedicated to keeping Cottage Grove's Warren Daugherty Aquatic Center thriving
+              and accessible to all.
+            </p>
+            <div class="hero-actions">
+              <button class="btn primary">Donate Now</button>
+              <button class="btn secondary">Join Us</button>
+            </div>
+          </div>
+          <img class="hero-wave" src="assets/waveBar.png" alt="" aria-hidden="true" />
+        </section>
+      </div>
+
+      <section class="section-grid">
+        <article class="card about-card">
+          <div class="about-main">
+            <span class="about-shape" aria-hidden="true"></span>
+            <h3>About</h3>
+            <p class="about-body">
+              Friends of WDAC is a community-driven 501(c)3 nonprofit dedicated to supporting
+              the Warren Daugherty Aquatic Center through fundraising, advocacy, and volunteer
+              efforts to ensure this vital resource is available for community use and
+              accessible to all.
+            </p>
+          </div>
+          <div class="about-divider"></div>
+          <div class="about-links">
+            <div class="about-link">
+              <img src="assets/about-icon-1.png" alt="Sponsored by BYB" />
+              <span>Sponsored by BYB (Link to website)</span>
+            </div>
+            <div class="about-link">
+              <img src="assets/about-icon-2.png" alt="Board of Directors" />
+              <span>Board of Directors: Joyce G., Andrew E., Gail H., Stephanie W.</span>
+            </div>
+          </div>
+          <div class="about-waves" aria-hidden="true"></div>
+        </article>
+
+        <article class="card has-art art-bg history-card">
+          <span class="card-shape" aria-hidden="true"></span>
+          <h3>History</h3>
+          <p>
+            Learn about the rich history and community efforts that made WDAC a beloved
+            local resource.
+          </p>
+          <button class="btn secondary">View Timeline</button>
+        </article>
+
+        <article class="card tall has-art art-bg membership-card">
+          <span class="card-shape" aria-hidden="true"></span>
+          <h3>Membership</h3>
+          <p>
+            Join our Friends of WDAC and help us keep our community pool thriving.
+          </p>
+          <button class="btn primary">Learn More</button>
+        </article>
+      </section>
+
+      <section class="lower-grid">
+        <article class="card wave has-art art-bg donate-card">
+          <span class="card-shape" aria-hidden="true"></span>
+          <h3>Donate</h3>
+          <p>
+            Support our pool with donations that fund important repairs, equipment, and
+            programs.
+          </p>
+          <button class="btn primary">Learn More</button>
+        </article>
+
+        <article class="card wave">
+          <h3>News</h3>
+          <div class="news-item">
+            <div>
+              <h4>Advocacy</h4>
+              <span>Successfully campaigned for city funding in 2025.</span>
+            </div>
+            <img src="assets/news-icon.png" alt="Advocacy" width="48" height="48" />
+          </div>
+          <div class="news-item">
+            <div>
+              <h4>Funded Equipment</h4>
+              <span>Purchased new lane lines for the WDAC pool.</span>
+            </div>
+            <img src="assets/news-icon-2.png" alt="Equipment" width="48" height="48" />
+          </div>
+        </article>
+      </section>
+
+      <section class="subscribe">
+        <div>
+          <h3>Stay Connected</h3>
+          <p>Sign up for news, volunteer opportunities, and pool updates.</p>
+          <form>
+            <input type="email" placeholder="Enter your email" />
+            <button class="btn primary" type="button">Subscribe</button>
+          </form>
+        </div>
+        <div>
+          <h3>Quick Links</h3>
+          <p><a href="#">About Us</a></p>
+          <p><a href="#">Events</a></p>
+          <p><a href="#">News</a></p>
+          <p><a href="#">Contact</a></p>
+        </div>
+        <div>
+          <h3>Contact Us</h3>
+          <p>friends@wdac.org</p>
+          <p>P.O. Box Cottage Grove, OR</p>
+          <p>Socials: Facebook • Instagram • Twitter</p>
+        </div>
+      </section>
+
+      <div class="footer"><div class="footer-text">© 2025, Friends of WDAC. All Rights Reserved.</div></div>
+    </div>
+  </div>
+</body>
+</html>

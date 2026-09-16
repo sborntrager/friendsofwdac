@@ -1,0 +1,32 @@
+body {
+    background: #f5f7fa;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 500px;
+    margin: 100px auto;
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    padding: 40px 30px;
+    text-align: center;
+}
+
+h1 {
+    color: #2a4d69;
+    margin-bottom: 16px;
+}
+
+.subtitle {
+    color: #4b86b4;
+    font-size: 1.3em;
+    margin-bottom: 24px;
+}
+
+p {
+    color: #555;
+    font-size: 1em;
+}

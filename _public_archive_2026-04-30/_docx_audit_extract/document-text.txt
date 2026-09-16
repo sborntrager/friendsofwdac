@@ -1,0 +1,92 @@
+ALL PAGES
+HEADER - Logo at top – wording is almost unreadable – either thicken “WARREN DAUGHERTY AQUATIC CENTER” wording, increase resolution / quality of logo file, and/or increase size of words, so that it’s readable.
+FOOTER – Mailing address – should be P.O. Box 51, not 150 (my mistake).
+TOP HEADLINE on Main Pages (In the header with background image) – make sure font is consistent Serif font used on home page “Protecting a vital community asset for Cottage Grove.”
+HOME PAGE:
+Suggest “$7K in 2025” as header. “Nearly” probably isn’t necessary.
+Larger Membership “Join Today” button goes directly to the online form, but should probably go to the informational “Membership” page - https://friendsofwdac.org/membership/
+ABOUT PAGE
+First boxed bullet under header “70+ years”… change “swim” to “pool” in “of community swim access at WDAC” (not everyone swims, but they do exercise and learn!)
+Protecting a vital community asset BOX: In paragraph directly under the sub-header, please add “other exercise” before “options” at the end of the last sentence.
+Photo captions headers are okay, except change “water class” to “exercise class”. Also, let’s be consistent with how photo credit appears. Please make the photo credit format for the FIVE (5) photos on this page the same as on Membership page.
+“PHOTO CREDITS – WDAC exterior and Lap swimmer by Stephenie Wheeler, Adult exercise class by Joyce Settelmeyer, Child swimmer by Gail Hemsoth, and Senior Swimmer by Suzanne Huebner-Sannes
+What people say BOX: Can we replace the small quote marks (kind of looks like “inch” marks rather than formatted quote marks). Suggest a graphic larger quote mark (see at right, also attached PNG with transparent background). Or maybe use larger Arial Black font (fairly ubiquitous) to create bolder quotes (which is what I used to create graphic).
+Be Your Best – Our Sponsor BOX: In second bullet, please revise text to say:Major success in 2024: opening of a low-cost rural health center, the South Lane Clinic at 1275 S. River Road in Cottage Grove.
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Stay in the Loop – Subscribe button should go directly to online Membership form (or page), not to a form that only provides email address.
+We’re here to Help – Contact Us button should go directly to Contact Us form https://friendsofwdac.org/index_working5#contact
+HISTORY PAGE
+City + School column:
+Second bullet: Since the 2019 WDAC renovation, the city’s annual $75K contribution helps underwrite community programs in both the WDAC’s lap pool and newly-built therapy pool, which replaced the outdated therapy pool the city had maintained in a separate facility.
+Delete 3rd bullet – it is redundant to second bullet
+Reword Fourth bullet (becomes 3rd): Patrons also contribute to SLSD through WDAC member dues and per-visit user fees and/or insurance payments.
+Timeline of fiscal support BOX
+1953: Change 1953 to 1953-54.  Change category to “Funding”. Reword description: Two local drownings spurred residents to launch a fund-raising campaign to build an outdoor pool. The Daugherty family donated substantially to reach the campaign goal.
+1955: Change category from  “Management” to “Milestone”. Reword description to:   Original outdoor pool is completed. Legendary track coach Wally Ciochetti is hired as first supervisor, with Coach Ron Pupke helping to manage it.
+1999-2000: Reword description to:  After an initial $250,000 donation to build a warm water therapy pool in the City of Cottage Grove’s Community Center, Donna and Doyle Shepherd donated another $250,000 with the understanding the therapy pool would be preserved.
+ADD another bullet after 2016-2018 bullet2018-2019: Category is “Milestone” with description:   The current aquatic center is renovated, featuring an enlarged lap pool and a new 42-person capacity therapy pool.
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Stay in the Loop – Subscribe button should go directly to online Membership form (or page), not to a form that only provides email address.
+We’re here to Help – Contact Us button should go directly to Contact Us form https://friendsofwdac.org/index_working5#contact
+MEMBERSHIP PAGE
+Make sure top-level “Membership – Join Today” button on Home page links to this page https://friendsofwdac.org/membership/
+Who are our members BOX:
+In the last sentence that begins “Friends also include…” add “polo” between “water and “athletics”, so it reads: Friends also include current participants and alumni from the Cottage Grove High School swim and water polo athletics program.
+Add a sentence to the end of the paragraph:  Finally, Friends include anyone who recognizes the value of the aquatic center to our community, and would like to support it.
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Stay in the Loop – Subscribe button should go directly to online Membership form (or page), not to a form that only provides email address.
+We’re here to Help – Contact Us button should go directly to Contact Us form https://friendsofwdac.org/index_working5#contact
+Online Membership Form – missing some items:
+How would you like to participate? – add “check all that apply” and “include details in the Comment Box” after the subheader.
+Stay informed on WDAC advocacy updates via email
+Volunteer at events, meetings or outreach (specify interests in comment box)
+Offer expertise or leadership support (note your skills and/or leadership interests in comment box)
+ADD: Make a planned or legacy gift (please also complete the Legacy / Planned Giving form)
+REVISE: Donate Intent:
+No donation at this time
+I will donate electronically via Give Butter
+I will send a check in the mail.
+Donation Amount is fine, but box seems really big.
+Need another section on form – See original form
+How do you use or relate to the WDAC?
+Check boxes for: Exercise classes, Swim lessons (me), Swim lessons (family), Donor, Rec/Family Swim, Independent exerciser / swimmer, Alumni (add box for graduation year)
+NEWS PAGE https://friendsofwdac.org/news/
+Header: “Advocacy + impact” – looks like you’re using sans serif font; should be in same serif font used for other main sub-page titles.
+Under RECENT UPDATES timeline…
+Arrows to the right of each bullet don’t go anywhere. This is a little confusing, as an arrow generally indicates there’s “MORE” if you click. Suggest we delete those.
+2025-2026 RECOGNITION (Bud Taylor recognition) bullet: Add “to support” after “Friends continue…” and before “alumni efforts”
+ADD final bullet at the end of the timeline: March-April 2026, WDAC OPERATIONS, Staffing Support – funded professional development attendance for WDAC supervisory and operations staff
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Contact Us – Contact Us button should go directly to Contact Us form
+DONATE PAGE https://friendsofwdac.org/donate/
+Header: “Fund what matters now” – looks like you’re using sans serif font; should be in same serif font used for other main sub-page titles.
+OUR FUNDING PRIORITIES:
+First sentence under sub-head and before the bullets, revise to say: These are mission-aligned areas we hope to support as funding allows.
+Weird space between the two bullets on the right. Can we get rid of space?
+Not sure we need to include the “Every gift makes an impact” and accompanying wording. Maybe just the Open Donation Form button in this box and make it 2 column? Bullets might fit better.
+NOTE: The Executive Team may be altering one of the Priority bullets and/or adding one. Stephenie will ask the team to notify you of any changes while she is traveling.
+General donation BOX
+Change wording to: Donate to support the priorities noted above. You may designate funds for a specific project or purpose by indicating your wishes on the form.
+Payment note: add “electronically” at the end of the sentence “then use GiveButter to complete payment electronically.
+General Donation form online - https://friendsofwdac.org/forms/donation/
+Need fields for Address, city, state, so we can send Thank You notes.
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Stay Connected – Subscribe button should go directly to online Membership form (or page), not to a form that only provides email address.
+Need Help? – Contact Us button should go directly to Contact Us form https://friendsofwdac.org/index_working5#contact
+Mail-in donations BOX
+Print and mail the completed PDF form with a check or money order.
+Add “Check/Money Order” before “Payable to”
+Planned / legacy giving BOX
+Add space above “Please consult” paragraph
+T-shirt order BOX
+Revise wording: Help build awareness among Cottage Grove residents and civic leaders by wearing our “I love my community pool” T-shirt to events and other gatherings. T-shirts come in a variety of sizes for children and adults. Order yours today! We’ll get more made once we enough T-shirt requests come in.
+Add space above the “Download Order form PDF” button.
+Use the PNG image of the T-shirt with transparent background.
+BOTTOM OF PAGE (DARK BLUE) BOX:
+Contact Us – Contact Us button should go directly to Contact Us form
+Accessibility Page (https://friendsofwdac.org/accessibility/)
+Header: “Accessibility Statement” – looks like you’re using sans serif font; should be in same serif font used for other main sub-page titles.
+FOOTER includes Stay connected box with button that goes to an email-only “subscribe” form… This button link should go to membership page, instead. We don’t want just emails, but full name and contact info for folks. Either combine “Get Involved” and Stay Connected” boxes, with button going to membership page. OR, have the Stay Connected “Subscribe” button go directly to the online form (https://friendsofwdac.org/forms/membership/).
+Docs Page https://friendsofwdac.org/docs/
+Header: “Forms + PDFs” – looks like you’re using sans serif font; should be in same serif font used for other main sub-page titles.
+Does not include PDFs for Membership or General Donation. Can you make 2 links in each of those boxes, one going to Online form and one going to PDF?

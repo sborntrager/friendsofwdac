@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Friends of WADC | Vote for Top 3 Logos</title>
+  <link rel="stylesheet" href="public/css/style.css">
+  <link rel="stylesheet" href="public/css/logo-vote.css">
+</head>
+<body class="logo-vote-page">
+  <main class="vote-wrap">
+    <header class="vote-header">
+      <p class="eyebrow">Friends of WADC</p>
+      <h1>Choose Your Top Three Logos</h1>
+      <p class="subhead">Select exactly 3 logos, then submit your vote.</p>
+      <p class="subhead"><a href="logoResults.html">View live vote results</a></p>
+      <p class="selection-count" id="selectionCount">0 of 3 selected</p>
+    </header>
+
+    <section class="logo-grid" id="logoGrid" aria-label="Logo choices"></section>
+
+    <section class="vote-actions">
+      <label class="voter-label" for="voterName">Your name</label>
+      <input
+        id="voterName"
+        class="voter-input"
+        type="text"
+        maxlength="80"
+        placeholder="Enter your name"
+      >
+      <label class="comment-label" for="voteComment">Optional comment</label>
+      <textarea
+        id="voteComment"
+        class="comment-input"
+        maxlength="1000"
+        placeholder="Share any feedback about your selections..."
+      ></textarea>
+      <button id="submitVote" class="submit-btn" type="button" disabled>Submit Top 3</button>
+      <p id="voteNote" class="vote-note" role="status" aria-live="polite" hidden></p>
+    </section>
+  </main>
+
+  <script>
+    const LOGOS = [
+      { id: "logo1", src: "assets/logo1.png", label: "Logo 1" },
+      { id: "logo2", src: "assets/logo2.png", label: "Logo 2" },
+      { id: "logo3", src: "assets/logo3.png", label: "Logo 3" },
+      { id: "logo4", src: "assets/logo4.png", label: "Logo 4" },
+      { id: "logo5", src: "assets/logo5.png", label: "Logo 5" },
+      { id: "logo6", src: "assets/logo6.png", label: "Logo 6" },
+      { id: "logo7", src: "assets/logo7.png", label: "Logo 7" },
+      { id: "logo8", src: "assets/logo8.png", label: "Logo 8" },
+      { id: "logo9", src: "assets/logo9.png", label: "Logo 9" },
+      { id: "logo10", src: "assets/logo10.png", label: "Logo 10" },
+      { id: "logo11", src: "assets/logo11.png", label: "Logo 11" },
+      { id: "logo12", src: "assets/logo12.png", label: "Logo 12" },
+      { id: "logo13", src: "assets/logo13.png", label: "Logo 13" },
+      { id: "logo14", src: "assets/logo14.png", label: "Logo 14" },
+      { id: "logo15", src: "assets/logo15.png", label: "Logo 15" },
+      { id: "logo16", src: "assets/logo16.png", label: "Logo 16" },
+      { id: "logo17", src: "assets/logo17.png", label: "Logo 17" },
+      { id: "logo18", src: "assets/logo18.png", label: "Logo 18" },
+      { id: "logo19", src: "assets/logo19.png", label: "Logo 19" },
+      { id: "logo20", src: "assets/logo20.png", label: "Logo 20" }
+    ];
+
+    const MAX_SELECTIONS = 3;
+    const ENDPOINT = "https://friendsofwadc-logo-votes.shannonborntrager.workers.dev";
+
+    const grid = document.getElementById("logoGrid");
+    const submitButton = document.getElementById("submitVote");
+    const voteNote = document.getElementById("voteNote");
+    const selectionCount = document.getElementById("selectionCount");
+    const voteComment = document.getElementById("voteComment");
+    const voterName = document.getElementById("voterName");
+
+    const selected = [];
+
+    function renderGrid() {
+      grid.innerHTML = LOGOS.map((logo) => `
+        <button class="logo-card" data-logo-id="${logo.id}" type="button" aria-pressed="false">
+          <img src="${logo.src}" alt="${logo.label}">
+          <span class="logo-label">${logo.label}</span>
+          <span class="pick-order" hidden></span>
+        </button>
+      `).join("");
+    }
+
+    function updateCardStates() {
+      const cards = grid.querySelectorAll(".logo-card");
+      cards.forEach((card) => {
+        const id = card.dataset.logoId;
+        const index = selected.indexOf(id);
+        const isSelected = index !== -1;
+        card.classList.toggle("selected", isSelected);
+        card.setAttribute("aria-pressed", String(isSelected));
+        const orderChip = card.querySelector(".pick-order");
+        if (isSelected) {
+          orderChip.textContent = `#${index + 1}`;
+          orderChip.hidden = false;
+        } else {
+          orderChip.hidden = true;
+        }
+      });
+
+      selectionCount.textContent = `${selected.length} of ${MAX_SELECTIONS} selected`;
+      submitButton.disabled = selected.length !== MAX_SELECTIONS;
+    }
+
+    function toggleSelection(logoId) {
+      const index = selected.indexOf(logoId);
+      if (index !== -1) {
+        selected.splice(index, 1);
+      } else if (selected.length < MAX_SELECTIONS) {
+        selected.push(logoId);
+      }
+      voteNote.hidden = true;
+      updateCardStates();
+    }
+
+    grid.addEventListener("click", (event) => {
+      const button = event.target.closest(".logo-card");
+      if (!button) return;
+      toggleSelection(button.dataset.logoId);
+    });
+
+    submitButton.addEventListener("click", async () => {
+      if (selected.length !== MAX_SELECTIONS) return;
+      const name = voterName.value.trim();
+      if (!name) {
+        voteNote.textContent = "Please enter your name before submitting.";
+        voteNote.className = "vote-note error";
+        voteNote.hidden = false;
+        voterName.focus();
+        return;
+      }
+
+      submitButton.disabled = true;
+      voteNote.hidden = true;
+
+      try {
+        const comment = voteComment.value.trim();
+        const response = await fetch(ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            picks: selected,
+            voterName: name,
+            comment,
+            submittedAt: new Date().toISOString(),
+            page: "logo.html"
+          })
+        });
+
+        const payload = await response.json().catch(() => ({}));
+        if (!response.ok) {
+          voteNote.textContent = payload.error || "Unable to save your vote right now.";
+          voteNote.className = "vote-note error";
+        } else {
+          voteNote.textContent = "Thanks. Your top three logos were recorded.";
+          voteNote.className = "vote-note success";
+          selected.length = 0;
+          voterName.value = "";
+          voteComment.value = "";
+        }
+      } catch (error) {
+        voteNote.textContent = "Network issue. Please try again.";
+        voteNote.className = "vote-note error";
+      } finally {
+        voteNote.hidden = false;
+        updateCardStates();
+      }
+    });
+
+    renderGrid();
+    updateCardStates();
+  </script>
+</body>
+</html>

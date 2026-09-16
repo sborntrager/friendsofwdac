@@ -1,0 +1,59 @@
+<!-- Contact Modal Markup: Place at end of <body> on any page -->
+<div class="wd5-modal" id="wd5-contact-modal" aria-hidden="true">
+  <div
+    class="wd5-modal-card"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="wd5-contact-modal-title"
+  >
+    <button class="wd5-modal-close" type="button" data-close-contact-modal aria-label="Close contact form">
+      ×
+    </button>
+    <p class="wd5-modal-kicker">Contact us</p>
+    <h2 id="wd5-contact-modal-title">Send Friends of the WDAC a message.</h2>
+    <p class="wd5-modal-intro">
+      Ask a question, share a concern, or tell us how you would like to help. Your message will be sent to
+      contact@friendsofwdac.org.
+    </p>
+    <form
+      class="wd5-contact-form"
+      data-contact-endpoint="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/contact"
+      data-success-message="Thanks. Your message was sent to Friends of WDAC."
+    >
+      <div class="wd5-form-grid">
+        <div class="wd5-field">
+          <label for="wd5-contact-name">Name *</label>
+          <input class="wd5-input" id="wd5-contact-name" name="name" type="text" maxlength="160" required />
+        </div>
+        <div class="wd5-field">
+          <label for="wd5-contact-email">Email *</label>
+          <input class="wd5-input" id="wd5-contact-email" name="email" type="email" maxlength="254" required />
+        </div>
+      </div>
+      <div class="wd5-form-grid">
+        <div class="wd5-field">
+          <label for="wd5-contact-phone">Phone</label>
+          <input class="wd5-input" id="wd5-contact-phone" name="phone" type="tel" maxlength="60" />
+        </div>
+        <div class="wd5-field">
+          <label for="wd5-contact-subject">Subject</label>
+          <input class="wd5-input" id="wd5-contact-subject" name="subject" type="text" maxlength="180" />
+        </div>
+      </div>
+      <div class="wd5-field">
+        <label for="wd5-contact-message">Message *</label>
+        <textarea class="wd5-textarea" id="wd5-contact-message" name="message" maxlength="5000" required></textarea>
+      </div>
+      <div class="wd5-visually-hidden" aria-hidden="true">
+        <label for="wd5-contact-website">Website</label>
+        <input id="wd5-contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+      </div>
+      <div class="wd5-modal-actions">
+        <button class="wd5-btn wd5-btn-primary" type="submit">Send message</button>
+        <button class="wd5-btn wd5-btn-outline" type="button" data-close-contact-modal>Cancel</button>
+      </div>
+      <p class="wd5-form-note" data-form-note role="status" aria-live="polite" hidden></p>
+      <p class="wd5-form-meta">If the form is unavailable, email contact@FriendsofWDAC.org directly.</p>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Newsletter Workspace - Friends of WDAC Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../../assets/site_v4.css" />
+  <link rel="stylesheet" href="../../assets/subpage-page.css" />
+  <link rel="stylesheet" href="../../assets/admin-page.css" />
+  <link rel="stylesheet" href="../../assets/admin-email.css" />
+</head>
+<body class="v4-option subpage-page admin-page admin-newsletter-page">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="page">
+    <div class="card-shell">
+      <header class="top-bar shared-site-top-bar admin-shared-header" data-site-header data-root="../.."></header>
+
+      <main id="main" data-admin-api-base="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/admin">
+        <header class="admin-dashboard-header">
+          <div class="admin-shell admin-dashboard-header__inner">
+            <a class="admin-brand" href="../../index.html" aria-label="Friends of WDAC home">
+              <img class="admin-brand__logo" src="../../assets/logo/hLogo.png" alt="Friends of WDAC logo" />
+            </a>
+
+            <div class="admin-dashboard-header__actions">
+              <a class="admin-header-link" href="../email/index.html">Email workspace</a>
+              <button class="admin-outline-btn admin-outline-btn--compact" id="admin-refresh" type="button">Refresh data</button>
+              <button class="admin-outline-btn admin-outline-btn--compact" data-admin-logout type="button">Log out</button>
+            </div>
+          </div>
+
+          <nav class="admin-dashboard-nav" aria-label="Admin sections">
+            <div class="admin-shell admin-dashboard-nav__inner">
+              <a class="admin-dashboard-nav__item" href="../index.html#admin-operations-hero">
+                <span class="admin-dashboard-nav__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <rect x="4" y="5" width="16" height="14" rx="2" />
+                    <path d="M8 10h8" />
+                    <path d="M8 14h5" />
+                  </svg>
+                </span>
+                <span>Dashboard</span>
+              </a>
+              <a class="admin-dashboard-nav__item is-active" href="./index.html">
+                <span class="admin-dashboard-nav__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <rect x="3" y="5" width="18" height="14" rx="2" />
+                    <path d="m5.5 8 6.5 5 6.5-5" />
+                  </svg>
+                </span>
+                <span>Newsletter</span>
+              </a>
+              <a class="admin-dashboard-nav__item" href="../email/index.html">
+                <span class="admin-dashboard-nav__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" focusable="false">
+                    <path d="M4 6h16v12H4z" />
+                    <path d="m4 8 8 5 8-5" />
+                  </svg>
+                </span>
+                <span>Email</span>
+              </a>
+            </div>
+          </nav>
+        </header>
+
+        <section class="admin-dashboard-note-strip" id="admin-auth-note-card" hidden>
+          <div class="admin-shell">
+            <p class="admin-page-note admin-dashboard-note" id="admin-auth-note" role="status" aria-live="polite" hidden></p>
+          </div>
+        </section>
+
+        <section class="admin-dashboard-note-strip" id="admin-dashboard-note-card" hidden>
+          <div class="admin-shell">
+            <p class="admin-page-note admin-dashboard-note" id="admin-dashboard-note" role="status" aria-live="polite" hidden></p>
+          </div>
+        </section>
+
+        <section class="admin-dashboard-main" aria-label="Newsletter workspace">
+          <div class="admin-shell">
+            <div class="admin-panel-grid">
+              <article class="admin-panel admin-panel--span-12" id="admin-newsletter-panel">
+                <div class="admin-panel__head">
+                  <div>
+                    <h2>Newsletter</h2>
+                    <p>Draft, preview, and send updates from the shared Zoho mailbox.</p>
+                  </div>
+                  <a class="admin-panel__link" href="./index.html">View all newsletters</a>
+                </div>
+
+                <div class="admin-newsletter-grid">
+                  <div class="admin-newsletter-compose">
+                    <div class="admin-field">
+                      <label for="admin-newsletter-subject">Subject line</label>
+                      <input class="admin-text-input" id="admin-newsletter-subject" type="text" value="Friends of WDAC Aquatic Center - Monthly Update" />
+                    </div>
+
+                    <div class="admin-field">
+                      <label for="admin-newsletter-body">Body draft</label>
+                      <textarea class="admin-textarea" id="admin-newsletter-body" rows="8">Hi there,
+
+Thank you for being part of the Cottage Grove Aquatic Center community.
+
+Here's what's happening this month...</textarea>
+                    </div>
+
+                    <button class="admin-outline-btn admin-outline-btn--compact" id="admin-newsletter-preview" type="button">Preview in new tab</button>
+                  </div>
+
+                  <div class="admin-newsletter-side">
+                    <div class="admin-field">
+                      <span class="admin-field__legend">Audience</span>
+                      <div class="admin-audience-row">
+                        <label><input type="radio" name="admin-newsletter-audience" value="members" checked /> Members</label>
+                        <label><input type="radio" name="admin-newsletter-audience" value="donors" /> Paid donors</label>
+                        <label><input type="radio" name="admin-newsletter-audience" value="members-donors" /> Members + donors</label>
+                        <label><input type="radio" name="admin-newsletter-audience" value="custom" /> Custom list</label>
+                      </div>
+                      <p class="admin-field__note" id="admin-newsletter-audience-note">Audience recipients are pulled from saved contacts.</p>
+                    </div>
+
+                    <div class="admin-field">
+                      <label for="admin-newsletter-custom-list">Custom recipients</label>
+                      <textarea class="admin-textarea admin-textarea--compact" id="admin-newsletter-custom-list" rows="3" placeholder="name@example.com, second@example.com"></textarea>
+                      <p class="admin-field__note">Use commas, semicolons, or new lines. This list is used only when Custom list is selected.</p>
+                    </div>
+
+                    <div class="admin-newsletter-meta-grid">
+                      <article class="admin-preview-card">
+                        <p class="admin-preview-card__label">Recipients preview</p>
+                        <div class="admin-preview-card__count">
+                          <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+                            <circle cx="9" cy="8" r="3" />
+                            <path d="M4 19c1.2-3.2 3.5-4.8 6-4.8" />
+                            <circle cx="17" cy="9" r="2.5" />
+                            <path d="M14.5 18.5c.8-1.8 2.3-2.8 4.5-2.8" />
+                          </svg>
+                          <strong id="admin-newsletter-recipient-count">0</strong>
+                        </div>
+                        <p class="admin-preview-card__note" id="admin-newsletter-recipient-note">Estimated recipients from the current preview</p>
+                        <button class="admin-outline-btn admin-outline-btn--compact" id="admin-newsletter-view-list" type="button">View preview list</button>
+                      </article>
+
+                      <article class="admin-preview-card admin-preview-card--list">
+                        <p class="admin-preview-card__label">Email handling</p>
+                        <ul class="admin-status-list">
+                          <li><span>Zoho connection</span><strong class="admin-status-list__state" id="admin-newsletter-zoho-state">Checking</strong></li>
+                          <li><span>Test email</span><strong class="admin-status-list__state" id="admin-newsletter-test-state">Ready</strong></li>
+                          <li><span>Bulk send guardrail</span><strong class="admin-status-list__state" id="admin-newsletter-limit-state">Max 75</strong></li>
+                        </ul>
+                      </article>
+                    </div>
+                  </div>
+                </div>
+
+                <p class="admin-panel-note" id="admin-newsletter-delivery-status">Email delivery status: checking Zoho connection.</p>
+                <div class="admin-newsletter-actions">
+                  <button class="admin-outline-btn" id="admin-newsletter-connect" type="button">Connect Zoho</button>
+                  <button class="admin-outline-btn" id="admin-newsletter-test" type="button">Send test email</button>
+                  <button class="admin-primary-btn" id="admin-newsletter-send" type="button">Send newsletter</button>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="../../js/site.js" defer></script>
+  <script src="../../js/admin.js" defer></script>
+</body>
+</html>

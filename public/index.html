@@ -1,0 +1,1509 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="wdac-content-api-base" content="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/content" />
+  <title>Friends of WDAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --wd5-blue-950: #082f4a;
+      --wd5-blue-900: #0b3d5b;
+      --wd5-blue-850: #104c73;
+      --wd5-blue-700: #1a7db0;
+      --wd5-blue-600: #2d93c6;
+      --wd5-blue-100: #eef7fd;
+      --wd5-ink: #1b3550;
+      --wd5-muted: #4b667d;
+      --wd5-border: rgba(11, 61, 91, 0.14);
+      --wd5-coral: #f45b4f;
+      --wd5-gold: #f2b61e;
+      --wd5-teal: #1aa9b6;
+      --wd5-shell: #f7fbff;
+      --wd5-white: #ffffff;
+      --wd5-shadow: 0 22px 60px rgba(8, 47, 74, 0.12);
+      --wd5-max: 1180px;
+      --wd5-display: "Montserrat", "Inter", system-ui, sans-serif;
+      --wd5-sans: "Inter", system-ui, sans-serif;
+      --wd5-title: "Montserrat", "Inter", system-ui, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f7fbff 0%, #ecf5fb 100%);
+      color: var(--wd5-ink);
+      font-family: var(--wd5-sans);
+      line-height: 1.55;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: 16px;
+      top: 16px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--wd5-white);
+      border: 1px solid var(--wd5-border);
+      transform: translateY(-150%);
+      transition: transform 0.16s ease;
+      z-index: 50;
+    }
+
+    .skip-link:focus {
+      transform: translateY(0);
+    }
+
+    .wd5-page {
+      min-height: 100vh;
+    }
+
+    .wd5-shell {
+      width: min(100%, 1400px);
+      margin: 0 auto;
+      background: var(--wd5-white);
+      box-shadow: var(--wd5-shadow);
+    }
+
+    .wd5-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 24px 36px;
+      border-bottom: 1px solid var(--wd5-border);
+      background: linear-gradient(90deg, #ffffff 0%, #f8fbfe 100%);
+    }
+
+    .wd5-logo-link {
+      display: inline-flex;
+      align-items: center;
+    }
+
+    .wd5-logo {
+      width: clamp(220px, 28vw, 360px);
+      height: auto;
+    }
+
+    .wd5-main {
+      display: grid;
+      gap: 24px;
+      padding-bottom: 34px;
+      background: linear-gradient(180deg, #ffffff 0%, #f6fbff 100%);
+    }
+
+    .wd5-hero {
+      position: relative;
+      overflow: visible;
+      background:
+        linear-gradient(100deg, rgba(8, 47, 74, 0.92) 0%, rgba(8, 47, 74, 0.86) 34%, rgba(8, 47, 74, 0.66) 56%, rgba(8, 47, 74, 0.24) 100%),
+        var(--wd5-hero-image, url("assets/home/WDAC_Overall_Larger.jpg")) center/cover no-repeat;
+      min-height: 640px;
+      padding: 34px 36px 138px;
+      color: var(--wd5-white);
+    }
+
+    .wd5-hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(26, 125, 176, 0.08), rgba(0, 0, 0, 0));
+      pointer-events: none;
+    }
+
+    .wd5-hero-inner {
+      position: relative;
+      z-index: 1;
+      width: min(100%, var(--wd5-max));
+      margin: 0 auto;
+      display: grid;
+      align-content: start;
+      gap: 22px;
+    }
+
+    .wd5-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .wd5-kicker::before {
+      content: "";
+      width: 26px;
+      height: 3px;
+      background: var(--wd5-gold);
+    }
+
+    .wd5-hero h1 {
+      margin: 0;
+      max-width: 9ch;
+      font-family: var(--wd5-display);
+      font-size: clamp(48px, 8vw, 86px);
+      line-height: 0.92;
+      letter-spacing: 0;
+    }
+
+    .wd5-hero h1 .wd5-accent {
+      color: #ffd46a;
+    }
+
+    .wd5-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .wd5-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 52px;
+      padding: 0 24px;
+      border: 1px solid transparent;
+      font-family: var(--wd5-title);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: transform 0.18s ease, background 0.18s ease, border-color 0.18s ease;
+    }
+
+    .wd5-btn:hover,
+    .wd5-btn:focus-visible {
+      transform: translateY(-2px);
+    }
+
+    .wd5-btn-primary {
+      background: var(--wd5-coral);
+      color: var(--wd5-white);
+    }
+
+    .wd5-btn-primary:hover,
+    .wd5-btn-primary:focus-visible {
+      background: #d94e43;
+    }
+
+    .wd5-btn-outline {
+      border-color: rgba(255, 255, 255, 0.7);
+      background: rgba(255, 255, 255, 0.08);
+      color: var(--wd5-white);
+    }
+
+    .wd5-btn-outline:hover,
+    .wd5-btn-outline:focus-visible {
+      background: rgba(255, 255, 255, 0.18);
+    }
+
+    .wd5-metrics {
+      position: absolute;
+      left: 36px;
+      right: 36px;
+      bottom: 0;
+      z-index: 2;
+      transform: translateY(48%);
+    }
+
+    .wd5-metrics-grid {
+      width: min(100%, var(--wd5-max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      background: linear-gradient(90deg, rgba(8, 47, 74, 0.96) 0%, rgba(11, 61, 91, 0.94) 100%);
+      border: 1px solid rgba(255, 255, 255, 0.14);
+    }
+
+    .wd5-metric {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      min-height: 126px;
+      padding: 24px 26px;
+      color: var(--wd5-white);
+    }
+
+    .wd5-metric + .wd5-metric {
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .wd5-metric strong {
+      display: block;
+      font-size: 28px;
+      line-height: 1.04;
+      font-family: var(--wd5-title);
+      font-weight: 800;
+    }
+
+    .wd5-metric span {
+      display: block;
+      margin-top: 4px;
+      font-size: 15px;
+      color: rgba(255, 255, 255, 0.84);
+    }
+
+    .wd5-icon {
+      width: 58px;
+      height: 58px;
+      flex: 0 0 58px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wd5-icon svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+
+    .wd5-section {
+      width: min(100%, var(--wd5-max));
+      margin: 0 auto;
+    }
+
+    .wd5-card-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      background: var(--wd5-white);
+      border: 1px solid var(--wd5-border);
+      margin-top: 82px;
+    }
+
+    .wd5-card {
+      position: relative;
+      padding: 26px 22px 22px;
+      text-align: center;
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+      border-right: 1px solid var(--wd5-border);
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    }
+
+    .wd5-card:last-child {
+      border-right: 0;
+    }
+
+    .wd5-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at top center, var(--wd5-card-tint, rgba(26, 125, 176, 0.14)) 0%, rgba(255, 255, 255, 0) 62%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, rgba(247, 251, 255, 0.9) 100%);
+      opacity: 0;
+      transition: opacity 0.2s ease;
+      pointer-events: none;
+    }
+
+    .wd5-card::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 5px;
+      background: var(--wd5-card-accent, var(--wd5-blue-700));
+    }
+
+    .wd5-card .wd5-round-icon {
+      width: 94px;
+      height: 94px;
+      margin: 0 auto 18px;
+      border-radius: 50% !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--wd5-card-tint, rgba(26, 125, 176, 0.14));
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .wd5-card h2 {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      font-family: var(--wd5-title);
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-900);
+      transition: color 0.2s ease;
+    }
+
+    .wd5-card p {
+      position: relative;
+      z-index: 1;
+      margin: 10px 0 0;
+      font-size: 16px;
+      color: var(--wd5-muted);
+      transition: color 0.2s ease;
+    }
+
+    .wd5-card-link {
+      position: relative;
+      z-index: 1;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 16px;
+      font-family: var(--wd5-title);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--wd5-card-accent, var(--wd5-blue-700));
+      transition: transform 0.2s ease, letter-spacing 0.2s ease, color 0.2s ease;
+    }
+
+    .wd5-card-link::after {
+      content: "→";
+      font-size: 16px;
+      transition: transform 0.2s ease;
+    }
+
+    .wd5-card:hover,
+    .wd5-card:focus-within {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 48px rgba(8, 47, 74, 0.12);
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    }
+
+    .wd5-card:hover::before,
+    .wd5-card:focus-within::before {
+      opacity: 1;
+    }
+
+    .wd5-card:hover .wd5-round-icon,
+    .wd5-card:focus-within .wd5-round-icon {
+      transform: scale(1.08);
+      background: color-mix(in srgb, var(--wd5-card-tint, rgba(26, 125, 176, 0.14)) 82%, white);
+    }
+
+    .wd5-card:hover h2,
+    .wd5-card:focus-within h2 {
+      color: var(--wd5-card-accent, var(--wd5-blue-700));
+    }
+
+    .wd5-card:hover p,
+    .wd5-card:focus-within p {
+      color: var(--wd5-ink);
+    }
+
+    .wd5-card:hover .wd5-card-link,
+    .wd5-card:focus-within .wd5-card-link {
+      transform: translateY(2px);
+      letter-spacing: 0.08em;
+    }
+
+    .wd5-card:hover .wd5-card-link::after,
+    .wd5-card:focus-within .wd5-card-link::after {
+      transform: translateX(4px);
+    }
+
+    .wd5-panel {
+      display: grid;
+      grid-template-columns: 1.25fr 0.85fr 0.85fr;
+      gap: 0;
+      border: 1px solid var(--wd5-border);
+      background: linear-gradient(180deg, #f2f8fd 0%, #eaf4fc 100%);
+    }
+
+    .wd5-panel-intro,
+    .wd5-panel-card {
+      padding: 34px 32px;
+    }
+
+    .wd5-panel-card {
+      border-left: 1px solid var(--wd5-border);
+      display: grid;
+      align-content: start;
+      gap: 12px;
+    }
+
+    .wd5-panel-kicker {
+      margin: 0 0 8px;
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-700);
+    }
+
+    .wd5-panel-intro h2,
+    .wd5-priorities-copy h2 {
+      margin: 0;
+      font-family: var(--wd5-display);
+      font-size: clamp(44px, 5vw, 60px);
+      line-height: 0.94;
+      letter-spacing: 0;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-panel-intro p,
+    .wd5-panel-card p,
+    .wd5-priority p {
+      margin: 14px 0 0;
+      font-size: 18px;
+      color: var(--wd5-muted);
+    }
+
+    .wd5-panel-card h3,
+    .wd5-priority h3 {
+      margin: 0;
+      font-family: var(--wd5-title);
+      font-size: 30px;
+      line-height: 1.02;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-round-icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 50% !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .wd5-round-icon svg {
+      width: 54px;
+      height: 54px;
+    }
+
+    .wd5-round-icon--blue {
+      background: rgba(39, 118, 189, 0.14);
+    }
+
+    .wd5-round-icon--coral {
+      background: rgba(244, 91, 79, 0.16);
+    }
+
+    .wd5-text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      font-family: var(--wd5-title);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-700);
+    }
+
+    .wd5-text-link::after {
+      content: "→";
+      font-size: 16px;
+    }
+
+    .wd5-text-link--coral {
+      color: var(--wd5-coral);
+    }
+
+    .wd5-priorities {
+      display: grid;
+      grid-template-columns: 1.05fr repeat(3, 0.95fr);
+      border-top: 1px solid var(--wd5-border);
+      border-bottom: 1px solid var(--wd5-border);
+      background: linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    }
+
+    .wd5-priorities-copy,
+    .wd5-priority {
+      padding: 34px 24px 30px;
+    }
+
+    .wd5-priority {
+      border-left: 1px solid var(--wd5-border);
+      display: grid;
+      align-content: start;
+      gap: 14px;
+    }
+
+    .wd5-priority .wd5-round-icon {
+      width: 92px;
+      height: 92px;
+      margin-bottom: 4px;
+    }
+
+    .wd5-priority .wd5-round-icon svg {
+      width: 46px;
+      height: 46px;
+    }
+
+    .wd5-connect {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      background: linear-gradient(90deg, #0f5c86 0%, #0b4f73 100%);
+      color: var(--wd5-white);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .wd5-connect::after {
+      content: "";
+      position: absolute;
+      right: 18px;
+      bottom: 14px;
+      width: 290px;
+      height: 112px;
+      background: url("assets/shared/waveBar.png") right bottom/contain no-repeat;
+      opacity: 0.92;
+      pointer-events: none;
+    }
+
+    .wd5-connect-block {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      gap: 22px;
+      align-items: flex-start;
+      padding: 34px 34px 36px;
+    }
+
+    .wd5-connect-block + .wd5-connect-block {
+      border-left: 1px solid rgba(255, 255, 255, 0.22);
+    }
+
+    .wd5-connect-copy p {
+      margin: 0;
+      color: rgba(255, 255, 255, 0.84);
+      font-size: 18px;
+    }
+
+    .wd5-connect-kicker {
+      margin: 0 0 8px;
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #cfeaf9;
+    }
+
+    .wd5-connect-copy h2 {
+      margin: 0 0 8px;
+      font-family: var(--wd5-display);
+      font-size: clamp(40px, 4vw, 52px);
+      line-height: 0.96;
+      letter-spacing: 0;
+    }
+
+    .wd5-connect .wd5-btn {
+      margin-top: 18px;
+      min-width: 234px;
+    }
+
+    .wd5-connect .wd5-btn-outline {
+      border-color: rgba(255, 255, 255, 0.64);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .wd5-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 80;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(8, 47, 74, 0.58);
+      backdrop-filter: blur(6px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .wd5-modal.is-open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .wd5-modal-card {
+      position: relative;
+      width: min(100%, 760px);
+      max-height: min(88vh, 900px);
+      overflow: auto;
+      padding: 30px 30px 26px;
+      border: 1px solid rgba(8, 47, 74, 0.14);
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+      box-shadow: 0 28px 90px rgba(8, 47, 74, 0.28);
+    }
+
+    .wd5-modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border: 1px solid var(--wd5-border);
+      border-radius: 50%;
+      background: rgba(8, 47, 74, 0.03);
+      color: var(--wd5-blue-900);
+      font-size: 24px;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .wd5-modal-kicker {
+      margin: 0 0 10px;
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-700);
+    }
+
+    .wd5-modal h2 {
+      margin: 0;
+      max-width: 12ch;
+      font-family: var(--wd5-display);
+      font-size: clamp(38px, 5vw, 52px);
+      line-height: 0.96;
+      letter-spacing: 0;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-modal-intro {
+      margin: 12px 0 0;
+      max-width: 58ch;
+      font-size: 18px;
+      color: var(--wd5-muted);
+    }
+
+    .wd5-contact-form {
+      display: grid;
+      gap: 18px;
+      margin-top: 26px;
+    }
+
+    .wd5-form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .wd5-field {
+      display: grid;
+      gap: 8px;
+    }
+
+    .wd5-field label {
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-input,
+    .wd5-textarea {
+      width: 100%;
+      min-height: 54px;
+      padding: 14px 16px;
+      border: 1px solid rgba(11, 61, 91, 0.2);
+      border-radius: 0;
+      background: #ffffff;
+      color: var(--wd5-ink);
+      font: inherit;
+    }
+
+    .wd5-input:focus,
+    .wd5-textarea:focus {
+      outline: 2px solid rgba(26, 125, 176, 0.22);
+      border-color: var(--wd5-blue-700);
+    }
+
+    .wd5-textarea {
+      min-height: 168px;
+      resize: vertical;
+    }
+
+    .wd5-modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .wd5-modal .wd5-btn-outline {
+      border-color: rgba(11, 61, 91, 0.24);
+      background: transparent;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-modal .wd5-btn-outline:hover,
+    .wd5-modal .wd5-btn-outline:focus-visible {
+      background: rgba(11, 61, 91, 0.05);
+    }
+
+    .wd5-form-note {
+      margin: 0;
+      font-size: 15px;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-form-meta {
+      margin: -2px 0 0;
+      font-size: 15px;
+      color: var(--wd5-muted);
+    }
+
+    .wd5-visually-hidden {
+      position: absolute !important;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    body.wd5-modal-open {
+      overflow: hidden;
+    }
+
+    .wd5-footer {
+      padding: 28px 36px;
+      border-top: 1px solid var(--wd5-border);
+      background: linear-gradient(180deg, #ffffff 0%, #f7fbff 100%);
+    }
+
+    .wd5-footer-grid {
+      width: min(100%, var(--wd5-max));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.45fr 0.9fr 0.95fr 1.1fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .wd5-footer-brand {
+      display: grid;
+      gap: 14px;
+    }
+
+    .wd5-footer-brand img {
+      width: 220px;
+    }
+
+    .wd5-footer h3 {
+      margin: 0 0 10px;
+      font-family: var(--wd5-title);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-footer p,
+    .wd5-footer li,
+    .wd5-footer small {
+      margin: 0;
+      font-size: 16px;
+      color: var(--wd5-muted);
+    }
+
+    .wd5-footer ul {
+      list-style: none;
+      display: grid;
+      gap: 8px;
+      padding: 0;
+      margin: 0;
+    }
+
+    .wd5-footer-social {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    .wd5-social-badge {
+      width: 54px;
+      height: 54px;
+      border-radius: 50% !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(39, 118, 189, 0.14);
+      color: var(--wd5-blue-700);
+      font-family: var(--wd5-title);
+      font-weight: 800;
+      font-size: 28px;
+    }
+
+    .wd5-footer-bottom {
+      width: min(100%, var(--wd5-max));
+      margin: 20px auto 0;
+      padding-top: 16px;
+      border-top: 1px solid var(--wd5-border);
+      text-align: center;
+    }
+
+    .wd5-footer-legal {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 24px;
+      margin: 0 0 14px;
+      padding: 0 0 14px;
+      border-bottom: 1px solid var(--wd5-border);
+    }
+
+    .wd5-footer-legal a {
+      font-family: var(--wd5-title);
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--wd5-blue-900);
+    }
+
+    .wd5-footer-legal .wd5-admin-link {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9baebf;
+    }
+
+    @media (max-width: 1180px) {
+      .wd5-card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .wd5-panel {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .wd5-panel-intro {
+        grid-column: 1 / -1;
+        border-bottom: 1px solid var(--wd5-border);
+      }
+
+      .wd5-panel-card {
+        border-top: 0;
+      }
+
+      .wd5-priorities {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .wd5-priorities-copy {
+        grid-column: 1 / -1;
+        border-bottom: 1px solid var(--wd5-border);
+      }
+
+      .wd5-priority:nth-of-type(2) {
+        border-left: 0;
+      }
+
+      .wd5-footer-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      .wd5-header,
+      .wd5-hero,
+      .wd5-footer {
+        padding-left: 22px;
+        padding-right: 22px;
+      }
+
+      .wd5-hero {
+        min-height: auto;
+        padding-bottom: 34px;
+      }
+
+      .wd5-metrics {
+        position: static;
+        transform: none;
+        margin-top: 20px;
+      }
+
+      .wd5-metrics-grid,
+      .wd5-card-grid,
+      .wd5-panel,
+      .wd5-priorities,
+      .wd5-connect,
+      .wd5-footer-grid,
+      .wd5-form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .wd5-card,
+      .wd5-panel-card,
+      .wd5-priority,
+      .wd5-connect-block {
+        border-left: 0;
+        border-right: 0;
+      }
+
+      .wd5-card + .wd5-card,
+      .wd5-panel-card + .wd5-panel-card,
+      .wd5-priority + .wd5-priority,
+      .wd5-connect-block + .wd5-connect-block {
+        border-top: 1px solid var(--wd5-border);
+      }
+
+      .wd5-card {
+        border-right: 0;
+      }
+
+      .wd5-metric + .wd5-metric {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .wd5-connect-block + .wd5-connect-block {
+        border-left: 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.22);
+      }
+
+      .wd5-connect::after {
+        width: 190px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wd5-header,
+      .wd5-hero,
+      .wd5-footer,
+      .wd5-connect-block {
+        padding-left: 16px;
+        padding-right: 16px;
+      }
+
+      .wd5-main {
+        gap: 18px;
+      }
+
+      .wd5-panel-intro,
+      .wd5-panel-card,
+      .wd5-priorities-copy,
+      .wd5-priority,
+      .wd5-card {
+        padding: 22px 18px;
+      }
+
+      .wd5-hero h1,
+      .wd5-panel-intro h2,
+      .wd5-priorities-copy h2,
+      .wd5-connect-copy h2 {
+        max-width: none;
+      }
+
+      .wd5-btn {
+        width: 100%;
+      }
+
+      .wd5-hero-actions {
+        display: grid;
+      }
+
+      .wd5-modal {
+        padding: 12px;
+      }
+
+      .wd5-modal-card {
+        padding: 22px 18px 20px;
+      }
+    }
+  </style>
+<!-- Place these in your <head> -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-config" content="/browserconfig.xml">
+<meta name="theme-color" content="#3A4A63">
+</head>
+<body data-content-phase1="on" data-content-enabled="on" data-content-phase="1" data-content-page="home">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="wd5-page">
+    <div class="wd5-shell">
+      <header class="wd5-header">
+        <a class="wd5-logo-link" href="index.html" aria-label="Friends of WDAC home">
+          <img class="wd5-logo" src="assets/logo/hLogo.png" alt="Friends of WDAC horizontal logo" />
+        </a>
+      </header>
+
+      <main id="main" class="wd5-main">
+        <section class="wd5-hero" aria-labelledby="wd5-hero-title" data-content-bg-key="home.hero.background.src" data-content-bg-var="--wd5-hero-image" data-content-section="hero" data-content-section-label="Hero + metrics">
+          <div class="wd5-hero-inner">
+            <p class="wd5-kicker" data-content-key="home.hero.kicker">Friends of the WDAC | Cottage Grove, Oregon</p>
+            <h1 id="wd5-hero-title"><span data-content-key="home.hero.title">Protecting a vital community asset for Cottage Grove</span><span class="wd5-accent">.</span></h1>
+            <div class="wd5-hero-actions">
+              <a class="wd5-btn wd5-btn-primary" href="donate/index.html" data-content-link-key="home.hero.primaryCta">Donate</a>
+              <a class="wd5-btn wd5-btn-outline" href="membership/index.html" data-content-link-key="home.hero.secondaryCta">Join and Volunteer</a>
+            </div>
+          </div>
+
+          <div class="wd5-metrics" aria-label="Community impact">
+            <div class="wd5-metrics-grid">
+              <article class="wd5-metric">
+                <span class="wd5-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M10 43c6 4 12 4 18 0 6 4 12 4 18 0 6 4 12 4 18 0" stroke="#46B7E8" stroke-width="4.5" stroke-linecap="round"/>
+                    <path d="M12 51c6 4 12 4 18 0 6 4 12 4 18 0 6 4 12 4 18 0" stroke="#46B7E8" stroke-width="4.5" stroke-linecap="round"/>
+                    <circle cx="28" cy="21" r="5" fill="#ffffff"/>
+                    <path d="M34 29l8-2 8 8" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M23 34l8-7 7 5" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </span>
+                <div>
+                  <strong data-content-key="home.metrics.communityAccess.title">70+ years</strong>
+                  <span data-content-key="home.metrics.communityAccess.body">community swim access at WDAC</span>
+                </div>
+              </article>
+
+              <article class="wd5-metric">
+                <span class="wd5-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <circle cx="18" cy="22" r="8" fill="#F28C2A"/>
+                    <circle cx="32" cy="18" r="9" fill="#F28C2A"/>
+                    <circle cx="47" cy="22" r="8" fill="#F28C2A"/>
+                    <path d="M7 49c0-8 7-14 16-14s16 6 16 14" fill="#F28C2A"/>
+                    <path d="M18 52c0-9 7-16 16-16s16 7 16 16" fill="#F28C2A"/>
+                  </svg>
+                </span>
+                <div>
+                  <strong data-content-key="home.metrics.supporters.title">300+ supporters</strong>
+                  <span data-content-key="home.metrics.supporters.body">connected to WDAC community programs</span>
+                </div>
+              </article>
+
+              <article class="wd5-metric">
+                <span class="wd5-icon" aria-hidden="true">
+                  <svg viewBox="0 0 64 64" fill="none">
+                    <path d="M32 52c-2-3-6-6-11-10-8-6-13-12-13-21 0-8 6-14 14-14 4 0 8 2 10 5 2-3 6-5 10-5 8 0 14 6 14 14 0 9-5 15-13 21-5 4-9 7-11 10z" fill="#F45B4F"/>
+                  </svg>
+                </span>
+                <div>
+                  <strong data-content-key="home.metrics.equipmentSupport.title">$7K in 2025</strong>
+                  <span data-content-key="home.metrics.equipmentSupport.body">given for deck equipment and lane lines</span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="wd5-section" aria-labelledby="wd5-sections-title" data-content-section="section-cards" data-content-section-label="Section cards">
+          <h2 id="wd5-sections-title" style="position:absolute;left:-9999px">Main sections</h2>
+          <div class="wd5-card-grid">
+            <article class="wd5-card" style="--wd5-card-accent:#1f73be;--wd5-card-tint:rgba(31,115,190,0.14)">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(31,115,190,0.14)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="23" cy="23" r="8" fill="#1F73BE"/>
+                  <circle cx="40" cy="23" r="8" fill="#1F73BE"/>
+                  <path d="M10 50c0-8 6-14 14-14h15c8 0 14 6 14 14" fill="#1F73BE"/>
+                </svg>
+              </span>
+              <h2 data-content-key="home.sections.about.title">About</h2>
+              <p data-content-key="home.sections.about.body">Who we are and how we support our community.</p>
+              <a class="wd5-card-link" href="about/index.html" data-content-link-key="home.sections.about.cta">Learn more</a>
+            </article>
+
+            <article class="wd5-card" style="--wd5-card-accent:#1aa9b6;--wd5-card-tint:rgba(26,169,182,0.15)">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(26,169,182,0.15)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="32" cy="32" r="21" stroke="#1AA9B6" stroke-width="6"/>
+                  <path d="M32 20v14l10 7" stroke="#1AA9B6" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h2 data-content-key="home.sections.history.title">History</h2>
+              <p data-content-key="home.sections.history.body">The story of community swim in Cottage Grove.</p>
+              <a class="wd5-card-link" href="history/index.html" data-content-link-key="home.sections.history.cta">Explore</a>
+            </article>
+
+            <article class="wd5-card" style="--wd5-card-accent:#e9ad00;--wd5-card-tint:rgba(233,173,0,0.16)">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(233,173,0,0.16)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="20" cy="24" r="7" fill="#E9AD00"/>
+                  <circle cx="32" cy="20" r="8" fill="#E9AD00"/>
+                  <circle cx="45" cy="24" r="7" fill="#E9AD00"/>
+                  <path d="M10 50c0-7 6-12 13-12h18c7 0 13 5 13 12" fill="#E9AD00"/>
+                </svg>
+              </span>
+              <h2 data-content-key="home.sections.membership.title">Membership</h2>
+              <p data-content-key="home.sections.membership.body">Join the effort and make an impact.</p>
+              <a class="wd5-card-link" href="membership/index.html" data-content-link-key="home.sections.membership.cta">Join today</a>
+            </article>
+
+            <article class="wd5-card" style="--wd5-card-accent:#f45b4f;--wd5-card-tint:rgba(244,91,79,0.15)">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(244,91,79,0.15)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M12 30l31-14v10l10 4-10 4v10L12 30z" fill="#F45B4F"/>
+                  <path d="M26 42l3 10" stroke="#F45B4F" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h2 data-content-key="home.sections.news.title">News</h2>
+              <p data-content-key="home.sections.news.body">Updates on advocacy wins, events, and more.</p>
+              <a class="wd5-card-link" href="news/index.html" data-content-link-key="home.sections.news.cta">Read news</a>
+            </article>
+
+            <article class="wd5-card" style="--wd5-card-accent:#2b82d0;--wd5-card-tint:rgba(43,130,208,0.15)">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(43,130,208,0.15)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M18 10h21l11 11v33H18z" fill="#2B82D0"/>
+                  <path d="M39 10v13h11" fill="#82B8EC"/>
+                  <path d="M24 31h20M24 39h20M24 47h15" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h2 data-content-key="home.sections.docs.title">Docs</h2>
+              <p data-content-key="home.sections.docs.body">Forms and resources at your fingertips.</p>
+              <a class="wd5-card-link" href="docs/index.html" data-content-link-key="home.sections.docs.cta">View docs</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="wd5-section" id="involved" aria-labelledby="wd5-support-title" data-content-section="support" data-content-section-label="Get involved">
+          <div class="wd5-panel">
+            <div class="wd5-panel-intro">
+              <p class="wd5-panel-kicker" data-content-key="home.involved.kicker">Get involved</p>
+              <h2 id="wd5-support-title" data-content-key="home.support.heading">How to lend your support right now.</h2>
+              <p data-content-key="home.support.body">Join as a Friend, donate and stay informed as advocacy continues for funding of WDAC community programs.</p>
+            </div>
+
+            <article class="wd5-panel-card">
+              <span class="wd5-round-icon wd5-round-icon--blue" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="23" cy="23" r="8" fill="#1F73BE"/>
+                  <circle cx="40" cy="23" r="8" fill="#1F73BE"/>
+                  <path d="M10 50c0-8 6-14 14-14h15c8 0 14 6 14 14" fill="#1F73BE"/>
+                </svg>
+              </span>
+              <h3 data-content-key="home.involved.membership.title">Become a Friend</h3>
+              <p data-content-key="home.involved.membership.body">Join the association, volunteer and strengthen our community advocacy.</p>
+              <a class="wd5-text-link" href="membership/index.html" data-content-link-key="home.involved.membership.cta">Learn more</a>
+            </article>
+
+            <article class="wd5-panel-card">
+              <span class="wd5-round-icon wd5-round-icon--coral" aria-hidden="true">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M32 52c-2-3-6-6-11-10-8-6-13-12-13-21 0-8 6-14 14-14 4 0 8 2 10 5 2-3 6-5 10-5 8 0 14 6 14 14 0 9-5 15-13 21-5 4-9 7-11 10z" fill="#F45B4F"/>
+                </svg>
+              </span>
+              <h3 data-content-key="home.involved.donate.title">Donate now</h3>
+              <p data-content-key="home.involved.donate.body">Support funding priorities and long-term community access to WDAC facilities.</p>
+              <a class="wd5-text-link wd5-text-link--coral" href="donate/index.html" data-content-link-key="home.involved.donate.cta">Donate</a>
+            </article>
+          </div>
+        </section>
+
+        <section class="wd5-section" aria-labelledby="wd5-priorities-title" data-content-section="priorities" data-content-section-label="Priorities">
+          <div class="wd5-priorities">
+            <div class="wd5-priorities-copy">
+              <p class="wd5-panel-kicker" data-content-key="home.priorities.kicker">2025-2026 priorities</p>
+              <h2 id="wd5-priorities-title" data-content-key="home.priorities.title">Current work in motion.</h2>
+              <p data-content-key="home.priorities.body">Current efforts combine budget advocacy, organization building, and direct program support.</p>
+              <a class="wd5-text-link" href="news/index.html" data-content-link-key="home.priorities.newsLink">Read recent news</a>
+              <br />
+              <a class="wd5-text-link" href="history/index.html" data-content-link-key="home.priorities.historyLink">View history timeline</a>
+            </div>
+
+            <article class="wd5-priority">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(31,115,190,0.14)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M10 24h44L32 11 10 24z" fill="#1F73BE"/>
+                  <path d="M16 27h6v19h-6zM29 27h6v19h-6zM42 27h6v19h-6zM10 49h44" stroke="#1F73BE" stroke-width="4.5" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3 data-content-key="home.priorities.budget.title">Budget advocacy</h3>
+              <p data-content-key="home.priorities.budget.body">Protect city support for WDAC community programs in upcoming fiscal years.</p>
+            </article>
+
+            <article class="wd5-priority">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(233,173,0,0.16)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <circle cx="20" cy="24" r="7" fill="#E9AD00"/>
+                  <circle cx="32" cy="20" r="8" fill="#E9AD00"/>
+                  <circle cx="45" cy="24" r="7" fill="#E9AD00"/>
+                  <path d="M10 50c0-7 6-12 13-12h18c7 0 13 5 13 12" fill="#E9AD00"/>
+                </svg>
+              </span>
+              <h3 data-content-key="home.priorities.organization.title">Organization</h3>
+              <p data-content-key="home.priorities.organization.body">Grow Friends membership and engagement through BYB-sponsored nonprofit structure.</p>
+            </article>
+
+            <article class="wd5-priority">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(26,169,182,0.16)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M10 43c6 4 12 4 18 0 6 4 12 4 18 0 6 4 12 4 18 0" stroke="#1AA9B6" stroke-width="4.5" stroke-linecap="round"/>
+                  <path d="M12 51c6 4 12 4 18 0 6 4 12 4 18 0 6 4 12 4 18 0" stroke="#1AA9B6" stroke-width="4.5" stroke-linecap="round"/>
+                  <circle cx="28" cy="21" r="5" fill="#1AA9B6"/>
+                  <path d="M34 29l8-2 8 8" stroke="#1AA9B6" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M23 34l8-7 7 5" stroke="#1AA9B6" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 data-content-key="home.priorities.programSupport.title">Program support</h3>
+              <p data-content-key="home.priorities.programSupport.body">Fund needs outside standard WDAC operations and maintenance budgets.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="wd5-section" id="contact" aria-labelledby="wd5-connect-title">
+          <div class="wd5-connect">
+            <article class="wd5-connect-block" data-content-section="cta-subscribe" data-content-section-label="Subscribe CTA">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.34)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <rect x="12" y="17" width="40" height="30" rx="4" stroke="#ffffff" stroke-width="4"/>
+                  <path d="M16 22l16 13 16-13" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="wd5-connect-copy">
+                <p class="wd5-connect-kicker" data-content-key="home.cta.subscribe.eyebrow">Stay connected</p>
+                <h2 id="wd5-connect-title" data-content-key="home.cta.subscribe.title">Stay in the loop.</h2>
+                <p data-content-key="home.cta.subscribe.body">Subscribe to get updates and action alerts about advocacy work, priorities and progress, and ways to take part.</p>
+                <a class="wd5-btn wd5-btn-outline" href="forms/membership/index.html" data-content-link-key="home.cta.subscribe.cta">Subscribe for updates</a>
+              </div>
+            </article>
+
+            <article class="wd5-connect-block" data-content-section="cta-contact" data-content-section-label="Contact CTA">
+              <span class="wd5-round-icon" aria-hidden="true" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.34)">
+                <svg viewBox="0 0 64 64" fill="none">
+                  <path d="M18 19h28c5 0 9 4 9 9v9c0 5-4 9-9 9H31l-10 7v-7h-3c-5 0-9-4-9-9v-9c0-5 4-9 9-9z" stroke="#ffffff" stroke-width="4" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <div class="wd5-connect-copy">
+                <p class="wd5-connect-kicker" data-content-key="home.cta.contact.eyebrow">Have a question?</p>
+                <h2 data-content-key="home.cta.contact.title">We can help.</h2>
+                <p data-content-key="home.cta.contact.body">We are here to answer questions and help people find the right way to support Friends of the WDAC.</p>
+                <button
+                  class="wd5-btn wd5-btn-outline"
+                  type="button"
+                  data-content-key="home.cta.contact.cta.label"
+                  data-open-contact-modal
+                  aria-haspopup="dialog"
+                  aria-controls="wd5-contact-modal"
+                  aria-expanded="false"
+                >
+                    Contact us
+                </button>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div class="wd5-modal" id="wd5-contact-modal" aria-hidden="true">
+        <div
+          class="wd5-modal-card"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="wd5-contact-modal-title"
+        >
+          <button class="wd5-modal-close" type="button" data-close-contact-modal aria-label="Close contact form">
+            ×
+          </button>
+          <p class="wd5-modal-kicker">Contact us</p>
+          <h2 id="wd5-contact-modal-title">Send Friends of the WDAC a message.</h2>
+          <p class="wd5-modal-intro">
+            Ask a question, share a concern, or tell us how you would like to help. Your message will be sent to
+            contact@friendsofwdac.org.
+          </p>
+
+          <form
+            class="wd5-contact-form"
+            data-contact-endpoint="https://friendsofwadc-subscribe.shannonborntrager.workers.dev/contact"
+            data-success-message="Thanks. Your message was sent to Friends of WDAC."
+          >
+            <div class="wd5-form-grid">
+              <div class="wd5-field">
+                <label for="wd5-contact-name">Name *</label>
+                <input class="wd5-input" id="wd5-contact-name" name="name" type="text" maxlength="160" required />
+              </div>
+
+              <div class="wd5-field">
+                <label for="wd5-contact-email">Email *</label>
+                <input class="wd5-input" id="wd5-contact-email" name="email" type="email" maxlength="254" required />
+              </div>
+            </div>
+
+            <div class="wd5-form-grid">
+              <div class="wd5-field">
+                <label for="wd5-contact-phone">Phone</label>
+                <input class="wd5-input" id="wd5-contact-phone" name="phone" type="tel" maxlength="60" />
+              </div>
+
+              <div class="wd5-field">
+                <label for="wd5-contact-subject">Subject</label>
+                <input class="wd5-input" id="wd5-contact-subject" name="subject" type="text" maxlength="180" />
+              </div>
+            </div>
+
+            <div class="wd5-field">
+              <label for="wd5-contact-message">Message *</label>
+              <textarea class="wd5-textarea" id="wd5-contact-message" name="message" maxlength="5000" required></textarea>
+            </div>
+
+            <div class="wd5-visually-hidden" aria-hidden="true">
+              <label for="wd5-contact-website">Website</label>
+              <input id="wd5-contact-website" name="website" type="text" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <div class="wd5-modal-actions">
+              <button class="wd5-btn wd5-btn-primary" type="submit">Send message</button>
+              <button class="wd5-btn wd5-btn-outline" type="button" data-close-contact-modal>Cancel</button>
+            </div>
+
+            <p class="wd5-form-note" data-form-note role="status" aria-live="polite" hidden></p>
+            <p class="wd5-form-meta">If the form is unavailable, email contact@FriendsofWDAC.org directly.</p>
+          </form>
+        </div>
+      </div>
+
+      <footer class="wd5-footer" id="contact-info">
+        <div class="wd5-footer-grid">
+          <div class="wd5-footer-brand">
+            <img src="assets/logo/hLogo.png" alt="Friends of WDAC logo" />
+            <div>
+              <h3>Friends of the WDAC</h3>
+              <p>Cottage Grove Aquatic Center</p>
+              <p>P.O. Box 51</p>
+              <p>Cottage Grove, OR 97424</p>
+            </div>
+          </div>
+
+          <div>
+            <h3>Explore</h3>
+            <ul>
+              <li><a href="about/index.html">About</a></li>
+              <li><a href="history/index.html">History</a></li>
+              <li><a href="membership/index.html">Membership</a></li>
+              <li><a href="news/index.html">News</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h3>Support</h3>
+            <ul>
+              <li><a href="docs/index.html">Docs</a></li>
+              <li><a href="forms/membership/index.html">Join</a></li>
+              <li><a href="donate/index.html">Donate</a></li>
+            </ul>
+          </div>
+
+          <div class="wd5-footer-social">
+            <span class="wd5-social-badge" aria-hidden="true">f</span>
+            <p>A community working together for Cottage Grove.</p>
+          </div>
+        </div>
+
+        <div class="wd5-footer-bottom">
+          <nav class="wd5-footer-legal" aria-label="Legal and admin">
+            <a href="privacy/index.html">Privacy Policy</a>
+            <a href="terms/index.html">Terms of Use</a>
+            <a href="donation-policy/index.html">Donation Policy</a>
+            <a href="accessibility/index.html">Accessibility Statement</a>
+            <a class="wd5-admin-link" href="admin/index.html" rel="nofollow">Client admin</a>
+          </nav>
+          <small>&copy; 2026 Friends of WDAC. All rights reserved.</small>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <script src="js/site.js" defer></script>
+  <script>
+    (() => {
+      const modal = document.getElementById("wd5-contact-modal");
+      if (!modal) return;
+
+      const openButtons = Array.from(document.querySelectorAll("[data-open-contact-modal]"));
+      const closeButtons = Array.from(document.querySelectorAll("[data-close-contact-modal]"));
+      const card = modal.querySelector(".wd5-modal-card");
+      const firstField = modal.querySelector("#wd5-contact-name");
+      let lastTrigger = null;
+
+      // Auto-open contact modal if URL hash is #contact
+      if (window.location.hash === "#contact") {
+        window.setTimeout(() => {
+          modal.classList.add("is-open");
+          modal.setAttribute("aria-hidden", "false");
+          document.body.classList.add("wd5-modal-open");
+          openButtons.forEach((button) => {
+            button.setAttribute("aria-expanded", "true");
+          });
+          window.setTimeout(() => firstField?.focus(), 30);
+        }, 120);
+      }
+
+      const setModalOpen = (isOpen, trigger = null) => {
+        modal.classList.toggle("is-open", isOpen);
+        modal.setAttribute("aria-hidden", isOpen ? "false" : "true");
+        document.body.classList.toggle("wd5-modal-open", isOpen);
+        openButtons.forEach((button) => {
+          button.setAttribute("aria-expanded", isOpen ? "true" : "false");
+        });
+
+        if (isOpen) {
+          lastTrigger = trigger || document.activeElement;
+          window.setTimeout(() => firstField?.focus(), 30);
+          return;
+        }
+
+        if (lastTrigger && typeof lastTrigger.focus === "function") {
+          lastTrigger.focus();
+        }
+      };
+
+      openButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setModalOpen(true, button);
+        });
+      });
+
+      closeButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          setModalOpen(false);
+        });
+      });
+
+      modal.addEventListener("click", (event) => {
+        if (card && card.contains(event.target)) return;
+        setModalOpen(false);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key !== "Escape" || !modal.classList.contains("is-open")) return;
+        setModalOpen(false);
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,191 @@
+Delivered-To: shannonborntrager@gmail.com
+Received: by 2002:a05:6022:8401:b0:f4:df84:8864 with SMTP id cd1csp2740713lab;
+        Tue, 21 Apr 2026 12:10:08 -0700 (PDT)
+X-Forwarded-Encrypted: i=3; AFNElJ9Bf3MtB5ZZrdknGMymxyOk6nKsQsV3LtevS3rgfAm6+/tAhOjEoJ2v+kw86OMUBIzucKLN6v/XV1cwU9synxhedg==@gmail.com
+X-Received: by 2002:a05:6870:d293:b0:41c:4fa4:b568 with SMTP id 586e51a60fabf-42a99892fabmr10337453fac.12.1776798608036;
+        Tue, 21 Apr 2026 12:10:08 -0700 (PDT)
+ARC-Seal: i=2; a=rsa-sha256; t=1776798608; cv=pass;
+        d=google.com; s=arc-20240605;
+        b=IdkPhYHwbR7/YeaML1OYs6pA28goO2sVoEx/uZ2NnCaak/14I8G91K/drJhtlFjbTq
+         KEmAd8+p8XDG9cqPf2xuRlCJu+qnvq0LiVD1ffc2rqP0K2tpdyGLXUY7yY0FdFGrTfJV
+         1zgiOIQXmoKk+JlbO9hJCX42aPzYgXng/Ye9VyO4Nmpw65hWCfhhVGMrdC4lHiNvRHG1
+         a9fVj/lrMqBps0OI2oqnCNVg/YiYomPM10svJEPi7+ouAiRvhLg0ZALYM4e+obii73Iu
+         P59Ecf616Cp0WS099LaYagn8yr2IMGpCpUh807p4Ng54RNq6PNUXZOaQnrmNIUqKsSSK
+         LehA==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=m02wKRH1cCb8/kUV2x2zuPDpYfy6zQgRc/XCnh/2YR8=;
+        fh=P0PmAuq7vadtUC8rI4e/FYJDrj3m8BsFOd7nMK7do9A=;
+        b=jqHHPIip2tLOq/pDLEKkkNtQu8oaH8zCZDs/Ssyp0ygAdsar4xeAlcJbQyCIVDfFEU
+         3mydmFPQfhQDLeRy1jojYus3n5mRNOgysJfeVNArXaQ2pTUmYvBAoPAqrdhqxmDzCAE/
+         JRcjSVmbwWm01Sm9lT/QcKIBvJ5RKG+SSePgKjPNq7V8SIB4bd8lJi3GIro2fgYBGRjA
+         zLih/D9mEIKRc9fl9ADBhdhVyHdjcpMgwZPqU+udn3WjZ4BDdk6TbD+cXMU9biJH4fG7
+         gOgc1jnaANvXIpz4dSobDSF7QuI80wM0rzGvjo0Dl4Vi5DrgYYbPvpQgXmbrQYHCjL48
+         10jg==;
+        dara=google.com
+ARC-Authentication-Results: i=2; mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b="kns/66h5";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of msgmakerak@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=msgmakerak@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+Return-Path: <msgmakerak@gmail.com>
+Received: from mail-sor-f41.google.com (mail-sor-f41.google.com. [209.85.220.41])
+        by mx.google.com with SMTPS id 586e51a60fabf-42b93457c0esor4411360fac.5.2026.04.21.12.10.07
+        for <shannonborntrager@gmail.com>
+        (Google Transport Security);
+        Tue, 21 Apr 2026 12:10:08 -0700 (PDT)
+Received-SPF: pass (google.com: domain of msgmakerak@gmail.com designates 209.85.220.41 as permitted sender) client-ip=209.85.220.41;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@gmail.com header.s=20251104 header.b="kns/66h5";
+       arc=pass (i=1);
+       spf=pass (google.com: domain of msgmakerak@gmail.com designates 209.85.220.41 as permitted sender) smtp.mailfrom=msgmakerak@gmail.com;
+       dmarc=pass (p=NONE sp=QUARANTINE dis=NONE) header.from=gmail.com;
+       dara=pass header.i=@gmail.com
+ARC-Seal: i=1; a=rsa-sha256; t=1776798607; cv=none;
+        d=google.com; s=arc-20240605;
+        b=ckWLOeHsBv1u/aT9F+zwQEgbF5Wr3v3m9c42goHv9dclGpn0ZmJi2tTHa1gH1GQ2sf
+         JkrGvP1K4FZDmcZU97O7ZgvpTEQwnnOUr8T8GIqUggl78+c0pBE1qeBZ63K/kolG2ObB
+         Aa0COQJSdZ6maNefEL7yn7ZHZL4p56B0CUqYmitq1EAnrSCkfNhZNw703KmaqCdWn6Sm
+         pTSSiKvCSM8gCuokhER9lzaFz3dwhaVicUNqL2eRXN8U3A50LbGEUxl/i2t0Qzq6TZ++
+         ZSWtKyYYvslyuevqtnhhYI6Tu7v9CjSx5UoUTfuxJXflI2o+qb4Z4dtq6z3khkPrWXsc
+         hJIw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=m02wKRH1cCb8/kUV2x2zuPDpYfy6zQgRc/XCnh/2YR8=;
+        fh=P0PmAuq7vadtUC8rI4e/FYJDrj3m8BsFOd7nMK7do9A=;
+        b=XY6ecqY9tzB7m70v53eP5eaRwyqjMBpWwamvlJebxT6BK6sQK8Nffjt0OGpKPepP19
+         FSzUBEmgC/4nxjsYAy1cIE4/8iN7tRUYeWmGtJqWGiZzkZbcPSYn8z3MZTg3vzrgzJLm
+         4b1a8M+HNzdUsf7aLlOc0o14Ze84eBc0tiQwobw6iNTZmOIo1xDEYOqe3BXpnNvI9ZpA
+         bm8PklyKEr1kYERrz69XTwGqoxrLtuZyhnNxzI93SeHD8BW4KWDgPulftOMZFY29KT1K
+         0CPJ/U0TZk4nybzIIQobObL81ySuTj0LZOsjUOBwvx4ztUXwQ9CGYuhy4Q4TTJrRvKY3
+         qmpg==;
+        dara=google.com
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1776798607; x=1777403407; dara=google.com;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=m02wKRH1cCb8/kUV2x2zuPDpYfy6zQgRc/XCnh/2YR8=;
+        b=kns/66h5ivnxqAsSFWos2KDcaZ4SUGm4/WzNniByrXX9hNSD6JZqx6vyvRuKkLYsvg
+         WbyOqNowPI+mQvaU/UISG4NWB+w83gSvDIsplsrLTdAkeWqEqoinnA+9hwWliBzuntxz
+         8v+iCScRgE6F/iimtHXdcDM/bhZ6cd6x+WzsU/thjJBkIc+umE/JS9sE+teLYWMqSOIu
+         44o0zWNPeSj3KOb5OFsn9T1ucR2VpsznIONldygjBClO3G3N+7gzQWjO3g3ziwHNyI8u
+         csUecOoSQ1QDseK65K+/7OcomeYroz34PaEVWjEz+ccGtclELHNS3T+QeGQV9LeObWvs
+         3TiA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1776798607; x=1777403407;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=m02wKRH1cCb8/kUV2x2zuPDpYfy6zQgRc/XCnh/2YR8=;
+        b=XpF5A6NnURXwEcLF284/XckX+pjnaIPAqxm0GWYW7XbfjkMOLxAiw066yrfIugaS+J
+         Shte5DWL3SG/GvYoZfSLpiXVL+cEkgz4SPB5gSEOAWYGwLaTOavzg4osKiMpbl3gpcRo
+         mDiQ+VB1sWm8eQnhmkvgygTwtdVhe4ebYZqx4OMwG0VA+YdzvPEU6DWphf2tlbgAbgdQ
+         RXg9Nva/Yx+DwmzLPvRNx3j5gmU4APQUoR3zQGHiOQWkbP/c4KxUTjC4TIKu2TShIRbN
+         gfdAZi3aUBwMhA0R1vTvmOFbKhTHUaNe6dob8G4IkWuEcDPx86rEm8Z5CpBMbOSClCS0
+         6GSg==
+X-Forwarded-Encrypted: i=1; AFNElJ84j6CSKUriGFPUdAdurVIJtki13yezr3BwwRqwKaaDMSroEHc/5W/QQ9lOE300QEyigacL6ifWXDyc0jR7Niaz9Q==@gmail.com
+X-Gm-Message-State: AOJu0Yzmd00CDVWxRuGNlxxsZHuN1cu0dgAt+DviSQVz6Ghwn0erCFnT
+	LMENo8kAwZH7TQRl+4H3pczGdjK0cRTHfPkO8V/hY56q62mxYLRGdmV2vpA0aCSZLyJmn59Dy+X
+	604EvevRemxBPi9n97wTDE8OjWAalfBuFOb+F
+X-Gm-Gg: AeBDiet/kyzmy7oMyqFWcK86vkr96l6l/POUKRImFfYyRd8e5IHhi4uRkqgWU+6o2kC
+	p8yJgTUdfhhG+cU/8xamgOSTM8QPH5ZfxHbDv9GY4YcLBDskzs6I09F0xaUGiPL5xjfvoM5EWzJ
+	qqRcRrGUgHFR6APkq8pRfdBuBsKyBQ6iR09qqNbXZsS1bRIV4TWpSotGvSUgy67G0M1UbQgVxN6
+	hA5YGA1PTtISuN6URGFJCUNp2zSqu/o1LcN75KG5604CzvjSkeh04Zx0gajFcU0tMFur48d7iqS
+	fotyIyBAiiI8CxxUpmt2fDN5pj2aLruCCM0jaywd04YwNIEdP0HCezpNSYs8BHk=
+X-Received: by 2002:a4a:b4c8:0:b0:689:30ab:84e2 with SMTP id
+ 006d021491bc7-694636aeaf5mr6340574eaf.6.1776798607427; Tue, 21 Apr 2026
+ 12:10:07 -0700 (PDT)
+MIME-Version: 1.0
+From: Stephenie Wheeler <msgmakerak@gmail.com>
+Date: Tue, 21 Apr 2026 12:09:57 -0700
+X-Gm-Features: AQROBzBybvp24CEKIL2-t3nkjZIqIk36HkMZlov4u4q01x-vtesTmwDPI7rx2NI
+Message-ID: <CAM0Uogmas_sbrmMW-Aim6wP9seo+_E2tN=CODiAeAHnW_-Wt-A@mail.gmail.com>
+Subject: Two Give Butter campaigns are published!
+To: Joyce <joyyyceee@yahoo.com>, Shannon Borntrager <shannonborntrager@gmail.com>, 
+	Samantha Duncan <beyourbest.cg@gmail.com>
+Cc: Andrew Elliott <drelliottnd@gmail.com>, Gail Hemsoth <hemsothg@lanecc.edu>
+Content-Type: multipart/alternative; boundary="000000000000d54f07064ffd29c1"
+
+--000000000000d54f07064ffd29c1
+Content-Type: text/plain; charset="UTF-8"
+
+Joyce, Samantha and Shannon -
+
+I've created electronic payment campaigns to be linked to our Membership
+and General Donation forms, allowing supporters to pay online if they wish
+to donate when joining, or to make a general donation once or on a
+recurring schedule.
+
+Rather than duplicate all of the contact information on our website forms,
+The campaign forms simply as ask folks to provide their full name (in
+addition to payment info), so we can link their payment to the form they
+completed on our website... a kind reminder that we need them to do both
+forms... our website form and the Give Butter payment form.
+
+I did not add a donation goal to the Membership campaign, but I did add a
+$50,000 goal for the General Donation. Just a stab in the dark. I can
+remove goal or change it. Thoughts?
+
+
+
+Shannon -
+If you log into our Give Butter site, you can see the 2 campaigns and the
+links (both regular URL link and QR Code) that allow folks to move from the
+online Membership or General Donation forms on our www.friendsofWDAC.org
+website. We'll probably need a sentence or two to explain that folks need
+to fill out the forms on our website, and then click on the Give Butter
+link(s) to donate.
+
+General Donation payment link -
+https://givebutter.com/friends-of-the-wdac-general-donation
+<https://givebutter.com/friends-of-the-wdac-general-donation>
+
+Membership Donation payment link -
+https://givebutter.com/become-a-friend-membership
+
+
+All -
+Please take a look at the published forms, and let me know if you have any
+edits before we share with the wider community.
+
+
+Thanks!
+
+- Stephenie
+
+--000000000000d54f07064ffd29c1
+Content-Type: text/html; charset="UTF-8"
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr">Joyce, Samantha and Shannon -=C2=A0<div><br></div><div>I&#=
+39;ve created electronic payment campaigns to be linked to our Membership a=
+nd General Donation forms, allowing supporters to pay online if they wish t=
+o donate when joining, or to make a general donation once or on a recurring=
+=C2=A0schedule.=C2=A0</div><div><br></div><div>Rather than duplicate all of=
+ the contact information on our website forms, The=C2=A0campaign forms simp=
+ly as ask folks to provide their full name (in addition to payment info), s=
+o we can link their payment to the form they completed on our website... a =
+kind reminder that we need them to do both forms... our website form and th=
+e Give Butter payment form.=C2=A0</div><div><br></div><div>I did not add a =
+donation goal to the=C2=A0Membership campaign, but I did add a $50,000 goal=
+ for the General Donation. Just a stab in the dark. I can remove goal or ch=
+ange it. Thoughts?=C2=A0</div><div><br></div><div><br></div><div><br></div>=
+<div>Shannon -=C2=A0</div><div>If you log into our Give Butter site, you ca=
+n see the 2 campaigns and the links (both regular URL link and QR Code) tha=
+t allow folks to move from the online Membership or General Donation forms =
+on our <a href=3D"http://www.friendsofWDAC.org">www.friendsofWDAC.org</a> w=
+ebsite. We&#39;ll probably need a sentence or two to explain that folks nee=
+d to fill out the forms on our website, and then click on the Give Butter l=
+ink(s) to donate.=C2=A0</div><div><br></div><div>General Donation payment l=
+ink -=C2=A0<a href=3D"https://givebutter.com/friends-of-the-wdac-general-do=
+nation">https://givebutter.com/friends-of-the-wdac-general-donation=C2=A0</=
+a></div><div><br></div><div>Membership Donation payment link -=C2=A0<a href=
+=3D"https://givebutter.com/become-a-friend-membership">https://givebutter.c=
+om/become-a-friend-membership</a></div><div><br></div><div><br></div><div>A=
+ll -=C2=A0</div><div>Please take a look at the published forms, and let me =
+know if you have any edits before we share with the wider community.=C2=A0<=
+/div><div><br></div><div><br></div><div>Thanks!=C2=A0</div><div><br></div><=
+div>- Stephenie</div><div><br></div><div><br></div></div>
+
+--000000000000d54f07064ffd29c1--

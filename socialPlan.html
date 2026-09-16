@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Friends of WADC - 3 Month Roadmap</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=Sora:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #56647a;
+      --surface: #ffffff;
+      --line: rgba(15, 23, 42, 0.1);
+      --accent: #0f5c86;
+      --accent-2: #f35b5b;
+      --cool: #d7eef7;
+      --shadow: 0 18px 50px rgba(15, 23, 42, 0.12);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --rail-w: 268px;
+      --rail-collapsed: 86px;
+      --content-max: 1200px;
+      --section-gap: 88px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 24px; }
+    body {
+      margin: 0;
+      font-family: "Sora", "Inter", sans-serif;
+      color: var(--ink);
+      background: radial-gradient(circle at top, #ffffff 0%, #f2f6fb 55%, #eaf1f8 100%);
+    }
+    .app {
+      display: grid;
+      grid-template-columns: var(--rail-w) minmax(0, 1fr);
+      min-height: 100vh;
+      transition: grid-template-columns 240ms ease;
+    }
+    .app.is-collapsed { grid-template-columns: var(--rail-collapsed) minmax(0, 1fr); }
+    .rail {
+      position: sticky;
+      top: 0;
+      align-self: start;
+      height: 100vh;
+      padding: 20px 14px;
+      border-right: 1px solid var(--line);
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 18px;
+      overflow: hidden;
+    }
+    .rail-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      min-width: 0;
+    }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, #0f5c86, #3da7d9);
+      color: #fff;
+      font-weight: 700;
+    }
+    .rail-title { line-height: 1.1; min-width: 0; }
+    .rail-title small {
+      display: block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+    .rail-title strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 600;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .rail-toggle {
+      margin-left: auto;
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: 700;
+    }
+    .nav {
+      display: grid;
+      align-content: start;
+      gap: 8px;
+      padding-right: 4px;
+      overflow: auto;
+    }
+    .nav-link {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--ink);
+      padding: 9px 10px;
+      border-radius: 10px;
+      border: 1px solid transparent;
+      position: relative;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-link .icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 8px;
+      display: grid;
+      place-items: center;
+      background: rgba(15, 92, 134, 0.12);
+      color: var(--accent);
+      font-size: 11px;
+      font-weight: 700;
+    }
+    .nav-link.active {
+      background: rgba(15, 92, 134, 0.09);
+      border-color: rgba(15, 92, 134, 0.2);
+    }
+    .rail-footer {
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      border: 1px solid transparent;
+      background: var(--accent);
+      color: #fff;
+      border-radius: 999px;
+      text-decoration: none;
+      padding: 11px 16px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn.ghost {
+      background: #fff;
+      color: var(--ink);
+      border-color: var(--line);
+    }
+    .btn.small {
+      border-radius: 10px;
+      padding: 9px 12px;
+      font-size: 12px;
+    }
+    .content { padding: 28px clamp(18px, 4vw, 44px) 120px; }
+    .page {
+      max-width: var(--content-max);
+      margin: 0 auto;
+      display: grid;
+      gap: var(--section-gap);
+    }
+    .section {
+      border-bottom: 1px solid var(--line);
+      padding-bottom: 70px;
+    }
+    .section:last-child { border-bottom: 0; }
+    .section-header {
+      margin-bottom: 22px;
+      display: grid;
+      gap: 10px;
+    }
+    .caption {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .hero-statement {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: clamp(34px, 6vw, 72px);
+      line-height: 1;
+      margin: 0;
+    }
+    .intro {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(16px, 1.8vw, 20px);
+      max-width: 65ch;
+    }
+    .hero {
+      min-height: 84vh;
+      border-radius: var(--radius-lg);
+      position: relative;
+      overflow: hidden;
+      padding: clamp(28px, 5vw, 56px);
+      display: grid;
+      align-content: end;
+      gap: 16px;
+      background:
+        linear-gradient(120deg, rgba(15, 23, 42, 0.7), rgba(15, 92, 134, 0.35)),
+        url("assets/hero-pool.png") center/cover no-repeat;
+      box-shadow: var(--shadow);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: -12%;
+      background: radial-gradient(circle at 80% 20%, rgba(243, 91, 91, 0.25), transparent 45%);
+      transform: translateY(var(--parallax-y, 0px));
+      pointer-events: none;
+    }
+    .hero > * { position: relative; z-index: 1; }
+    .hero .hero-statement, .hero .intro, .hero .caption { color: #fff; max-width: 18ch; }
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .chip {
+      background: rgba(255, 255, 255, 0.18);
+      color: #fff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 999px;
+      padding: 8px 12px;
+      font-size: 12px;
+      font-weight: 600;
+      backdrop-filter: blur(2px);
+    }
+    .enter-cue {
+      color: rgba(255, 255, 255, 0.85);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .grid {
+      display: grid;
+      gap: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      background: var(--surface);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+    }
+    .label {
+      display: inline-block;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .card h3, .card h4 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .story-spine { display: grid; gap: 10px; }
+    details.exhibit {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      background: #fff;
+      overflow: hidden;
+    }
+    details.exhibit[open] {
+      box-shadow: var(--shadow);
+      border-color: rgba(15, 92, 134, 0.24);
+    }
+    .exhibit summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 16px 18px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 14px;
+      align-items: center;
+      font-weight: 600;
+    }
+    .exhibit summary::-webkit-details-marker { display: none; }
+    .exhibit-body {
+      border-top: 1px solid var(--line);
+      padding: 16px 18px 20px;
+      color: var(--muted);
+      font-size: 14px;
+      display: grid;
+      gap: 8px;
+    }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 5px 9px;
+      font-size: 11px;
+      font-weight: 600;
+      background: var(--cool);
+      color: var(--accent);
+    }
+    .understanding {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      align-items: stretch;
+    }
+    .state {
+      padding: 24px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(160deg, #ffffff, #eef5fc);
+      border: 1px solid var(--line);
+      min-height: 170px;
+      display: grid;
+      align-content: center;
+      gap: 8px;
+    }
+    .state b {
+      font-family: "Fraunces", Georgia, serif;
+      font-size: 30px;
+    }
+    .state.arrow {
+      display: grid;
+      place-items: center;
+      background: transparent;
+      border-style: dashed;
+      color: var(--muted);
+      min-height: 120px;
+    }
+    .guardrail-list {
+      display: grid;
+      gap: 8px;
+      margin: 0;
+      padding-left: 18px;
+      color: var(--muted);
+    }
+    .stamp {
+      border: 2px dashed var(--accent);
+      border-radius: 999px;
+      width: fit-content;
+      padding: 10px 16px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--accent);
+      transform: rotate(-7deg);
+      background: rgba(15, 92, 134, 0.04);
+    }
+    .artifacts, .preview-frames {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .artifact, .frame {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #fff;
+    }
+    .artifact { cursor: pointer; text-align: left; }
+    .artifact .visual, .frame .visual {
+      height: 130px;
+      background: linear-gradient(135deg, rgba(15, 92, 134, 0.24), rgba(243, 91, 91, 0.24));
+    }
+    .artifact .meta, .frame .meta {
+      padding: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    .timeline {
+      position: relative;
+      display: grid;
+      gap: 8px;
+    }
+    .timeline::before {
+      content: "";
+      position: absolute;
+      top: 8px;
+      bottom: 8px;
+      left: 10px;
+      width: 2px;
+      background: var(--line);
+    }
+    .timeline .event {
+      position: relative;
+      padding-left: 34px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .timeline .event::before {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 5px;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--accent);
+    }
+    .module-list {
+      display: grid;
+      gap: 10px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .module {
+      border-radius: var(--radius-sm);
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 14px;
+      font-size: 14px;
+    }
+    .metrics {
+      display: grid;
+      gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    }
+    .metric {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 18px;
+    }
+    .metric b {
+      display: block;
+      font-size: 30px;
+      font-family: "Fraunces", Georgia, serif;
+      margin-bottom: 6px;
+    }
+    .faq details {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-sm);
+      padding: 12px 14px;
+      background: #fff;
+    }
+    .faq summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
+    .faq p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.8);
+      display: none;
+      place-items: center;
+      z-index: 90;
+      padding: 24px;
+    }
+    .lightbox.open { display: grid; }
+    .lightbox-card {
+      width: min(860px, 100%);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: #fff;
+    }
+    .lightbox-visual {
+      height: min(56vh, 420px);
+      background: linear-gradient(135deg, rgba(15, 92, 134, 0.42), rgba(243, 91, 91, 0.36));
+    }
+    .lightbox-meta {
+      padding: 14px 16px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+    .tooltip {
+      position: absolute;
+      left: calc(100% + 8px);
+      top: 50%;
+      transform: translateY(-50%);
+      background: #111827;
+      color: #fff;
+      font-size: 11px;
+      padding: 5px 8px;
+      border-radius: 8px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 140ms ease;
+      white-space: nowrap;
+    }
+    .app.is-collapsed .rail-title,
+    .app.is-collapsed .nav-link .txt,
+    .app.is-collapsed .rail-footer .meta,
+    .app.is-collapsed .rail-footer .btn-label { display: none; }
+    .app.is-collapsed .nav-link { grid-template-columns: 24px; justify-content: center; }
+    .app.is-collapsed .nav-link:hover .tooltip,
+    .app.is-collapsed .nav-link:focus-visible .tooltip { opacity: 1; }
+    .app.is-collapsed .rail-footer .btn { padding: 10px; border-radius: 10px; }
+    @media (max-width: 980px) {
+      .app, .app.is-collapsed { grid-template-columns: 1fr; }
+      .rail {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .nav { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .app.is-collapsed .rail-title,
+      .app.is-collapsed .nav-link .txt,
+      .app.is-collapsed .rail-footer .meta,
+      .app.is-collapsed .rail-footer .btn-label { display: inline; }
+      .app.is-collapsed .nav-link { grid-template-columns: 24px 1fr; justify-content: start; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+      .hero::before { transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app" id="app">
+    <aside class="rail" aria-label="Roadmap Navigation">
+      <div class="rail-header">
+        <div class="brand-mark" aria-hidden="true">W</div>
+        <div class="rail-title">
+          <small>Friends of WADC</small>
+          <strong>Roadmap</strong>
+        </div>
+        <button class="rail-toggle" id="railToggle" aria-label="Collapse menu">||</button>
+      </div>
+      <nav class="nav" id="sideNav">
+        <a class="nav-link" href="#top" data-nav="top"><span class="icon">OV</span><span class="txt">Overview</span><span class="tooltip">Overview</span></a>
+        <a class="nav-link" href="#story-arc" data-nav="story-arc"><span class="icon">SA</span><span class="txt">Story Arc</span><span class="tooltip">Story Arc</span></a>
+        <a class="nav-link" href="#education" data-nav="education"><span class="icon">ED</span><span class="txt">Education Engine</span><span class="tooltip">Education Engine</span></a>
+        <a class="nav-link" href="#humor" data-nav="humor"><span class="icon">HV</span><span class="txt">Humor + Viral</span><span class="tooltip">Humor + Viral</span></a>
+        <a class="nav-link" href="#month1" data-nav="month1"><span class="icon">M1</span><span class="txt">Month 1</span><span class="tooltip">Month 1</span></a>
+        <a class="nav-link" href="#month2" data-nav="month2"><span class="icon">M2</span><span class="txt">Month 2</span><span class="tooltip">Month 2</span></a>
+        <a class="nav-link" href="#month3" data-nav="month3"><span class="icon">M3</span><span class="txt">Month 3</span><span class="tooltip">Month 3</span></a>
+        <a class="nav-link" href="#modules" data-nav="modules"><span class="icon">ML</span><span class="txt">Modules</span><span class="tooltip">Modules</span></a>
+        <a class="nav-link" href="#metrics" data-nav="metrics"><span class="icon">MT</span><span class="txt">Metrics</span><span class="tooltip">Metrics</span></a>
+        <a class="nav-link" href="#cta" data-nav="cta"><span class="icon">GO</span><span class="txt">CTA</span><span class="tooltip">CTA</span></a>
+      </nav>
+      <div class="rail-footer">
+        <a href="#" class="btn small"><span aria-hidden="true">PDF</span><span class="btn-label">Download PDF</span></a>
+        <a href="#" class="btn small ghost"><span aria-hidden="true">CAL</span><span class="btn-label">Book a call</span></a>
+        <div class="meta">Version 0.1<br/>Updated Feb 13, 2026</div>
+      </div>
+    </aside>
+
+    <main class="content">
+      <div class="page">
+        <section class="section" id="top" data-section>
+          <div class="hero" id="heroParallax">
+            <div class="caption">The 3-Month Sprint</div>
+            <h1 class="hero-statement">90 Days to Trust, Clarity, and Action.</h1>
+            <p class="intro">A story-driven website that teaches, entertains, and converts.</p>
+            <div class="cta-row">
+              <a class="btn" href="#month1">See the plan</a>
+              <a class="btn ghost" href="#modules">What you will get</a>
+            </div>
+            <div class="chips">
+              <span class="chip">Story-first</span>
+              <span class="chip">Education-led</span>
+              <span class="chip">Humor with purpose</span>
+            </div>
+            <div class="enter-cue">Scroll to enter the exhibit</div>
+          </div>
+        </section>
+
+        <section class="section" id="story-arc" data-section>
+          <header class="section-header">
+            <div class="caption">The Narrative Arc</div>
+            <h2 class="hero-statement">Story Map: Hook to Invitation.</h2>
+            <p class="intro">The site acts as a plotted journey where each beat teaches visitors exactly why this matters and what to do next.</p>
+          </header>
+          <div class="story-spine">
+            <details class="exhibit" open>
+              <summary><span>1) Hook</span><span class="tag">Exhibit Label</span></summary>
+              <div class="exhibit-body">
+                <div><b>Goal:</b> Stop the scroll with a concrete emotional opener.</div>
+                <div><b>Content:</b> Hero headline, visual cold-open, one-line promise.</div>
+                <div><b>Humor opportunity:</b> A self-aware line that frames the problem.</div>
+              </div>
+            </details>
+            <details class="exhibit">
+              <summary><span>2) Stakes / Why It Matters</span><span class="tag">Exhibit Label</span></summary>
+              <div class="exhibit-body">
+                <div><b>Goal:</b> Explain risk, urgency, and impact.</div>
+                <div><b>Content:</b> Problem cards, comparison visuals, short social proof.</div>
+                <div><b>Humor opportunity:</b> One meme-style comparison for recall.</div>
+              </div>
+            </details>
+            <details class="exhibit">
+              <summary><span>3) Proof / Credibility</span><span class="tag">Exhibit Label</span></summary>
+              <div class="exhibit-body">
+                <div><b>Goal:</b> Replace skepticism with evidence.</div>
+                <div><b>Content:</b> Testimonials, data snippets, before/after outcomes.</div>
+                <div><b>Humor opportunity:</b> Light, brand-safe captioning only.</div>
+              </div>
+            </details>
+            <details class="exhibit">
+              <summary><span>4) Transformation</span><span class="tag">Exhibit Label</span></summary>
+              <div class="exhibit-body">
+                <div><b>Goal:</b> Show what changes for the visitor.</div>
+                <div><b>Content:</b> Future-state snapshots, timeline of wins.</div>
+                <div><b>Humor opportunity:</b> Comedic analogy tied to learning.</div>
+              </div>
+            </details>
+            <details class="exhibit">
+              <summary><span>5) Invitation (CTA)</span><span class="tag">Exhibit Label</span></summary>
+              <div class="exhibit-body">
+                <div><b>Goal:</b> Ask clearly and confidently.</div>
+                <div><b>Content:</b> CTA cluster, objections FAQ, next-step options.</div>
+                <div><b>Humor opportunity:</b> Friendly nudge, never pressure.</div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section class="section" id="education" data-section>
+          <header class="section-header">
+            <div class="caption">The Education Engine</div>
+            <h2 class="hero-statement">Teach Visitors Until Decisions Feel Easy.</h2>
+            <p class="intro">Educational modules make complex topics graspable, memorable, and actionable.</p>
+          </header>
+          <div class="grid">
+            <article class="card"><span class="label">Explainers / Primers</span><h3>When to use</h3><p>Early sections to establish baseline understanding. Example headline: "How this actually works in 90 seconds."</p></article>
+            <article class="card"><span class="label">Myth vs Fact</span><h3>Desired outcome</h3><p>Correct false assumptions with confidence. Example headline: "3 myths slowing progress down."</p></article>
+            <article class="card"><span class="label">Quick Wins</span><h3>When to use</h3><p>Mid-funnel reassurance. Example headline: "Do this first and see impact this week."</p></article>
+            <article class="card"><span class="label">Visual Diagrams</span><h3>Desired outcome</h3><p>Turn abstract systems into clear maps. Example headline: "One diagram, full picture."</p></article>
+            <article class="card"><span class="label">FAQs That Do Not Suck</span><h3>When to use</h3><p>Near CTA to remove blockers. Example headline: "Short answers to real concerns."</p></article>
+            <article class="card"><span class="label">Case Studies</span><h3>Desired outcome</h3><p>Bridge understanding into trust. Example headline: "From confusion to measurable lift."</p></article>
+            <article class="card"><span class="label">Interactive Quiz</span><h3>When to use</h3><p>Engagement burst in long pages. Example headline: "Pick your path in 45 seconds."</p></article>
+            <article class="card"><span class="label">Calculator / Tool</span><h3>Desired outcome</h3><p>Help visitors self-qualify. Example headline: "Estimate your potential outcome."</p></article>
+          </div>
+          <div class="understanding" style="margin-top:16px;">
+            <div class="state"><small class="caption">Before</small><b>Confused</b><span>Too many terms, no clear path.</span></div>
+            <div class="state arrow">confused -> confident</div>
+            <div class="state"><small class="caption">After</small><b>Confident</b><span>Understands tradeoffs and next step.</span></div>
+          </div>
+        </section>
+
+        <section class="section" id="humor" data-section>
+          <header class="section-header">
+            <div class="caption">Viral + Humor Guardrails</div>
+            <h2 class="hero-statement">Humor Is a Teaching Tool, Not a Detour.</h2>
+            <p class="intro">Every joke earns its place by clarifying a point, increasing memorability, or lowering friction.</p>
+          </header>
+          <ol class="guardrail-list">
+            <li>Must clarify, not distract.</li>
+            <li>Must be brand-safe in tone and context.</li>
+            <li>Must reinforce learning or memory.</li>
+          </ol>
+          <div class="grid" style="margin-top:14px;">
+            <article class="card"><span class="label">Meme-Style Comparisons</span><h4>Why it works</h4><p>Rapid pattern recognition. Risk note: avoid niche references. Example: "Old way vs clear way."</p></article>
+            <article class="card"><span class="label">Reaction GIFs (if allowed)</span><h4>Why it works</h4><p>Emotional punctuation. Risk note: overuse undermines credibility. Example: one GIF per major section max.</p></article>
+            <article class="card"><span class="label">Punchy Reels / TikToks</span><h4>Why it works</h4><p>Reach and replay value. Risk note: keep message-first scripts. Example: 20-second concept breakdown.</p></article>
+            <article class="card"><span class="label">Hot Take Micro-Posts</span><h4>Why it works</h4><p>Conversation starter. Risk note: avoid controversy without context. Example: "What everyone gets backward."</p></article>
+            <article class="card"><span class="label">Comedic Analogies</span><h4>Why it works</h4><p>Makes abstraction concrete. Risk note: analogy must map accurately. Example: "Your IA is a museum floor plan."</p></article>
+          </div>
+          <div class="stamp" style="margin-top:16px;">Humor QA Checklist Approved</div>
+        </section>
+
+        <section class="section" id="month1" data-section>
+          <header class="section-header">
+            <div class="caption">Month 1</div>
+            <h2 class="hero-statement">Foundation + Story Discovery.</h2>
+            <p class="intro">Theme: Find the truth and shape the narrative.</p>
+          </header>
+          <div class="grid">
+            <article class="card"><span class="label">Deliverable</span><p>Discovery workshop</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Audience + objections map</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Story arc finalized (the spine)</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Education content pillars</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Visual direction moodboard</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>IA + sitemap + first-pass wireframes</p></article>
+          </div>
+          <div class="card" style="margin-top:12px;"><span class="label">Client Checkpoints</span><p>1 workshop. 1 story approval. 1 sitemap approval.</p></div>
+          <div class="artifacts" style="margin-top:12px;">
+            <button class="artifact" data-lightbox="Discovery notes as exhibit artifact"><div class="visual"></div><div class="meta">Artifact 01: Discovery Notes</div></button>
+            <button class="artifact" data-lightbox="Story spine v1 artifact card"><div class="visual"></div><div class="meta">Artifact 02: Story Spine v1</div></button>
+            <button class="artifact" data-lightbox="Sitemap draft artifact"><div class="visual"></div><div class="meta">Artifact 03: Sitemap Draft</div></button>
+          </div>
+        </section>
+
+        <section class="section" id="month2" data-section>
+          <header class="section-header">
+            <div class="caption">Month 2</div>
+            <h2 class="hero-statement">Build the Education System + Pages.</h2>
+            <p class="intro">Theme: Teach clearly. Make it feel inevitable.</p>
+          </header>
+          <div class="grid">
+            <article class="card"><span class="label">Deliverable</span><p>Page designs for key templates</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Content drafts or structured outlines</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Educational modules: FAQ, myth/fact, explainers</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Media plan: imagery, diagrams, icons</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>SEO foundations: topics, titles, internal links</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Motion and interaction spec</p></article>
+          </div>
+          <div class="card" style="margin-top:12px;"><span class="label">Client Checkpoints</span><p>Design review and content tone review with humor boundaries.</p></div>
+          <div class="preview-frames" style="margin-top:12px;">
+            <article class="frame"><div class="visual"></div><div class="meta">Preview Frame A: Education Hero</div></article>
+            <article class="frame"><div class="visual"></div><div class="meta">Preview Frame B: Myth vs Fact Module</div></article>
+            <article class="frame"><div class="visual"></div><div class="meta">Preview Frame C: FAQ + CTA</div></article>
+          </div>
+        </section>
+
+        <section class="section" id="month3" data-section>
+          <header class="section-header">
+            <div class="caption">Month 3</div>
+            <h2 class="hero-statement">Polish + Launch + Viral Distribution.</h2>
+            <p class="intro">Theme: Make it sing. Then make it travel.</p>
+          </header>
+          <div class="grid">
+            <article class="card"><span class="label">Deliverable</span><p>Final build and responsive QA</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Performance pass and Core Web Vitals targets</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Accessibility pass (AA target)</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Analytics and events plan</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Launch checklist</p></article>
+            <article class="card"><span class="label">Deliverable</span><p>Distribution plan: short-form, hero shareables, meme tests</p></article>
+          </div>
+          <div class="card" style="margin-top:12px;"><span class="label">Client Checkpoints</span><p>Final QA signoff and launch go/no-go.</p></div>
+          <div class="card" style="margin-top:12px;">
+            <span class="label">Launch Day Timeline</span>
+            <div class="timeline">
+              <div class="event"><b>09:00</b> Preflight checks and backup snapshot.</div>
+              <div class="event"><b>10:00</b> DNS/CDN confirm and release window open.</div>
+              <div class="event"><b>11:30</b> Publish + smoke test all key flows.</div>
+              <div class="event"><b>13:00</b> Share hero assets and first short-form posts.</div>
+              <div class="event"><b>16:00</b> Metrics pulse and micro-adjustments.</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" id="modules" data-section>
+          <header class="section-header">
+            <div class="caption">Reusable Module Library</div>
+            <h2 class="hero-statement">Template Components, Brand-Swappable Styling.</h2>
+            <p class="intro">Build once, reuse across clients by swapping design tokens and content.</p>
+          </header>
+          <div class="module-list">
+            <article class="module"><b>SectionHeader</b><br/>Caption + hero statement + intro</article>
+            <article class="module"><b>MoodboardGrid</b><br/>Masonry layout + lightbox</article>
+            <article class="module"><b>ExhibitCard</b><br/>Deliverable card with tags and labels</article>
+            <article class="module"><b>Timeline</b><br/>Month sections with expandable weeks</article>
+            <article class="module"><b>StorySpine</b><br/>5-beat narrative arc module</article>
+            <article class="module"><b>EducationGrid</b><br/>Format cards with outcomes and examples</article>
+            <article class="module"><b>DoDont</b><br/>Guardrails and examples</article>
+            <article class="module"><b>PreviewFrame</b><br/>Mock section screenshot container</article>
+            <article class="module"><b>CheckpointBar</b><br/>Client approvals and status points</article>
+            <article class="module"><b>CTA Blocks</b><br/>Book-a-call and next-step variants</article>
+            <article class="module"><b>DownloadBlock</b><br/>PDF export slot for future use</article>
+          </div>
+        </section>
+
+        <section class="section" id="metrics" data-section>
+          <header class="section-header">
+            <div class="caption">Success Metrics</div>
+            <h2 class="hero-statement">Measure Understanding, Trust, and Reach.</h2>
+            <p class="intro">Placard-style metrics keep outcomes visible from the first week after launch.</p>
+          </header>
+          <div class="metrics">
+            <article class="metric"><b>65%</b><span>Scroll depth target (understanding)</span></article>
+            <article class="metric"><b>3:30</b><span>Avg. time on page target</span></article>
+            <article class="metric"><b>40%</b><span>Quiz completion target (if used)</span></article>
+            <article class="metric"><b>12%</b><span>Case study click-through target</span></article>
+            <article class="metric"><b>5-8%</b><span>Primary CTA conversion target</span></article>
+            <article class="metric"><b>20+</b><span>Monthly saves/shares target from derivatives</span></article>
+          </div>
+        </section>
+
+        <section class="section" id="cta" data-section>
+          <header class="section-header">
+            <div class="caption">Final CTA</div>
+            <h2 class="hero-statement">Ready to Build the Exhibit?</h2>
+            <p class="intro">We can launch a story-driven, education-led website in 90 days with clear checkpoints and measurable outcomes.</p>
+          </header>
+          <div class="cta-row">
+            <a href="#" class="btn">Book a call</a>
+            <a href="#" class="btn ghost">Get the full plan PDF</a>
+          </div>
+          <div class="faq" style="margin-top:14px; display:grid; gap:10px;">
+            <details><summary>How much client time is needed each month?</summary><p>Expect one workshop plus two review windows monthly. We consolidate feedback to keep momentum.</p></details>
+            <details><summary>Can we remove humor entirely?</summary><p>Yes. The framework works without humor; educational clarity remains the non-negotiable core.</p></details>
+            <details><summary>Can this roadmap fit a different brand style?</summary><p>Yes. Colors, typography, and media treatments are tokenized and can be swapped without changing structure.</p></details>
+            <details><summary>Do you support phased launches?</summary><p>Yes. We can launch critical pages first, then release supporting modules in scheduled waves.</p></details>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <div class="lightbox-card" role="dialog" aria-modal="true" aria-label="Artifact preview">
+      <div class="lightbox-visual"></div>
+      <div class="lightbox-meta">
+        <span id="lightboxText">Artifact preview</span>
+        <button class="btn small ghost" id="closeLightbox">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const app = document.getElementById("app");
+    const railToggle = document.getElementById("railToggle");
+    const links = Array.from(document.querySelectorAll(".nav-link"));
+    const sections = Array.from(document.querySelectorAll("[data-section]"));
+    const heroParallax = document.getElementById("heroParallax");
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    railToggle.addEventListener("click", () => {
+      app.classList.toggle("is-collapsed");
+      railToggle.setAttribute("aria-label", app.classList.contains("is-collapsed") ? "Expand menu" : "Collapse menu");
+      railToggle.textContent = app.classList.contains("is-collapsed") ? ">>" : "||";
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute("id");
+        links.forEach((link) => {
+          const isActive = link.getAttribute("data-nav") === id;
+          link.classList.toggle("active", isActive);
+          if (isActive) {
+            link.setAttribute("aria-current", "page");
+          } else {
+            link.removeAttribute("aria-current");
+          }
+        });
+      });
+    }, {
+      rootMargin: "-35% 0px -50% 0px",
+      threshold: 0.01
+    });
+
+    sections.forEach((section) => observer.observe(section));
+
+    if (!reduceMotion && heroParallax) {
+      const onScroll = () => {
+        const y = window.scrollY * 0.12;
+        heroParallax.style.setProperty("--parallax-y", `${y}px`);
+      };
+      onScroll();
+      window.addEventListener("scroll", onScroll, { passive: true });
+    }
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxText = document.getElementById("lightboxText");
+    const closeLightbox = document.getElementById("closeLightbox");
+    const artifactButtons = Array.from(document.querySelectorAll("[data-lightbox]"));
+
+    artifactButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+        lightboxText.textContent = button.getAttribute("data-lightbox") || "Artifact preview";
+      });
+    });
+
+    function closePreview() {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+    }
+
+    closeLightbox.addEventListener("click", closePreview);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closePreview();
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("open")) closePreview();
+    });
+  </script>
+</body>
+</html>
+
