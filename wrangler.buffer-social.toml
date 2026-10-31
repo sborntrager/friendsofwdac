@@ -22,7 +22,8 @@ binding = "MEDIA_BUCKET"
 bucket_name = "replace-with-friendsofwdac-social-media"
 
 [vars]
-APP_ORIGIN = "https://www.friendsofwdac.org"
+# Must match APP_ORIGIN in wrangler.auth.toml: the auth cookie is host-only.
+APP_ORIGIN = "https://friendsofwdac.org"
 BUFFER_ORGANIZATION_ID = "replace-with-buffer-organization-id"
 PUBLIC_MEDIA_BASE_URL = "https://replace-with-public-media-domain"
 MAX_MEDIA_BYTES = "10485760"

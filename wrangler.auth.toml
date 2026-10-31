@@ -1,0 +1,49 @@
+name = "friendsofwdac-auth"
+main = "workers/auth/src/index.js"
+compatibility_date = "2026-09-10"
+workers_dev = false
+account_id = "bae208b2f47b7699b7bb53fd6bb589fb"
+
+# Magic-link sign-in, vendored from Modules/cloudflare-magic-link-auth 0.3.0
+# (src/ and migrations/ only; the module's tests stay in Modules). Update both
+# copies together when upgrading the module. Deploy it with:
+#   npx wrangler deploy --config wrangler.auth.toml
+#
+# Its auth_users and auth_sessions tables are read by the Buffer social Worker,
+# so apply these migrations before wrangler.buffer-social.toml's.
+#
+# The session cookie is host-only and there is no CORS, so this Worker must be
+# routed on the same origin as the /admin pages. Enable the route once
+# friendsofwdac.org is active in this account:
+# routes = [
+#   { pattern = "friendsofwdac.org/api/auth/*", zone_name = "friendsofwdac.org" }
+# ]
+
+[[d1_databases]]
+binding = "DB"
+database_name = "friendsofwdac-admin"
+database_id = "a6756294-1c90-417e-8f50-50fd682f33ac"
+migrations_dir = "workers/auth/migrations"
+
+# Sign-in links go out through Cloudflare Email Service, the same way the
+# subscribe Worker sends admin password resets. No Resend account is used.
+# Until friendsofwdac.org is onboarded to Email Sending, links reach only
+# verified destination addresses in this account.
+[[send_email]]
+name = "AUTH_EMAIL"
+allowed_sender_addresses = [ "contact@friendsofwdac.org" ]
+
+# Secrets, never in this file: AUTH_IP_HASH_SECRET, plus TURNSTILE_SECRET when
+# Turnstile is on. Set each with
+#   npx wrangler secret put <NAME> --config wrangler.auth.toml
+[vars]
+APP_ORIGIN = "https://friendsofwdac.org"
+AUTH_FROM_EMAIL = "contact@friendsofwdac.org"
+AUTH_FROM_NAME = "Friends of WDAC"
+MAGIC_LINK_TTL_MINUTES = "15"
+SESSION_TTL_DAYS = "30"
+ALLOW_SELF_SIGNUP = "false"
+AUTH_SUCCESS_PATH = "/admin"
+AUTH_IP_LIMIT_PER_15_MIN = "10"
+AUTH_GLOBAL_LINKS_PER_HOUR = "100"
+TURNSTILE_ENABLED = "false"
