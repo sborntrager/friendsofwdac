@@ -149,6 +149,19 @@
   gap: 12px;
 }
 
+.donate-page .donate-priorities__impact-copy {
+  margin: 0;
+  color: #2f4d65;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.donate-page .donate-priorities__impact-actions {
+  display: grid;
+  width: 100%;
+  gap: 8px;
+}
+
 .donate-page .donate-priorities__icon,
 .donate-page .donate-priorities__impact-icon,
 .donate-page .donate-card__icon,
@@ -350,6 +363,14 @@
 
 .donate-page .donate-card--wide {
   grid-column: span 2;
+}
+
+.donate-page .donate-card--full {
+  grid-column: 1 / -1;
+}
+
+.donate-page .donate-card--byb {
+  background: #f8f5ec;
 }
 
 .donate-page .donate-card__content {

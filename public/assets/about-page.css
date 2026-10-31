@@ -524,7 +524,8 @@
 }
 
 .about-page .about-quote p {
-  padding-left: 26px;
+  margin: 0;
+  padding: 38px 0 0 0;
   color: #21445f;
   font-size: 20px;
   line-height: 1.45;
@@ -879,7 +880,7 @@
   }
 
   .about-page .about-quote p {
-    padding-left: 20px;
+    padding: 36px 0 0 0;
     font-size: 18px;
   }
 

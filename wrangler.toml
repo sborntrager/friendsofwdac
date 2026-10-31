@@ -1,28 +1,29 @@
-name = "friendsofwadc-subscribe"
+name = "friendsofwdac-subscribe"
 main = "workers/subscribe.js"
 compatibility_date = "2026-02-12"
-workers_dev = true
+workers_dev = false
 
-# Replace with your Cloudflare account ID.
-account_id = "76aabaa129c678bccd33db90833b8232"
+# TODO(migration): set to the NEW client-owned Cloudflare account id.
+# Intentionally left unset so deploys fail loudly rather than hitting the old account.
+# account_id = "<NEW_ACCOUNT_ID>"
 
-# Replace with your KV namespace ID.
+# TODO(migration): replace with the KV namespace id created in the new account.
 kv_namespaces = [
   { binding = "SUBSCRIBERS", id = "45958fcabdd3437fbb30845d9541d46f" }
 ]
 
 [[send_email]]
 name = "CONTACT_EMAIL"
-allowed_destination_addresses = [ "contact@friendsofwdac.org", "contact@friendsofwadc.org", "contact@shannonborntrager.com" ]
+allowed_destination_addresses = [ "contact@friendsofwdac.org", "contact@shannonborntrager.com" ]
 
 [[send_email]]
 name = "ADMIN_RESET_EMAIL"
-allowed_destination_addresses = [ "shannonborntrager@gmail.com", "contact@friendsofwdac.org", "contact@friendsofwadc.org" ]
+allowed_destination_addresses = [ "shannonborntrager@gmail.com", "contact@friendsofwdac.org" ]
 
 [vars]
-# Comma-separated list of allowed origins (e.g., https://friendsofwadc.org,https://www.friendsofwadc.org)
-ALLOWED_ORIGIN = "https://friendsofwdac.org,https://www.friendsofwdac.org,https://friendsofwadc.org,https://www.friendsofwadc.org"
-ADMIN_ALLOWED_EMAILS = "shannonborntrager@gmail.com,contact@friendsofwdac.org,contact@friendsofwadc.org"
+# Comma-separated list of allowed origins (production domain only).
+ALLOWED_ORIGIN = "https://friendsofwdac.org,https://www.friendsofwdac.org"
+ADMIN_ALLOWED_EMAILS = "shannonborntrager@gmail.com,contact@friendsofwdac.org"
 ADMIN_SITE_URL = "https://friendsofwdac.org"
 ADMIN_RESET_FROM_EMAIL = "contact@friendsofwdac.org"
 CONTACT_FORM_TO_EMAIL = "contact@friendsofwdac.org"

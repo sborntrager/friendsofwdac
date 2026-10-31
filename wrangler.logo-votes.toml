@@ -1,10 +1,11 @@
 name = "friendsofwadc-logo-votes"
 main = "workers/logo-votes.js"
 compatibility_date = "2026-02-13"
-workers_dev = true
+workers_dev = false
 
-# Replace with your Cloudflare account ID.
-account_id = "76aabaa129c678bccd33db90833b8232"
+# Legacy worker (Feb 2026 logo vote). Retire instead of migrating - see
+# ../MIGRATION_AND_BUGFIXES.md (B9).
+# account_id = "76aabaa129c678bccd33db90833b8232"
 
 # Replace with the KV namespace ID you want to store logo vote records in.
 kv_namespaces = [

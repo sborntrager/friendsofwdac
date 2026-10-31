@@ -15,8 +15,8 @@ const supportedPages = {
   docs: { phase: 3, file: path.join(repoRoot, "public", "docs", "index.html") },
   news: { phase: 3, file: path.join(repoRoot, "public", "news", "index.html") }
 };
-const workerBase = "https://friendsofwadc-subscribe.shannonborntrager.workers.dev";
-const origin = "https://friendsofwadc.org";
+const workerBase = process.env.WDAC_CONTENT_API_BASE || "https://api.friendsofwdac.org";
+const origin = process.env.WDAC_SITE_ORIGIN || "https://friendsofwdac.org";
 
 const decodeHtml = (value) =>
   String(value || "")

@@ -1,6 +1,6 @@
 param(
-  [string]$WorkerBase = "https://friendsofwadc-subscribe.shannonborntrager.workers.dev",
-  [string]$Origin = "https://friendsofwadc.org",
+  [string]$WorkerBase = "https://api.friendsofwdac.org",
+  [string]$Origin = "https://friendsofwdac.org",
   [string]$AdminEmail = "",
   [string]$AdminPassword = "",
   [string]$Page = "home",

@@ -51,7 +51,7 @@
   <script>
     (function () {
       var query = window.location.search || "";
-      var target = "https://friendsofwadc-subscribe.shannonborntrager.workers.dev/admin/mail/callback" + query;
+      var target = "https://api.friendsofwdac.org/admin/mail/callback" + query;
       var link = document.getElementById("manual-link");
       if (link) link.href = target;
       window.location.replace(target);

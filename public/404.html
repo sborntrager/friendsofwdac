@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex, follow" />
+  <title>Page not found — Friends of WDAC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --wd5-blue-950: #082f4a;
+      --wd5-blue-900: #0b3d5b;
+      --wd5-blue-700: #1a7db0;
+      --wd5-ink: #1b3550;
+      --wd5-muted: #4b667d;
+      --wd5-coral: #f45b4f;
+      --wd5-shell: #f7fbff;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(180deg, #f7fbff 0%, #ecf5fb 100%);
+      color: var(--wd5-ink);
+      font-family: "Inter", system-ui, sans-serif;
+      line-height: 1.55;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { color: inherit; }
+
+    .shell {
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 1.25rem;
+    }
+
+    .site-header {
+      border-bottom: 1px solid rgba(11, 61, 91, 0.14);
+      background: #fff;
+    }
+
+    .header-inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 0;
+      max-width: 780px;
+      margin: 0 auto;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.65rem;
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-weight: 800;
+      color: var(--wd5-blue-950);
+      letter-spacing: -0.01em;
+    }
+
+    .brand img { height: 40px; width: auto; }
+
+    .primary-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.9rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: var(--wd5-blue-900);
+    }
+
+    .primary-nav a:hover { color: var(--wd5-blue-700); }
+
+    main { flex: 1; padding: 4rem 0 3rem; text-align: center; }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--wd5-coral);
+      margin: 0 0 0.6rem;
+    }
+
+    h1 {
+      font-family: "Montserrat", system-ui, sans-serif;
+      font-size: clamp(1.9rem, 4.5vw, 2.8rem);
+      color: var(--wd5-blue-950);
+      margin: 0 0 0.75rem;
+      letter-spacing: -0.02em;
+    }
+
+    .lede { color: var(--wd5-muted); font-size: 1.05rem; margin: 0 auto; max-width: 46ch; }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.6rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 999px;
+      background: var(--wd5-blue-700);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .btn:hover { background: var(--wd5-blue-900); }
+
+    .alt-links { margin-top: 1.4rem; font-size: 0.92rem; color: var(--wd5-muted); }
+    .alt-links a { color: var(--wd5-blue-700); font-weight: 600; }
+
+    .site-footer {
+      border-top: 1px solid rgba(11, 61, 91, 0.14);
+      background: #fff;
+      padding: 1rem 0;
+      font-size: 0.85rem;
+      color: var(--wd5-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="/index.html">
+        <img src="/logo-transparent.png" alt="Friends of the WDAC" />
+        <span>Friends of the WDAC</span>
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <a href="/about/index.html">About</a>
+        <a href="/history/index.html">History</a>
+        <a href="/membership/index.html">Membership</a>
+        <a href="/donate/index.html">Donate</a>
+        <a href="/news/index.html">News</a>
+        <a href="/docs/index.html">Docs</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <div class="shell">
+      <p class="eyebrow">Error 404</p>
+      <h1>We couldn&rsquo;t find that page</h1>
+      <p class="lede">
+        The page you were looking for may have moved, or the link may be out of date.
+      </p>
+      <a class="btn" href="/index.html">Back to the homepage</a>
+      <p class="alt-links">
+        <a href="/docs/index.html">Documents</a> &middot;
+        <a href="/news/index.html">News</a> &middot;
+        <a href="/membership/index.html">Membership</a> &middot;
+        <a href="/donate/index.html">Donate</a>
+      </p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="shell">Friends of the WDAC &middot; Cottage Grove, Oregon</div>
+  </footer>
+</body>
+</html>

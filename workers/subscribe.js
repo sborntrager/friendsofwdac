@@ -25,8 +25,7 @@ const ZOHO_NEWSLETTER_MAX_RECIPIENTS = 75;
 const ZOHO_TEST_MAX_RECIPIENTS = 5;
 const DEFAULT_ALLOWED_ADMIN_EMAILS = [
   "shannonborntrager@gmail.com",
-  "contact@friendsofwdac.org",
-  "contact@friendsofwadc.org"
+  "contact@friendsofwdac.org"
 ];
 const ADMIN_EMAIL_ALIAS_MAP = {
   "contact@friendsofwdac.org": ["contact@friendsofwadc.org"],
@@ -278,8 +277,8 @@ const CONTENT_ALLOWED_FIELDS = {
   "donate.priorities.kicker": { kind: "text", maxLength: 120 },
   "donate.priorities.title": { kind: "text", maxLength: 220 },
   "donate.priorities.lead": { kind: "text", maxLength: 1200 },
-  "donate.priorities.item1": { kind: "text", maxLength: 400 },
-  "donate.priorities.item2": { kind: "text", maxLength: 400 },
+  "donate.priorities.item1": { kind: "text", maxLength: 1200 },
+  "donate.priorities.item2": { kind: "text", maxLength: 1200 },
   "donate.priorities.item3": { kind: "text", maxLength: 400 },
   "donate.priorities.item4": { kind: "text", maxLength: 400 },
   "donate.priorities.item5": { kind: "text", maxLength: 400 },
@@ -397,6 +396,9 @@ const CONTENT_ALLOWED_FIELDS = {
   "history.timeline.row9.year": { kind: "text", maxLength: 40 },
   "history.timeline.row9.category": { kind: "text", maxLength: 120 },
   "history.timeline.row9.text": { kind: "text", maxLength: 1200 },
+  "history.timeline.row10.year": { kind: "text", maxLength: 40 },
+  "history.timeline.row10.category": { kind: "text", maxLength: 120 },
+  "history.timeline.row10.text": { kind: "text", maxLength: 1200 },
   "history.gallery.title": { kind: "text", maxLength: 180 },
   "history.gallery.outdoorPool.image.src": { kind: "asset", maxLength: 500 },
   "history.gallery.outdoorPool.image.alt": { kind: "text", maxLength: 240 },
@@ -541,6 +543,14 @@ const CONTENT_ALLOWED_FIELDS = {
   "news.updates.item9.tag": { kind: "text", maxLength: 120 },
   "news.updates.item9.title": { kind: "text", maxLength: 180 },
   "news.updates.item9.body": { kind: "text", maxLength: 1200 },
+  "news.updates.item10.date": { kind: "text", maxLength: 80 },
+  "news.updates.item10.tag": { kind: "text", maxLength: 120 },
+  "news.updates.item10.title": { kind: "text", maxLength: 180 },
+  "news.updates.item10.body": { kind: "text", maxLength: 1200 },
+  "news.updates.item11.date": { kind: "text", maxLength: 80 },
+  "news.updates.item11.tag": { kind: "text", maxLength: 120 },
+  "news.updates.item11.title": { kind: "text", maxLength: 180 },
+  "news.updates.item11.body": { kind: "text", maxLength: 1200 },
   "news.photos.title": { kind: "text", maxLength: 180 },
   "news.photos.link.label": { kind: "text", maxLength: 120 },
   "news.photos.link.href": { kind: "href", maxLength: 320 },

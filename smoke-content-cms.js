@@ -2,8 +2,8 @@ const path = require("path");
 const { spawnSync } = require("child_process");
 
 const repoRoot = __dirname;
-const workerBase = "https://friendsofwadc-subscribe.shannonborntrager.workers.dev";
-const origin = "https://friendsofwadc.org";
+const workerBase = process.env.WDAC_CONTENT_API_BASE || "https://api.friendsofwdac.org";
+const origin = process.env.WDAC_SITE_ORIGIN || "https://friendsofwdac.org";
 const restoreUpdatedBy = "shannonborntrager@gmail.com";
 
 const pageConfigs = {
