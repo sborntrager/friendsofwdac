@@ -2,6 +2,7 @@ name = "friendsofwdac-buffer-social"
 main = "workers/buffer-social/src/index.js"
 compatibility_date = "2026-10-29"
 workers_dev = false
+account_id = "bae208b2f47b7699b7bb53fd6bb589fb"
 
 # This Worker is intentionally separate from workers/subscribe.js. Deploy it
 # with: npx wrangler deploy --config wrangler.buffer-social.toml
@@ -12,8 +13,8 @@ workers_dev = false
 # tables because the Buffer module uses those roles and sessions.
 [[d1_databases]]
 binding = "DB"
-database_name = "replace-with-friendsofwdac-admin"
-database_id = "replace-with-friendsofwdac-d1-id"
+database_name = "friendsofwdac-admin"
+database_id = "a6756294-1c90-417e-8f50-50fd682f33ac"
 migrations_dir = "workers/buffer-social/migrations"
 
 [[r2_buckets]]

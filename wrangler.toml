@@ -3,13 +3,13 @@ main = "workers/subscribe.js"
 compatibility_date = "2026-02-12"
 workers_dev = false
 
-# TODO(migration): set to the NEW client-owned Cloudflare account id.
-# Intentionally left unset so deploys fail loudly rather than hitting the old account.
-# account_id = "<NEW_ACCOUNT_ID>"
+# Client-owned Cloudflare account (friendsofwdac@atomicmail.io).
+account_id = "bae208b2f47b7699b7bb53fd6bb589fb"
 
-# TODO(migration): replace with the KV namespace id created in the new account.
+# "friendsofwdac-subscribers" in the new account.
+# Old account namespace was 45958fcabdd3437fbb30845d9541d46f.
 kv_namespaces = [
-  { binding = "SUBSCRIBERS", id = "45958fcabdd3437fbb30845d9541d46f" }
+  { binding = "SUBSCRIBERS", id = "0445d85134e645e9873716de86555871" }
 ]
 
 [[send_email]]

@@ -74,11 +74,26 @@ async function api(pathname, init) {
   return payload;
 }
 
+// result_info.count is the size of one page, not the namespace total, so page
+// through the whole key list (the API also rejects limit < 10).
 async function countKeys(namespaceId) {
-  const payload = await api(
-    `/accounts/${accountId}/storage/kv/namespaces/${namespaceId}/keys?limit=1`
-  );
-  return payload.result_info?.count ?? (payload.result || []).length;
+  let count = 0;
+  let cursor = null;
+
+  for (;;) {
+    const query = new URLSearchParams({ limit: "1000" });
+    if (cursor) query.set("cursor", cursor);
+
+    const payload = await api(
+      `/accounts/${accountId}/storage/kv/namespaces/${namespaceId}/keys?${query}`
+    );
+    count += (payload.result || []).length;
+
+    cursor = payload.result_info?.cursor || null;
+    if (!cursor) break;
+  }
+
+  return count;
 }
 
 async function readValue(namespaceId, name) {
