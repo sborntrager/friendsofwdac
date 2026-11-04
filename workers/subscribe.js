@@ -4269,6 +4269,20 @@ const handleAdminDashboard = async (request, env, origin) => {
   );
 };
 
+// Lightweight session check used by the social worker (service binding): 200 with the signed-in
+// admin's email when the Bearer token is valid, 401 otherwise. Reads no records.
+const handleAdminWhoami = async (request, env, origin) => {
+  const verified = await getVerifiedAdminSession(request, env);
+  if (!verified) {
+    return json({ error: "Unauthorized" }, 401, origin || "*");
+  }
+  return json(
+    { ok: true, email: verified.user.email, expiresAt: new Date(verified.session.exp).toISOString() },
+    200,
+    origin || "*"
+  );
+};
+
 const handleAdminPeopleList = async (request, env, origin) => {
   const verified = await getVerifiedAdminSession(request, env);
   if (!verified) {
@@ -4883,6 +4897,10 @@ export default {
 
     if (request.method === "POST" && (url.pathname === "/admin/support/contact" || url.pathname === "/admin/support/contact/")) {
       return handleAdminSupportContact(request, env, origin);
+    }
+
+    if (request.method === "GET" && (url.pathname === "/admin/whoami" || url.pathname === "/admin/whoami/")) {
+      return handleAdminWhoami(request, env, origin);
     }
 
     if (request.method === "GET" && (url.pathname === "/admin/dashboard" || url.pathname === "/admin/dashboard/")) {

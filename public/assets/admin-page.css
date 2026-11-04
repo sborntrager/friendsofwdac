@@ -1983,3 +1983,83 @@
     align-items: flex-start;
   }
 }
+
+/* ---- Social media panel ---- */
+.admin-page .admin-social-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1.2;
+  white-space: nowrap;
+  background: var(--admin-blue-100);
+  color: var(--admin-blue-800);
+}
+.admin-page .admin-social-chip--muted { background: #eef2f6; color: var(--admin-muted); }
+.admin-page .admin-social-chip--active,
+.admin-page .admin-social-chip--queued { background: rgba(17, 159, 156, 0.14); color: #0b6f6d; }
+.admin-page .admin-social-chip--pending,
+.admin-page .admin-social-chip--publishing { background: rgba(240, 180, 35, 0.2); color: #7a5a00; }
+.admin-page .admin-social-chip--lapsed,
+.admin-page .admin-social-chip--failed { background: rgba(235, 90, 79, 0.14); color: #a3322a; }
+.admin-page .admin-social-chip--approved { background: rgba(31, 110, 166, 0.14); color: var(--admin-blue-800); }
+
+.admin-page .admin-panel-note--error { border-color: rgba(235, 90, 79, 0.45); color: #a3322a; }
+
+.admin-page .admin-social-setup {
+  margin: 0 0 18px;
+  padding: 14px 18px;
+  border: 1px solid var(--admin-border);
+  border-left: 4px solid var(--admin-gold);
+  border-radius: 10px;
+  background: var(--admin-soft);
+}
+.admin-page .admin-social-setup h3 { margin: 0 0 6px; font-size: 1rem; color: var(--admin-ink); }
+.admin-page .admin-social-setup p { margin: 0 0 8px; color: var(--admin-muted); }
+.admin-page .admin-social-setup ul { margin: 0; padding-left: 20px; color: var(--admin-ink); }
+
+.admin-page .admin-social-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 24px;
+  align-items: start;
+}
+.admin-page .admin-social-composer,
+.admin-page .admin-social-posts {
+  padding: 18px;
+  border: 1px solid var(--admin-border);
+  border-radius: 12px;
+  background: var(--admin-white);
+}
+.admin-page .admin-social-composer h3,
+.admin-page .admin-social-posts h3 { margin: 0 0 12px; font-size: 1.05rem; color: var(--admin-ink); }
+.admin-page .admin-social-composer .admin-field { margin-bottom: 14px; }
+.admin-page .admin-social-posts__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 8px; }
+.admin-page .admin-social-posts__head h3 { margin: 0; }
+
+.admin-page .admin-social-hint { margin: 4px 0 0; font-size: 0.85rem; color: var(--admin-muted); }
+.admin-page .admin-social-hint--warn { color: #a3322a; font-weight: 600; }
+.admin-page .admin-social-error { color: #a3322a; font-size: 0.85rem; }
+
+.admin-page .admin-social-channels { margin: 0 0 14px; padding: 12px 14px; border: 1px solid var(--admin-border); border-radius: 10px; }
+.admin-page .admin-social-channels legend { padding: 0 6px; font-weight: 600; color: var(--admin-ink); }
+.admin-page .admin-social-channels__list { display: grid; gap: 8px; margin-bottom: 10px; }
+.admin-page .admin-social-channel { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+.admin-page .admin-social-channel input { width: 18px; height: 18px; flex: none; }
+
+.admin-page .admin-social-media-preview { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-top: 8px; }
+.admin-page .admin-social-media-preview img { max-height: 72px; max-width: 120px; border-radius: 8px; border: 1px solid var(--admin-border); }
+
+.admin-page .admin-social-posts__list { display: grid; gap: 12px; }
+.admin-page .admin-social-post { padding: 14px; border: 1px solid var(--admin-border); border-radius: 10px; background: var(--admin-soft); }
+.admin-page .admin-social-post__head { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.admin-page .admin-social-post__body { margin: 8px 0; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--admin-ink); }
+.admin-page .admin-social-post .admin-action-row { margin-top: 10px; flex-wrap: wrap; align-items: center; }
+.admin-page .admin-social-confirm { font-weight: 600; color: var(--admin-ink); }
+.admin-page .admin-social-targets { list-style: none; margin: 10px 0 0; padding: 0; display: grid; gap: 6px; }
+
+@media (max-width: 900px) {
+  .admin-page .admin-social-layout { grid-template-columns: minmax(0, 1fr); }
+}

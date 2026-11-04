@@ -1,13 +1,19 @@
-const encoder = new TextEncoder();
+// Friends of WDAC adaptation of the shared buffer-social-operations module:
+//  - Sign-in is the existing admin login. Each request's Bearer token is checked by the
+//    friendsofwdac-subscribe Worker (service binding ADMIN_API, GET /admin/whoami). There is no
+//    second auth system and no auth_* tables. Every signed-in admin can draft, approve and publish.
+//  - Routes live on the API host under /admin/social/*, and the admin pages call them cross-origin,
+//    so every response carries CORS headers for ALLOWED_ORIGINS (Bearer tokens only, no cookies).
 const BUFFER_API_URL = "https://api.buffer.com";
-const REQUIRED_VARS = ["APP_ORIGIN", "BUFFER_API_KEY", "BUFFER_ORGANIZATION_ID", "PUBLIC_MEDIA_BASE_URL"];
-const URL_VARS = ["APP_ORIGIN", "PUBLIC_MEDIA_BASE_URL"];
+const REQUIRED_VARS = ["ALLOWED_ORIGINS", "BUFFER_API_KEY", "BUFFER_ORGANIZATION_ID", "PUBLIC_MEDIA_BASE_URL"];
+const URL_VARS = ["PUBLIC_MEDIA_BASE_URL"];
+const ROUTE_PREFIX = "/admin/social";
 const POST_STATUSES = ["draft", "approved", "publishing", "queued", "failed"];
 const MAX_CHANNELS_PER_POST = 25;
 const STALE_PUBLISH_MINUTES = 10;
 const INTERRUPTED_MESSAGE = "A previous publish was interrupted. Check Buffer for this post before publishing again.";
 const UUID = "[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}";
-const POST_ROUTE = new RegExp("^/api/admin/social-posts/(" + UUID + ")(?:/(approve|publish))?$");
+const POST_ROUTE = new RegExp("^" + ROUTE_PREFIX + "/posts/(" + UUID + ")(?:/(approve|publish))?$");
 const MEDIA_TYPES = {
   "image/jpeg": { extension: "jpg", matches: bytes => startsWith(bytes, [0xff, 0xd8, 0xff]) },
   "image/png": { extension: "png", matches: bytes => startsWith(bytes, [0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]) },
@@ -55,6 +61,7 @@ function missingConfig(env) {
   const missing = [];
   if (!env.DB || typeof env.DB.prepare !== "function") missing.push("DB");
   if (!env.MEDIA_BUCKET || typeof env.MEDIA_BUCKET.put !== "function") missing.push("MEDIA_BUCKET");
+  if (!env.ADMIN_API || typeof env.ADMIN_API.fetch !== "function") missing.push("ADMIN_API");
   for (const name of REQUIRED_VARS) if (!isSet(env[name])) missing.push(name);
   for (const name of URL_VARS) if (isSet(env[name]) && !isHttpUrl(env[name])) missing.push(name + " (not an http(s) URL)");
   return missing;
@@ -63,33 +70,53 @@ function requireConfig(env) {
   const missing = missingConfig(env);
   if (missing.length) throw new HttpError(503, "Buffer social module is not configured: missing " + missing.join(", "));
 }
-function assertSameOrigin(request, env) {
-  if (request.method === "GET" || request.method === "HEAD") return;
-  const origin = request.headers.get("Origin");
-  if (origin && origin !== new URL(env.APP_ORIGIN).origin) throw new HttpError(403, "Origin not allowed");
-  const site = request.headers.get("Sec-Fetch-Site");
-  if (site && site !== "same-origin" && site !== "none") throw new HttpError(403, "Cross-site request refused");
+function allowedOrigins(env) {
+  return String(env.ALLOWED_ORIGINS || "").split(",").map(value => value.trim()).filter(Boolean);
 }
-async function sha256(value) {
-  const digest = await crypto.subtle.digest("SHA-256", encoder.encode(value));
-  return Array.from(new Uint8Array(digest), byte => byte.toString(16).padStart(2, "0")).join("");
+// The browser's Origin must be one of ALLOWED_ORIGINS. Requests with no Origin (curl, server calls) pass
+// this check and are stopped by the Bearer-token check instead.
+function assertAllowedOrigin(request, env) {
+  const origin = request.headers.get("Origin");
+  if (origin && !allowedOrigins(env).includes(origin)) throw new HttpError(403, "Origin not allowed");
+}
+function corsHeaders(request, env) {
+  const origin = request.headers.get("Origin");
+  if (!origin || !allowedOrigins(env).includes(origin)) return {};
+  return {
+    "Access-Control-Allow-Origin": origin,
+    "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    "Access-Control-Allow-Headers": "Authorization, Content-Type",
+    "Access-Control-Max-Age": "600",
+    Vary: "Origin",
+  };
+}
+function withCors(response, headers) {
+  const copy = new Response(response.body, response);
+  for (const [name, value] of Object.entries(headers)) copy.headers.set(name, value);
+  return copy;
 }
 function token(request) {
   const auth = request.headers.get("Authorization") || "";
-  if (auth.startsWith("Bearer ")) return auth.slice(7);
-  const prefix = "auth_session=";
-  return (request.headers.get("Cookie") || "").split("; ").find(value => value.startsWith(prefix))?.slice(prefix.length) || null;
+  return auth.startsWith("Bearer ") ? auth.slice(7).trim() : null;
 }
-async function user(request, env, role = "editor") {
+// Asks the admin API whether this Bearer token is a live admin session. The admin API only answers
+// requests that carry an allowed Origin, so the browser's own (already checked) Origin is forwarded.
+async function user(request, env) {
   const raw = token(request);
   if (!raw) throw new HttpError(401, "Sign in required");
-  // expires_at is ISO 8601 (written by cloudflare-magic-link-auth); compare as time, not text.
-  const person = await env.DB.prepare("SELECT u.id, u.role FROM auth_sessions s JOIN auth_users u ON u.id = s.user_id WHERE s.token_hash = ? AND s.revoked_at IS NULL AND julianday(s.expires_at) > julianday('now')")
-    .bind(await sha256(raw)).first();
-  if (!person) throw new HttpError(401, "Session expired or invalid");
-  const allowed = role === "admin" ? ["admin"] : ["editor", "admin"];
-  if (!allowed.includes(person.role)) throw new HttpError(403, "Insufficient access");
-  return person;
+  const origin = request.headers.get("Origin") || allowedOrigins(env)[0];
+  let response;
+  try {
+    response = await env.ADMIN_API.fetch("https://admin-api.internal/admin/whoami", {
+      headers: { Authorization: "Bearer " + raw, Origin: origin },
+    });
+  } catch (error) {
+    console.error("Admin session check failed", error);
+    throw new HttpError(502, "Could not verify your sign-in right now");
+  }
+  const person = response.ok ? await response.json().catch(() => null) : null;
+  if (!person?.ok || typeof person.email !== "string" || !person.email) throw new HttpError(401, "Session expired or invalid");
+  return { id: person.email.toLowerCase(), role: "admin" };
 }
 function limitParam(request) {
   const value = Number(new URL(request.url).searchParams.get("limit") || 50);
@@ -310,34 +337,43 @@ async function publish(request, env, postId) {
   const status = await env.DB.prepare("SELECT status FROM buffer_social_posts WHERE id = ?").bind(postId).first("status");
   return json({ status, results, ...(rateLimit ? { rateLimited: true } : {}) }, 200, rateLimit?.headers);
 }
+async function route(request, env) {
+  const path = new URL(request.url).pathname.replace(/\/+$/, "");
+  const method = request.method;
+  if (!path.startsWith(ROUTE_PREFIX + "/")) return json({ error: "Not found" }, 404);
+  assertAllowedOrigin(request, env);
+  if (method === "OPTIONS") return new Response(null, { status: 204 });
+  // Health needs no sign-in so the dashboard can show "what is still missing" before anyone has keys.
+  if (method === "GET" && path === ROUTE_PREFIX + "/health") {
+    const missing = missingConfig(env);
+    return json({ ok: !missing.length, missing }, missing.length ? 503 : 200);
+  }
+  requireConfig(env);
+  const post = path.match(POST_ROUTE);
+  // Handlers are awaited so their errors reach the catch in fetch().
+  if (method === "GET" && path === ROUTE_PREFIX + "/channels") return await listChannels(request, env);
+  if (method === "POST" && path === ROUTE_PREFIX + "/channels/sync") return await syncChannels(request, env);
+  if (method === "GET" && path === ROUTE_PREFIX + "/media") return await listMedia(request, env);
+  if (method === "POST" && path === ROUTE_PREFIX + "/media/upload") return await uploadMedia(request, env);
+  if (method === "GET" && path === ROUTE_PREFIX + "/posts") return await listPosts(request, env);
+  if (method === "POST" && path === ROUTE_PREFIX + "/posts") return await createPost(request, env);
+  if (method === "GET" && post && !post[2]) return await getPost(request, env, post[1]);
+  if (method === "POST" && post?.[2] === "approve") return await approve(request, env, post[1]);
+  if (method === "POST" && post?.[2] === "publish") return await publish(request, env, post[1]);
+  return json({ error: "Not found" }, 404);
+}
 export default {
   async fetch(request, env) {
-    const path = new URL(request.url).pathname;
-    const method = request.method;
+    let response;
     try {
-      if (method === "GET" && path === "/health") {
-        const missing = missingConfig(env);
-        return json({ ok: !missing.length, missing }, missing.length ? 503 : 200);
-      }
-      if (!path.startsWith("/api/admin/")) return json({ error: "Not found" }, 404);
-      requireConfig(env);
-      assertSameOrigin(request, env);
-      const post = path.match(POST_ROUTE);
-      // Handlers are awaited so their errors reach the catch below.
-      if (method === "GET" && path === "/api/admin/buffer/channels") return await listChannels(request, env);
-      if (method === "POST" && path === "/api/admin/buffer/channels/sync") return await syncChannels(request, env);
-      if (method === "GET" && path === "/api/admin/media") return await listMedia(request, env);
-      if (method === "POST" && path === "/api/admin/media/upload") return await uploadMedia(request, env);
-      if (method === "GET" && path === "/api/admin/social-posts") return await listPosts(request, env);
-      if (method === "POST" && path === "/api/admin/social-posts") return await createPost(request, env);
-      if (method === "GET" && post && !post[2]) return await getPost(request, env, post[1]);
-      if (method === "POST" && post?.[2] === "approve") return await approve(request, env, post[1]);
-      if (method === "POST" && post?.[2] === "publish") return await publish(request, env, post[1]);
-      return json({ error: "Not found" }, 404);
+      response = await route(request, env);
     } catch (error) {
-      if (error instanceof HttpError) return json({ error: error.message, ...error.details }, error.status, error.headers);
-      console.error(error);
-      return json({ error: "Unexpected server error" }, 500);
+      if (error instanceof HttpError) response = json({ error: error.message, ...error.details }, error.status, error.headers);
+      else {
+        console.error(error);
+        response = json({ error: "Unexpected server error" }, 500);
+      }
     }
+    return withCors(response, corsHeaders(request, env));
   },
 };
