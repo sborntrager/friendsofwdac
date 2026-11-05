@@ -525,8 +525,8 @@
 
 .about-page .about-quote p {
   margin: 0;
-  /* Clear the decorative quote mark, which extends through 72px of the card. */
-  padding: 58px 0 0 0;
+  /* Clear the decorative quote mark, which extends through 72px of the card, plus a small gap. */
+  padding: 68px 0 0 0;
   color: #21445f;
   font-size: 20px;
   line-height: 1.45;
@@ -881,7 +881,7 @@
   }
 
   .about-page .about-quote p {
-    padding: 54px 0 0 0;
+    padding: 62px 0 0 0;
     font-size: 18px;
   }
 
