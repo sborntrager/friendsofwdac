@@ -4,13 +4,27 @@ compatibility_date = "2026-10-29"
 workers_dev = false
 account_id = "bae208b2f47b7699b7bb53fd6bb589fb"
 
-# This Worker is intentionally separate from workers/subscribe.js. Deploy it
-# with: npx wrangler deploy --config wrangler.buffer-social.toml
+# Social posting through Buffer. Separate from workers/subscribe.js (the admin API) so a Buffer
+# problem can never affect sign-in, forms or newsletter. Deploy with:
+#   npx wrangler deploy --config wrangler.buffer-social.toml
 #
-# Before deployment, create the D1 database and R2 bucket in the Friends of
-# WDAC Cloudflare account, then replace the two values below. The D1 database
-# must also contain cloudflare-magic-link-auth's auth_users and auth_sessions
-# tables because the Buffer module uses those roles and sessions.
+# Sign-in is the existing admin login. This Worker asks friendsofwdac-subscribe (service binding
+# below) whether each request's Bearer token is a live admin session, so deploy the subscribe
+# Worker first: it provides GET /admin/whoami.
+#
+# Served on the API host, more specific than the subscribe Worker's api.friendsofwdac.org/* route,
+# so Cloudflare sends only /admin/social/* here.
+routes = [
+  { pattern = "api.friendsofwdac.org/admin/social/*", zone_name = "friendsofwdac.org" }
+]
+
+[[services]]
+binding = "ADMIN_API"
+service = "friendsofwdac-subscribe"
+
+# Holds only the buffer_social_* tables. Reuses the existing friendsofwdac-admin database, which
+# already has migration 0001. Apply 0002 (removes the auth_users foreign keys) before deploying:
+#   npx wrangler d1 migrations apply DB --remote --config wrangler.buffer-social.toml
 [[d1_databases]]
 binding = "DB"
 database_name = "friendsofwdac-admin"
@@ -19,12 +33,16 @@ migrations_dir = "workers/buffer-social/migrations"
 
 [[r2_buckets]]
 binding = "MEDIA_BUCKET"
-bucket_name = "replace-with-friendsofwdac-social-media"
+bucket_name = "friendsofwdac-social-media"
 
 [vars]
-# Must match APP_ORIGIN in wrangler.auth.toml: the auth cookie is host-only.
-APP_ORIGIN = "https://friendsofwdac.org"
-BUFFER_ORGANIZATION_ID = "replace-with-buffer-organization-id"
-PUBLIC_MEDIA_BASE_URL = "https://replace-with-public-media-domain"
+# Pages allowed to call this Worker from a browser.
+ALLOWED_ORIGINS = "https://friendsofwdac.org,https://www.friendsofwdac.org"
+# From Buffer (an owner/admin account). Not a secret. Required before the worker reports healthy.
+BUFFER_ORGANIZATION_ID = "6aeb6d044035247e4011cdb5"
+# Public HTTPS address of the R2 bucket (custom domain). Buffer downloads images from here.
+PUBLIC_MEDIA_BASE_URL = "https://media.friendsofwdac.org"
 MAX_MEDIA_BYTES = "10485760"
 BUFFER_TIMEOUT_MS = "10000"
+# BUFFER_API_KEY is a secret, never put it in this file:
+#   npx wrangler secret put BUFFER_API_KEY --config wrangler.buffer-social.toml

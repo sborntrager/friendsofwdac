@@ -1,0 +1,52 @@
+;;
+;; Domain:     friendsofwdac.org.
+;; Exported:   2026-11-03 18:23:35
+;;
+;; This file is intended for use for informational and archival
+;; purposes ONLY and MUST be edited before use on a production
+;; DNS server.  In particular, you must:
+;;   -- update the SOA record with the correct authoritative name server
+;;   -- update the SOA record with the contact e-mail address information
+;;   -- update the NS record(s) with the authoritative name servers for this domain.
+;;
+;; For further information, please consult the BIND documentation
+;; located on the following website:
+;;
+;; http://www.isc.org/
+;;
+;; And RFC 1035:
+;;
+;; http://www.ietf.org/rfc/rfc1035.txt
+;;
+;; Please note that we do NOT offer technical support for any use
+;; of this zone data, the BIND name server, or any other third-party
+;; DNS software.
+;;
+;; Use at your own risk.
+;; SOA Record
+friendsofwdac.org	3600	IN	SOA	james.ns.cloudflare.com. dns.cloudflare.com. 2054539681 10000 2400 604800 3600
+
+;; NS Records
+friendsofwdac.org.	86400	IN	NS	james.ns.cloudflare.com.
+friendsofwdac.org.	86400	IN	NS	novalee.ns.cloudflare.com.
+
+;; CNAME Records
+friendsofwdac.org.	1	IN	CNAME	wadc.pages.dev. ; cf_tags=cf-proxied:true
+www.friendsofwdac.org.	1	IN	CNAME	wadc.pages.dev. ; cf_tags=cf-proxied:true
+
+;; MX Records
+friendsofwdac.org.	1	IN	MX	50 mx3.zoho.com.
+friendsofwdac.org.	1	IN	MX	20 mx2.zoho.com.
+friendsofwdac.org.	1	IN	MX	10 mx.zoho.com.
+
+;; NS Records
+friendsofwdac.org.	1	IN	NS	dns2.registrar-servers.com.
+friendsofwdac.org.	1	IN	NS	dns1.registrar-servers.com.
+
+;; TXT Records
+8151431327._domainkey.friendsofwdac.org.	600	IN	TXT	"k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCztyrUVbMUxcoBeJtr/9WNerZ5HENcf0NK78m/PA6/sN8tt0A6MNM48C4FHcv1MVbHCM6JrjcxDLKmOI5Rn6EFnvtyeXFI4YMg9lxXWbIfsNZt3nUyUnoP3o8w1qPGXWmv2KJohcfbB3RH4/RQ7SDAifsjgrMv+uJFSP6b4wrOuwIDAQAB"
+_dmarc.friendsofwdac.org.	1	IN	TXT	"v=DMARC1; p=none; rua=mailto:admin@frendsofwdac.org; ruf=mailto:admin@frendsofwdac.org; sp=none; adkim=r; aspf=r"
+friendsofwdac.org.	3600	IN	TXT	"v=spf1 include:zohomail.com include:_spf.mx.cloudflare.net include:one.zoho.com ~all"
+friendsofwdac.org.	600	IN	TXT	"zoho-verification=zb07014818.zmverify.zoho.com"
+wdac._domainkey.friendsofwdac.org.	600	IN	TXT	"v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCCesyvrYRykwzfDM3hv86sgJjX/GdLKV6j82y4t3GXuavtoVaso+gqGVEUVQ7Ykdel/KoP8S64SYJCnwzPnTPSAI51QT5Mi4JouHaoETU2JQWlZOFiR5pDaRJ3iwVD8SH6klZe7PofU7Y7SHX3hy8/O/ZgQ/6KUypASTAnM+8JnQIDAQAB"
+zc920380440._domainkey.friendsofwdac.org.	600	IN	TXT	"k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvuw/YsEgT31uZRneXvKvPBJLM4zljlNE2UYRjaD6xLeiA/V7Wl/8Lj00y7knmDDLhDXmueyfbq2CGdcI04rCoLQKXyUUMdRi4yHNibJElyh0UFs8t+KHT7JWq8QA55bqAxLYQG2yt5u4GhQDnL0FIC8AryNeukFkf7dEiCsrZ0vwzD2jq077x5xdGVyIGj+2HiIl43rloq" "zPiy7RBybn9VdeOrVA0uYPErmMuO79k6v/PauUR7YCUSh70KAbML8/yVi3Nb7C3sabW9vVQDv5eO8M/EqnYVGLcbKUTk4ngutz4uUNRJF93gW2F1FrOmDaKXEQ6sPI86ndfl7syyapkwIDAQAB"

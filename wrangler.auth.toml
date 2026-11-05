@@ -15,9 +15,9 @@ account_id = "bae208b2f47b7699b7bb53fd6bb589fb"
 # The session cookie is host-only and there is no CORS, so this Worker must be
 # routed on the same origin as the /admin pages. Enable the route once
 # friendsofwdac.org is active in this account:
-# routes = [
-#   { pattern = "friendsofwdac.org/api/auth/*", zone_name = "friendsofwdac.org" }
-# ]
+routes = [
+  { pattern = "friendsofwdac.org/api/auth/*", zone_name = "friendsofwdac.org" }
+]
 
 [[d1_databases]]
 binding = "DB"

@@ -341,6 +341,15 @@
                   </span>
                   <span>Imports</span>
                 </a>
+                <a class="admin-dashboard-nav__item" href="#admin-social-panel">
+                  <span class="admin-dashboard-nav__icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" focusable="false">
+                      <path d="M21 4 3 11l6 2.5L11.5 20 21 4z" />
+                      <path d="m9 13.5 5-4" />
+                    </svg>
+                  </span>
+                  <span>Social</span>
+                </a>
                 <a class="admin-dashboard-nav__item" href="#admin-content-panel">
                   <span class="admin-dashboard-nav__icon" aria-hidden="true">
                     <svg viewBox="0 0 24 24" focusable="false">
@@ -912,6 +921,83 @@
                     </div>
                   </article>
                 </section>
+
+                <article class="admin-panel admin-panel--span-12" id="admin-social-panel">
+                  <div class="admin-panel__head">
+                    <div>
+                      <h2>Social Media</h2>
+                      <p>Write a post, choose channels, approve it, then send it to Buffer.</p>
+                    </div>
+                    <span class="admin-social-chip admin-social-chip--muted" id="admin-social-state">Waiting for sign-in</span>
+                  </div>
+
+                  <p class="admin-panel-note" id="admin-social-note" hidden></p>
+
+                  <div class="admin-social-setup" id="admin-social-setup" hidden>
+                    <h3>Setup still needed</h3>
+                    <p id="admin-social-setup-copy">Social posting is not switched on yet. These items are missing:</p>
+                    <ul id="admin-social-setup-list"></ul>
+                  </div>
+
+                  <div class="admin-social-layout" id="admin-social-main">
+                    <form class="admin-social-composer" id="admin-social-form" autocomplete="off">
+                      <h3>New post</h3>
+                      <div class="admin-field">
+                        <label for="admin-social-title">Label (optional, only you see this)</label>
+                        <input class="admin-text-input" id="admin-social-title" type="text" maxlength="200" placeholder="Summer swim lessons announcement" />
+                      </div>
+                      <div class="admin-field">
+                        <label for="admin-social-body">Post text</label>
+                        <textarea class="admin-textarea" id="admin-social-body" rows="6" maxlength="10000" placeholder="What do you want to say?"></textarea>
+                        <p class="admin-social-hint" id="admin-social-count">0 characters</p>
+                      </div>
+                      <div class="admin-field">
+                        <label for="admin-social-media">Photo or video (optional, up to 10 MB)</label>
+                        <input id="admin-social-media" type="file" accept="image/jpeg,image/png,image/gif,image/webp,video/mp4,video/quicktime" />
+                        <div class="admin-social-media-preview" id="admin-social-media-preview" hidden>
+                          <img id="admin-social-media-image" alt="" hidden />
+                          <span id="admin-social-media-label"></span>
+                          <button class="admin-inline-link" id="admin-social-media-clear" type="button">Remove</button>
+                        </div>
+                      </div>
+                      <fieldset class="admin-social-channels">
+                        <legend>Post to</legend>
+                        <div id="admin-social-channels-list" class="admin-social-channels__list">
+                          <p class="admin-social-hint">Channels have not loaded yet.</p>
+                        </div>
+                        <button class="admin-outline-btn admin-outline-btn--compact" id="admin-social-sync" type="button">Sync channels from Buffer</button>
+                      </fieldset>
+                      <div class="admin-field">
+                        <label for="admin-social-when">Send at (optional)</label>
+                        <input class="admin-text-input" id="admin-social-when" type="datetime-local" />
+                        <p class="admin-social-hint">Leave blank to add the post to Buffer's next open slot.</p>
+                      </div>
+                      <div class="admin-action-row">
+                        <button class="admin-primary-btn" id="admin-social-save" type="submit">Save draft</button>
+                        <span class="admin-social-hint" id="admin-social-form-status" role="status"></span>
+                      </div>
+                    </form>
+
+                    <section class="admin-social-posts">
+                      <div class="admin-social-posts__head">
+                        <h3>Posts</h3>
+                        <div class="admin-action-row">
+                          <select class="admin-select-input" id="admin-social-filter" aria-label="Filter posts by status">
+                            <option value="">All posts</option>
+                            <option value="draft">Drafts</option>
+                            <option value="approved">Approved</option>
+                            <option value="queued">In Buffer</option>
+                            <option value="failed">Failed</option>
+                          </select>
+                          <button class="admin-outline-btn admin-outline-btn--compact" id="admin-social-refresh" type="button">Refresh</button>
+                        </div>
+                      </div>
+                      <div id="admin-social-posts-list" class="admin-social-posts__list">
+                        <p class="admin-social-hint">No posts loaded yet.</p>
+                      </div>
+                    </section>
+                  </div>
+                </article>
 
                 <article class="admin-panel admin-panel--span-12" id="admin-content-panel">
                   <div class="admin-panel__head">
@@ -3858,5 +3944,6 @@
   <script src="../js/site.js" defer></script>
   <script src="../js/admin.js" defer></script>
   <script src="../js/admin-content-phase1.js" defer></script>
+  <script src="../js/admin-social.js" defer></script>
 </body>
 </html>
